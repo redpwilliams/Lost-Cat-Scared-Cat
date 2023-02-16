@@ -1,23 +1,17 @@
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : Character
 {
-  private Rigidbody2D rb;
-  private Animator anim;
 
-  [SerializeField] private float jumpVelocity = 3f;
-  private bool isGrounded;
+  private string stateParam;
 
-  private enum MovementState { idle, running, jumping, falling, nil }
-  private MovementState state;
-
-  // Start is called before the first frame update
   void Start()
   {
-    rb = GetComponent<Rigidbody2D>();
+    base.rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
     state = MovementState.running;
     isGrounded = true;
+    stateParam = "state";
   }
 
   // Update is called once per frame
@@ -71,26 +65,8 @@ public class PlayerScript : MonoBehaviour
   }
 
   // Updates the animation state in the Animator
-  private void UpdateAnimationState()
+  protected override void UpdateAnimationState()
   {
-    anim.SetInteger("state", (int)state);
+    anim.SetInteger(stateParam, (int)state);
   }
-
-  private bool isRunning()
-  {
-    return isGrounded;
-  }
-
-  // If GameObject is jumping. Is independent from animation
-  private bool isJumping()
-  {
-    return rb.velocity.y > 0.01f;
-  }
-
-  // If GameObject is falling. Is independent from animation
-  private bool isFalling()
-  {
-    return rb.velocity.y < -0.1f;
-  }
-
 }
