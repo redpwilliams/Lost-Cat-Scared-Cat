@@ -56,13 +56,16 @@ public class UIManager : MonoBehaviour
 
   void InitStartScreen()
   {
-    RectTransform startScreenRT = pauseMenu.GetComponent<RectTransform>();
+    RectTransform pauseMenuRT = pauseMenu.GetComponent<RectTransform>();
 
     // Width and Height
-    float width = rt.rect.width * 0.8f; // 80% of parent
-    float height = rt.rect.height * 0.8f; // 80% of parent
+    float width = rt.rect.width;
+    float height = rt.rect.height;
 
     // Set
-    startScreenRT.rect.Set(origin.x, origin.y, width, height);
+    pauseMenuRT.sizeDelta = new Vector2(width, height);
+
+    Debug.Log(pauseMenuRT.rect.width);
+    Debug.Log(pauseMenuRT.rect.height);
   }
 }
