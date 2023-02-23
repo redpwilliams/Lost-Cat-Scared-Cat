@@ -11,13 +11,16 @@ public class UIManager : MonoBehaviour
   [SerializeField] private float stepsPadding;
   [SerializeField] private float stepsMultiplier;
 
-  [Header("Start Screen Props")]
+  [Header("Pause Menu Props")]
   [SerializeField] private GameObject pauseMenu;
-  [SerializeField] private Vector2 origin;
+  [Range(0.01f, 1f)]
+  [SerializeField] private float pauseMenuWidthFactor = 1f;
+  [Range(0.01f, 1f)]
+  [SerializeField] private float pauseMenuHeightFactor = 1f;
 
 
   // Used for scroll velocity
-  [Header("BGM Instance")]
+  [Header("Background Manager Instance")]
   [SerializeField] private BackgroundManager bgm;
 
   // UIManager RectTransform componenet
@@ -58,14 +61,11 @@ public class UIManager : MonoBehaviour
   {
     RectTransform pauseMenuRT = pauseMenu.GetComponent<RectTransform>();
 
-    // Width and Height
-    float width = rt.rect.width;
-    float height = rt.rect.height;
+    // Get Width and Height
+    float width = rt.rect.width * pauseMenuWidthFactor;
+    float height = rt.rect.height * pauseMenuHeightFactor;
 
     // Set
     pauseMenuRT.sizeDelta = new Vector2(width, height);
-
-    Debug.Log(pauseMenuRT.rect.width);
-    Debug.Log(pauseMenuRT.rect.height);
   }
 }
