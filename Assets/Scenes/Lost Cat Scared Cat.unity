@@ -769,7 +769,7 @@ MonoBehaviour:
   mileageText: {fileID: 1465337868}
   stepsPadding: 0
   stepsMultiplier: 0
-  startScreen: {fileID: 1607694178}
+  pauseMenu: {fileID: 1607694178}
   origin: {x: 0, y: 0}
   bgm: {fileID: 156896622}
 --- !u!1 &1383218950 stripped
@@ -1026,7 +1026,7 @@ GameObject:
   - component: {fileID: 1607694181}
   - component: {fileID: 1607694180}
   m_Layer: 5
-  m_Name: Start Screen
+  m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

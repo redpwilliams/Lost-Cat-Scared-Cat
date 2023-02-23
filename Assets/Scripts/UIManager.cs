@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private float stepsMultiplier;
 
   [Header("Start Screen Props")]
-  [SerializeField] private GameObject startScreen;
+  [SerializeField] private GameObject pauseMenu;
   [SerializeField] private Vector2 origin;
 
 
@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
 
   void InitStartScreen()
   {
-    RectTransform startScreenRT = startScreen.GetComponent<RectTransform>();
+    RectTransform startScreenRT = pauseMenu.GetComponent<RectTransform>();
 
     // Width and Height
     float width = rt.rect.width * 0.8f; // 80% of parent
