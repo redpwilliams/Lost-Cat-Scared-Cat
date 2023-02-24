@@ -4,6 +4,9 @@ using System;
 
 public class UIManager : MonoBehaviour
 {
+  // Pause state
+  public static bool GameIsPaused = false;
+
   private float mileage;
 
   [Header("Mileage Props")]
@@ -17,7 +20,6 @@ public class UIManager : MonoBehaviour
   [SerializeField] private float pauseMenuWidthFactor = 1f;
   [Range(0.01f, 1f)]
   [SerializeField] private float pauseMenuHeightFactor = 1f;
-
 
   // Used for scroll velocity
   [Header("Background Manager Instance")]
@@ -39,6 +41,9 @@ public class UIManager : MonoBehaviour
   {
     mileage += bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
     SetText();
+
+    // Handle Pause
+    if (PauseKeyDown()) HandlePause();
   }
 
   void SetText()
@@ -67,5 +72,28 @@ public class UIManager : MonoBehaviour
 
     // Set
     pauseMenuRT.sizeDelta = new Vector2(width, height);
+  }
+
+  // NOTE - I might want to change this in the future
+  bool PauseKeyDown()
+  {
+    return Input.GetKeyDown(KeyCode.Escape);
+  }
+
+  void HandlePause()
+  {
+    if (GameIsPaused)
+    {
+      // Resume
+      pauseMenu.SetActive(false);
+      Time.timeScale = 1f;
+      GameIsPaused = false;
+      return;
+    }
+
+    // Pause
+    pauseMenu.SetActive(true);
+    Time.timeScale = 0f;
+    GameIsPaused = true;
   }
 }
