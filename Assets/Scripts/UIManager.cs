@@ -34,7 +34,8 @@ public class UIManager : MonoBehaviour
     rt = GetComponent<RectTransform>();
 
     InitMileage();
-    InitStartScreen();
+    InitPauseMenu();
+
   }
 
   void Update()
@@ -62,16 +63,19 @@ public class UIManager : MonoBehaviour
     mileageRT.anchoredPosition = new Vector2(-stepsPadding, mileageRT.anchoredPosition.y - mileageRT.rect.height);
   }
 
-  void InitStartScreen()
+  void InitPauseMenu()
   {
     RectTransform pauseMenuRT = pauseMenu.GetComponent<RectTransform>();
 
-    // Get Width and Height
+    // Get Width and Height . . . 
     float width = rt.rect.width * pauseMenuWidthFactor;
     float height = rt.rect.height * pauseMenuHeightFactor;
 
-    // Set
+    // . . . And Set
     pauseMenuRT.sizeDelta = new Vector2(width, height);
+
+    // Disable PauseMenu by default
+    pauseMenu.SetActive(false);
   }
 
   // NOTE - I might want to change this in the future
@@ -80,7 +84,7 @@ public class UIManager : MonoBehaviour
     return Input.GetKeyDown(KeyCode.Escape);
   }
 
-  void HandlePause()
+  public void HandlePause()
   {
     if (GameIsPaused)
     {
