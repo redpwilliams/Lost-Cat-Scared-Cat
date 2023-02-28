@@ -3,8 +3,6 @@ using UnityEngine;
 public class Player : Character
 {
 
-  private string stateParam;
-
   void Start()
   {
     base.rb = GetComponent<Rigidbody2D>();
@@ -64,9 +62,4 @@ public class Player : Character
     }
   }
 
-  // Updates the animation state in the Animator
-  protected override void UpdateAnimationState()
-  {
-    anim.SetInteger(stateParam, (int)state);
-  }
 }

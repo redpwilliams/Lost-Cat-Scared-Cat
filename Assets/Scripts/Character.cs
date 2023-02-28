@@ -12,6 +12,8 @@ public abstract class Character : MonoBehaviour
   /// <summary>Boolean if the character is touching the main ground gc</summary>
   protected bool isGrounded;
 
+  protected string stateParam;
+
   /// <summary>
   /// Current state of the animation. 
   /// </summary>
@@ -32,7 +34,10 @@ public abstract class Character : MonoBehaviour
 
 
   /// <summary>Handles updating the animation state through the animator tab</summary>
-  protected abstract void UpdateAnimationState();
+  protected virtual void UpdateAnimationState()
+  {
+    anim.SetInteger(stateParam, (int)state);
+  }
 
   /// <summary>
   /// Returns the bool of the Character being grounded 
