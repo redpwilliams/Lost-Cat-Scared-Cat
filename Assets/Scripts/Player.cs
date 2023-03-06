@@ -28,7 +28,7 @@ public class Player : Character
     else if (isRunning())
       state = MovementState.running;
     else
-      state = MovementState.nil; // Fixes jump between jump and fall animation
+      state = null;
     UpdateAnimationState();
   }
 

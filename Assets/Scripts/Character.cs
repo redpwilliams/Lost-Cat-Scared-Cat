@@ -20,13 +20,10 @@ public abstract class Character : MonoBehaviour
   protected enum MovementState
   {
     idle, running, jumping, falling,
-
-    /// <summary>Represents the transition between a MovementState</summary>
-    nil
   }
 
   /// <summary>Current animation state</summary>
-  protected MovementState state;
+  protected MovementState? state;
 
 
   /// <summary>Parameter name in the animator tab</summary>
@@ -36,6 +33,7 @@ public abstract class Character : MonoBehaviour
   /// <summary>Handles updating the animation state through the animator tab</summary>
   protected virtual void UpdateAnimationState()
   {
+    if (state == null) return;
     anim.SetInteger(stateParam, (int)state);
   }
 
