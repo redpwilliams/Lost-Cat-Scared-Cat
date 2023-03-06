@@ -29,7 +29,7 @@ public class Player : Character
       state = MovementState.running;
     else
       state = null;
-    UpdateAnimationState();
+    base.UpdateAnimationState();
   }
 
   void OnCollisionEnter2D(Collision2D col)
