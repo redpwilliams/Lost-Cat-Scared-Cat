@@ -11,8 +11,9 @@ public abstract class Fox : Character
   protected bool isJumpingFox;
 
   
-  protected virtual void Start()
+  protected override void Start()
   {
+    base.Start();
     // Determine if the Fox will jump
     isJumpingFox = Random.Range(0, 2) == 1;
   }

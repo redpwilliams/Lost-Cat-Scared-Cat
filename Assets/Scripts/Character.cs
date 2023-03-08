@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
   [Header("Components")]
-  protected Rigidbody2D rb;
-  protected Animator anim;
+  [SerializeField] protected Rigidbody2D rb;
+  [SerializeField] protected Animator anim;
 
   /// <summary>Upward velocity magnitude use for jump speed/height </summary>
   [SerializeField] protected float jumpVelocity;
@@ -29,6 +29,27 @@ public abstract class Character : MonoBehaviour
   /// <summary>Parameter name in the animator tab</summary>
   protected string animParameter;
 
+  protected virtual void Start()
+  {
+    rb = GetComponent<Rigidbody2D>();
+    anim = GetComponent<Animator>();
+    state = MovementState.running;
+    isGrounded = true;
+    stateParam = "state"; // "state" by default
+  }
+
+  protected virtual void Update()
+  {
+    if (isJumping())
+      state = MovementState.jumping;
+    else if (isFalling())
+      state = MovementState.falling;
+    else if (isRunning())
+      state = MovementState.running;
+    else
+      state = null;
+    UpdateAnimationState();
+  }
 
   /// <summary>Handles updating the animation state through the animator tab</summary>
   protected virtual void UpdateAnimationState()
