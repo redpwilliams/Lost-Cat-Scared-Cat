@@ -51,6 +51,8 @@ public abstract class Character : MonoBehaviour
     UpdateAnimationState();
   }
 
+  protected abstract void FixedUpdate();
+
   /// <summary>Handles updating the animation state through the animator tab</summary>
   protected virtual void UpdateAnimationState()
   {

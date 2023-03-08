@@ -13,12 +13,17 @@ public class ForegroundFox : Fox
     Debug.LogFormat("This foreground fox {0} a jumping fox", isJumpingFox ? "is" : "is not");
   }
 
-  void FixedUpdate()
+  protected override void Update()
+  {
+    base.Update();
+  }
+
+  protected override void FixedUpdate()
   {
     if (Input.GetKey(KeyCode.F) && state == MovementState.running)
     {
+    Debug.Log(state);
       rb.velocity = Vector2.up * jumpVelocity;
-      Debug.Log("Should be jumping now");
     }
   }
 

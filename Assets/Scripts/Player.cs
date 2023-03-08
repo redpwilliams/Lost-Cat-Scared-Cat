@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : Character
 {
 
-  void FixedUpdate()
+  protected override void FixedUpdate()
   {
     if (Input.GetKey(KeyCode.Space) && state == MovementState.running)
       rb.velocity = Vector2.up * jumpVelocity;

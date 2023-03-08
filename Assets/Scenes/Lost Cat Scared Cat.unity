@@ -797,7 +797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 744624824}
   anim: {fileID: 744624823}
-  jumpVelocity: 1.5
+  jumpVelocity: 3
 --- !u!95 &744624823
 Animator:
   serializedVersion: 4
@@ -833,7 +833,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0.25
+  m_GravityScale: 0.75
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1943,6 +1943,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625142, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625144, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
