@@ -12,7 +12,6 @@ public class Player : Character
     stateParam = "state";
   }
 
-  // Update is called once per frame
   void FixedUpdate()
   {
     if (Input.GetKey(KeyCode.Space) && state == MovementState.running)
@@ -32,6 +31,7 @@ public class Player : Character
     base.UpdateAnimationState();
   }
 
+  ///<param name="col">Collision2D object Player collided with</param>
   void OnCollisionEnter2D(Collision2D col)
   {
     isGrounded = true;
@@ -47,6 +47,7 @@ public class Player : Character
     }
   }
 
+  ///<param name="col">Collision2D object Player collided with</param>
   void OnCollisionExit2D(Collision2D col)
   {
     isGrounded = false;

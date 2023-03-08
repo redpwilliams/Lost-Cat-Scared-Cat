@@ -7,6 +7,7 @@ public class BackgroundFox : Fox
 {
   protected override void Start()
   {
+    // Get fox jumping bool value
     base.Start();
     Debug.LogFormat("This background fox {0} a jumping fox", isJumpingFox ? "is" : "is not");
   }

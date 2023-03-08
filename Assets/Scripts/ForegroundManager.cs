@@ -41,18 +41,25 @@ public class ForegroundManager : MonoBehaviour
   void Update()
   {
     mileage += bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
-    SetText();
+    SetMileageText();
 
     // Handle Pause
     if (PauseKeyDown()) HandlePause();
   }
 
-  void SetText()
+  /// <summary>
+  /// Updates the mileage field on the screen
+  /// </summary>
+  void SetMileageText()
   {
     // Update mileage
     mileageText.text = String.Format("{0:#} steps", mileage);
   }
 
+  /// <summary>
+  /// Sets the Mileage text on the screen
+  /// Customizable in GameObject Component
+  /// </summary>
   void InitMileage()
   {
     stepsPadding = 50f;
@@ -63,6 +70,10 @@ public class ForegroundManager : MonoBehaviour
     mileageRT.anchoredPosition = new Vector2(-stepsPadding, mileageRT.anchoredPosition.y - mileageRT.rect.height);
   }
 
+  /// <summary>
+  /// Sets the Pause Menu size and location
+  /// Inits to covering the full screen 
+  /// </summary>
   void InitPauseMenu()
   {
     RectTransform pauseMenuRT = pauseMenu.GetComponent<RectTransform>();
@@ -78,12 +89,16 @@ public class ForegroundManager : MonoBehaviour
     pauseMenu.SetActive(false);
   }
 
-  // NOTE - I might want to change this in the future
-  bool PauseKeyDown()
-  {
-    return Input.GetKeyDown(KeyCode.Escape);
-  }
+  
+  /// <summary>
+  /// Defines what the PauseKey is
+  /// </summary>
+  /// <returns></returns>
+  bool PauseKeyDown() { return Input.GetKeyDown(KeyCode.Escape); }
 
+  /// <summary>
+  /// Handles what pressing Pause does
+  /// </summary>
   public void HandlePause()
   {
     if (GameIsPaused)
