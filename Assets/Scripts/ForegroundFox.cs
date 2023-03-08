@@ -27,21 +27,10 @@ public class ForegroundFox : Fox
     }
   }
 
-  // void Update()
-  // {
-  //   if (isJumping())
-  //     state = MovementState.jumping;
-  //   else if (isFalling())
-  //     state = MovementState.falling;
-  //   else if (isRunning())
-  //     state = MovementState.running;
-  //   else
-  //     state = null;
-  //   base.UpdateAnimationState();
-  // }
-
   protected override void Attack()
   {
     throw new System.NotImplementedException();
   }
+
+  //NOTE - ForegroundFox and BackgroundFox will implement Attack() differently
 }

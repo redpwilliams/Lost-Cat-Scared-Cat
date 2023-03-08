@@ -40,6 +40,7 @@ public abstract class Character : MonoBehaviour
 
   protected virtual void Update()
   {
+    // Set 'state' variable for current kinematics state
     if (isJumping())
       state = MovementState.jumping;
     else if (isFalling())
@@ -53,20 +54,32 @@ public abstract class Character : MonoBehaviour
 
   protected abstract void FixedUpdate();
 
-  /// <summary>Handles updating the animation state through the animator tab</summary>
+  /// <summary>
+  /// Updates the animation state through the animator tab
+  /// </summary>
   protected virtual void UpdateAnimationState()
   {
-    if (state == null) return;
+    if (state == null) return; // No update when in between transitions
     anim.SetInteger(stateParam, (int)state);
   }
 
   /// <summary>
-  /// Returns the bool of the Character being grounded yujhkj kjh fgdgh d g fddgf gf g
+  /// Returns whether or not the character is running
   /// </summary>
   /// <returns>isGrounded, bool value of character grounded status</returns>
   protected virtual bool isRunning()
   {
-    return isGrounded; //TODO - Probably needs more, cant remember rn
+    return isGrounded; 
+    /* NOTE
+      This has to be temporary/overriden by a child class.
+      This works in the main context of the game, but in places
+      like a start menu or character select, the implementation
+      might be different. 
+    */
+    /* REVIEW
+      Consider a separate 'isGrounded' method, in addition to isRunning
+    */ 
+    
   }
 
   /// <summary>
@@ -91,4 +104,17 @@ public abstract class Character : MonoBehaviour
     return rb.velocity.y < -0.1f;
   }
 
+  /// <summary>
+  /// Called when this object collides with something
+  /// Implementations must be handled by subclasses
+  /// </summary>
+  ///<param name="col">Collision2D object Player collided with</param>
+  protected abstract void OnCollisionEnter2D(Collision2D col);
+
+  /// <summary>
+  /// Called when this object leaves a collider
+  /// Implementations must be handled by subclasses
+  /// </summary>
+  ///<param name="col">Collision2D object Player exits collision with</param>
+  protected abstract void OnCollisionExit2D(Collision2D col);
 }
