@@ -41,12 +41,12 @@ public abstract class Character : MonoBehaviour
   protected virtual void Update()
   {
     // Set 'state' variable for current kinematics state
-    if (isJumping())
+    if (isRunning())
+      state = MovementState.running;
+    else if (isJumping())
       state = MovementState.jumping;
     else if (isFalling())
       state = MovementState.falling;
-    else if (isRunning())
-      state = MovementState.running;
     else
       state = null;
     UpdateAnimationState();
@@ -101,7 +101,8 @@ public abstract class Character : MonoBehaviour
   /// </returns>
   protected virtual bool isFalling()
   {
-    return rb.velocity.y < -0.1f;
+    Debug.Log("I'm still falling");
+    return rb.velocity.y < -0.01f;
   }
 
   /// <summary>

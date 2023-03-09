@@ -22,7 +22,6 @@ public class ForegroundFox : Fox
   {
     if (Input.GetKey(KeyCode.F) && state == MovementState.running)
     {
-    Debug.Log(state);
       rb.velocity = Vector2.up * jumpVelocity;
     }
   }
