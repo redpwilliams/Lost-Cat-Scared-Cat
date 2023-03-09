@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d1d97a8f39ecb438549b07b63d639a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 7834204335144625142}
+  anim: {fileID: 7834204335144625138}
   jumpVelocity: 3
 --- !u!212 &7834204335144625143
 SpriteRenderer:
@@ -115,7 +117,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0.75
   m_Material: {fileID: 0}
   m_Interpolate: 0
