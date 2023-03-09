@@ -9,14 +9,13 @@ public abstract class Character : MonoBehaviour
   /// <summary>Upward velocity magnitude use for jump speed/height </summary>
   [SerializeField] protected float jumpVelocity;
 
-  /// <summary>Boolean if the character is touching the main ground gc</summary>
+  /// <summary>Boolean if the character is touching the main ground</summary>
   protected bool isGrounded;
 
+  /// <summary>Name of the 'state' parameter in the Animator</summary>
   protected string stateParam;
 
-  /// <summary>
-  /// Current state of the animation. 
-  /// </summary>
+  /// <summary>Current state of the animation</summary>
   protected enum MovementState
   {
     idle, running, jumping, falling,
@@ -24,7 +23,6 @@ public abstract class Character : MonoBehaviour
 
   /// <summary>Current animation state</summary>
   protected MovementState? state;
-
 
   /// <summary>Parameter name in the animator tab</summary>
   protected string animParameter;
