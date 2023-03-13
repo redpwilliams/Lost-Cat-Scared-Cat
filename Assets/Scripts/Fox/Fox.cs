@@ -27,12 +27,13 @@ public abstract class Fox : Character
 
   protected override void FixedUpdate()
   {
-    float verticalVelocity = 0;
     if (Input.GetKey(KeyCode.F) && state == MovementState.running)
     {
-      verticalVelocity = jumpVelocity;
+      // Keep horizontal velocity, change vertical velocity
+      rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
     }
-    rb.velocity = new Vector2(horizontalVelocity, verticalVelocity);
+    // Use the "previous state's" velocity vector
+    rb.velocity = new Vector2(horizontalVelocity, rb.velocity.y);
   }
 
   /// <summary>

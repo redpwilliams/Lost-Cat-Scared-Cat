@@ -39,11 +39,11 @@ public abstract class Character : MonoBehaviour
   protected virtual void Update()
   {
     // Set 'state' variable for current kinematics state
-    if (isRunning())
+    if (IsRunning())
       state = MovementState.running;
-    else if (isJumping())
+    else if (IsJumping())
       state = MovementState.jumping;
-    else if (isFalling())
+    else if (IsFalling())
       state = MovementState.falling;
     else
       state = null;
@@ -65,7 +65,7 @@ public abstract class Character : MonoBehaviour
   /// Returns whether or not the character is running
   /// </summary>
   /// <returns>isGrounded, bool value of character grounded status</returns>
-  protected virtual bool isRunning()
+  protected virtual bool IsRunning()
   {
     return isGrounded; 
     /* NOTE
@@ -85,7 +85,7 @@ public abstract class Character : MonoBehaviour
   /// This is independent from the animation (animation relies on this/math)
   /// </summary>
   /// <returns>Status of Character jumping</returns>
-  protected bool isJumping()
+  protected bool IsJumping()
   {
     return rb.velocity.y > 0.01f;
   }
@@ -96,9 +96,8 @@ public abstract class Character : MonoBehaviour
   /// <returns>
   ///  rb.velocity.y, bool state if the Character is falling
   /// </returns>
-  protected virtual bool isFalling()
+  protected virtual bool IsFalling()
   {
-    Debug.Log("I'm still falling");
     return rb.velocity.y < -0.01f;
   }
 
