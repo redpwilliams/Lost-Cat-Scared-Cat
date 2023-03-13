@@ -18,14 +18,6 @@ public class ForegroundFox : Fox
     base.Update();
   }
 
-  protected override void FixedUpdate()
-  {
-    if (Input.GetKey(KeyCode.F) && state == MovementState.running)
-    {
-      rb.velocity = Vector2.up * jumpVelocity;
-    }
-  }
-
   protected override void Attack()
   {
     throw new System.NotImplementedException();

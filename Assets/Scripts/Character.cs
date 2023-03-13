@@ -90,7 +90,6 @@ public abstract class Character : MonoBehaviour
     return rb.velocity.y > 0.01f;
   }
 
-  // 
   /// <summary>
   ///  If GameObject is falling. Is independent from animation
   /// </summary>

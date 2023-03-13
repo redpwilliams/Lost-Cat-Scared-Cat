@@ -756,7 +756,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1367892845, guid: 76c924b90b55f1843ad2275f892b7cc6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -798,6 +798,7 @@ MonoBehaviour:
   rb: {fileID: 744624824}
   anim: {fileID: 744624823}
   jumpVelocity: 3
+  horizontalVelocity: 0
 --- !u!95 &744624823
 Animator:
   serializedVersion: 4
@@ -861,7 +862,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 0.17, y: 0.16}
   m_EdgeRadius: 0
@@ -891,16 +892,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &846506624 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7834204335144625138, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-  m_PrefabInstance: {fileID: 7834204334111902350}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &846506626 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 7834204335144625142, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-  m_PrefabInstance: {fileID: 7834204334111902350}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &939193182 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8186637362044108627, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1893,14 +1884,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 846506626}
-    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 846506624}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1943,10 +1926,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7834204335144625142, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625144, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
