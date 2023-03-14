@@ -35,7 +35,6 @@ public class ForegroundManager : MonoBehaviour
 
     InitMileage();
     InitPauseMenu();
-
   }
 
   void Update()
