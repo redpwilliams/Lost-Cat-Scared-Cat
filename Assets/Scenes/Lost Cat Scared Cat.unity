@@ -464,6 +464,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &475243699 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7834204335144625145, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+  m_PrefabInstance: {fileID: 7834204334111902350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &475243701 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7834204335144625143, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+  m_PrefabInstance: {fileID: 7834204334111902350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &475350123
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +875,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.17, y: 0.16}
+  m_Size: {x: 0.32, y: 0.22}
   m_EdgeRadius: 0
 --- !u!1 &786109695 stripped
 GameObject:
@@ -1813,7 +1823,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.17, y: 0.16}
+  m_Size: {x: 0.32, y: 0.22}
   m_EdgeRadius: 0
 --- !u!114 &2136355040
 MonoBehaviour:
@@ -1956,6 +1966,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: bc
+      value: 
+      objectReference: {fileID: 475243699}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 475243701}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_RootOrder
       value: 1
