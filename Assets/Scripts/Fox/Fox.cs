@@ -11,7 +11,7 @@ public abstract class Fox : Character
   protected bool isJumpingFox;
 
   /// <summary> The Fox's horizontal velocity </summary>
-  [SerializeField] protected float horizontalVelocity = 2f;
+  protected float horizontalVelocity = 2f;
 
   protected override void Start()
   {
