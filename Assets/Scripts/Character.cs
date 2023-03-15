@@ -18,7 +18,7 @@ public abstract class Character : MonoBehaviour
   /// <summary>Current state of the animation</summary>
   protected enum MovementState
   {
-    idle, running, jumping, falling,
+    Idle, Running, Jumping, Falling,
   }
 
   /// <summary>Current animation state</summary>
@@ -31,7 +31,7 @@ public abstract class Character : MonoBehaviour
   {
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
-    state = MovementState.running;
+    state = MovementState.Running;
     isGrounded = true;
     stateParam = "state"; // "state" by default
   }
@@ -40,11 +40,11 @@ public abstract class Character : MonoBehaviour
   {
     // Set 'state' variable for current kinematics state
     if (IsRunning())
-      state = MovementState.running;
+      state = MovementState.Running;
     else if (IsJumping())
-      state = MovementState.jumping;
+      state = MovementState.Jumping;
     else if (IsFalling())
-      state = MovementState.falling;
+      state = MovementState.Falling;
     else
       state = null;
     UpdateAnimationState();
@@ -65,7 +65,7 @@ public abstract class Character : MonoBehaviour
   /// Returns whether or not the character is running
   /// </summary>
   /// <returns>isGrounded, bool value of character grounded status</returns>
-  protected virtual bool IsRunning()
+  private bool IsRunning()
   {
     return isGrounded; 
     /* NOTE
@@ -85,7 +85,7 @@ public abstract class Character : MonoBehaviour
   /// This is independent from the animation (animation relies on this/math)
   /// </summary>
   /// <returns>Status of Character jumping</returns>
-  protected bool IsJumping()
+  private bool IsJumping()
   {
     return rb.velocity.y > 0.01f;
   }
@@ -96,22 +96,26 @@ public abstract class Character : MonoBehaviour
   /// <returns>
   ///  rb.velocity.y, bool state if the Character is falling
   /// </returns>
-  protected virtual bool IsFalling()
+  private bool IsFalling()
   {
     return rb.velocity.y < -0.01f;
   }
 
   /// <summary>
   /// Called when this object collides with something
-  /// Implementations must be handled by subclasses
   /// </summary>
-  ///<param name="col">Collision2D object Player collided with</param>
-  protected abstract void OnCollisionEnter2D(Collision2D col);
+  ///<param name="col">Collision2D object Character collided with</param>
+  private void OnCollisionEnter2D(Collision2D col)
+  {
+    isGrounded = true;
+  }
 
   /// <summary>
   /// Called when this object leaves a collider
-  /// Implementations must be handled by subclasses
   /// </summary>
-  ///<param name="col">Collision2D object Player exits collision with</param>
-  protected abstract void OnCollisionExit2D(Collision2D col);
+  ///<param name="col">Collision2D object Character exits collision with</param>
+  private void OnCollisionExit2D(Collision2D col)
+  {
+    isGrounded = false;
+  }
 }

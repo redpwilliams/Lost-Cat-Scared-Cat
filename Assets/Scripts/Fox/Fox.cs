@@ -27,7 +27,7 @@ public abstract class Fox : Character
 
   protected override void FixedUpdate()
   {
-    if (Input.GetKey(KeyCode.F) && state == MovementState.running)
+    if (Input.GetKey(KeyCode.F) && state == MovementState.Running)
     {
       // Keep horizontal velocity, change vertical velocity
       rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
@@ -41,33 +41,4 @@ public abstract class Fox : Character
   /// </summary>
   protected abstract void Attack();
 
-  protected override void OnCollisionEnter2D(Collision2D col)
-  {
-    isGrounded = true;
-    switch (LayerMask.LayerToName(col.gameObject.layer))
-    {
-      case "Ground":
-        // Do something
-        break;
-
-      default:
-        // Do something
-        break;
-    }
-  }
-
-  protected override void OnCollisionExit2D(Collision2D col)
-  {
-    isGrounded = false;
-    switch (LayerMask.LayerToName(col.gameObject.layer))
-    {
-      case "Ground":
-        // Do something
-        break;
-
-      default:
-        // Do something
-        break;
-    }
-  }
 }
