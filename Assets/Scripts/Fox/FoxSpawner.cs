@@ -8,6 +8,7 @@ public class FoxSpawner : MonoBehaviour
   private float _timer = 0f;
   private float _startX = -4.5f;
   private float _startY = -0.875f;
+  private float _deadZone = 4.5f;
   private Transform _transform;
 
   void Start()
@@ -23,6 +24,7 @@ public class FoxSpawner : MonoBehaviour
       _timer += Time.deltaTime;
       return;
     }
+
     FFox = ChooseFox();
     Instantiate<Fox>(FFox, _transform.position, _transform.rotation);
     _timer = 0;
