@@ -3,14 +3,14 @@ using UnityEngine;
 public class FoxSpawner : MonoBehaviour
 {
   
-  public ForegroundFox FFox;
   public float _spawnRate = 2f;
   private float _timer = 0f;
-  private float _startX = -4.5f;
+  private float _startX = 4.5f;
   private float _startY = -0.875f;
-  private float _deadZone = 4.5f;
+  private float _deadZone = -4.5f;
   private Transform _transform;
 
+  public Fox fox;
   void Start()
   {
     _transform = GetComponent<Transform>();
@@ -25,13 +25,8 @@ public class FoxSpawner : MonoBehaviour
       return;
     }
 
-    FFox = ChooseFox();
-    Instantiate<Fox>(FFox, _transform.position, _transform.rotation);
+    Instantiate<Fox>(fox, _transform.position, _transform.rotation);
     _timer = 0;
   }
 
-  ForegroundFox ChooseFox()
-  {
-    return FFox;
-  }
 }

@@ -1492,8 +1492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcad0b26e8ad5541bd8c85a41fccf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FFox: {fileID: 5645074907809119959, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
   _spawnRate: 2
+  fox: {fileID: 5645074907809119959, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
 --- !u!4 &1915981027
 Transform:
   m_ObjectHideFlags: 0
@@ -1762,18 +1762,6 @@ PrefabInstance:
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_LocalPosition.x
