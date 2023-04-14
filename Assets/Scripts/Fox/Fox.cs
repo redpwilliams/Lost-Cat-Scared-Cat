@@ -15,6 +15,8 @@ public class Fox : Character
   // NOTE -1.5f for "sitting" so it moves along with the background
   // Then, variable horizontal velocity for normal running foxes
 
+  public static float deadZone = -4.5f;
+
   protected override void Start()
   {
     base.Start();
@@ -28,6 +30,9 @@ public class Fox : Character
   protected override void Update()
   {
     base.Update(); // ForegroundFox and BackgroundFox need to call Update() of Character
+
+    // Destroy on off-screen
+    if (transform.position.x < deadZone) Destroy(gameObject);
   }
 
   protected override void FixedUpdate()

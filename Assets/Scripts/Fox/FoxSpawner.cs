@@ -7,7 +7,6 @@ public class FoxSpawner : MonoBehaviour
   private float _timer = 0f;
   private float _startX = 4.5f;
   private float _startY = -0.875f;
-  private float _deadZone = -4.5f;
   private Transform _transform;
 
   public Fox fox;
