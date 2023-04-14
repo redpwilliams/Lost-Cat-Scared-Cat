@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   anim: {fileID: 0}
-  jumpVelocity: 1
+  jumpVelocity: 3
 --- !u!95 &5645074907809119958
 Animator:
   serializedVersion: 4
