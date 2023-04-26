@@ -81,12 +81,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5645074907809119957}
   - component: {fileID: 5645074907809119954}
-  - component: {fileID: 5645074907809119959}
+  - component: {fileID: -4918045702206965090}
   - component: {fileID: 5645074907809119958}
   - component: {fileID: 5645074907809119961}
   - component: {fileID: 5645074907809119960}
   m_Layer: 7
-  m_Name: Fox
+  m_Name: SittingFox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5645074907809119959
+--- !u!114 &-4918045702206965090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,11 +169,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5645074907809119955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b93a70af3357b54f8f83f2978117a3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3915015c0be57514aade48d53aea85c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  anim: {fileID: 0}
+  rb: {fileID: 5645074907809119961}
+  anim: {fileID: 5645074907809119958}
   jumpVelocity: 3
 --- !u!95 &5645074907809119958
 Animator:

@@ -5,7 +5,7 @@ using UnityEngine;
 /// All sub-instances either jump or don't jump
 
 ///</summary>
-public class Fox : Character
+public abstract class Fox : Character
 {
 
   /// <summary> The Fox's horizontal velocity </summary>
@@ -19,28 +19,38 @@ public class Fox : Character
   /// <summary> Fox only attacks once </summary>
   protected bool hasAttacked = false;
 
+  /// <summary> The amount of space between the Fox and Player to initiate Fox attack
+  // TODO - I could change this into an array to accommodate for sitting foxes
+  // Each value in the array would dictate the spacing before each action of a sitting fox
+  protected float spaceBeforeAttack = 1.5f;
+
+  protected override void Awake()
+  {
+    base.Awake();
+  }
+
   protected override void Start()
   {
     base.Start();
-    // Determine if the Fox will jump
     Rigidbody2D rb2d = base.rb;
+    // Flip sprite horizontally
     rb2d.transform.localScale = new Vector3(-rb2d.transform.localScale.x, rb2d.transform.localScale.y, rb2d.transform.localScale.z);
   }
 
   protected override void Update()
   {
-    base.Update(); // ForegroundFox and BackgroundFox need to call Update() of Character
+    base.Update();
+
     // Destroy on off-screen
-    if (transform.position.x < deadZone) Destroy(gameObject);
+    if (isOffscreen(transform.position.x, deadZone)) Destroy(gameObject);
   }
 
   protected override void FixedUpdate()
   {
     // Distance between Fox and Player's position && isRunning
-    if (!hasAttacked && Mathf.Abs(Player.PLAYER_X_POS - transform.position.x) < 1.5f && state == MovementState.Running)
+    float distanceFromPlayer = Mathf.Abs(Player.PLAYER_X_POS - transform.position.x); 
+    if (!hasAttacked && (distanceFromPlayer < spaceBeforeAttack) && state == MovementState.Running)
     {
-      // Keep horizontal velocity, change vertical velocity
-      // rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
       Attack();
     }
     // Use the "previous state's" velocity vector
@@ -50,10 +60,11 @@ public class Fox : Character
   /// <summary>
   /// A Fox's attack sequence
   /// </summary>
-  protected void Attack()
+  protected abstract void Attack();
+
+  bool isOffscreen(float currPos, float deadZone)
   {
-    hasAttacked = true;
-    rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+    return currPos < deadZone;
   }
 
 }

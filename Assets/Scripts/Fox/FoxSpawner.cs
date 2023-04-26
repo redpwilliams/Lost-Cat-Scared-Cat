@@ -1,31 +1,44 @@
 using UnityEngine;
+using System.Collections;
 
 public class FoxSpawner : MonoBehaviour
 {
   
-  public float _spawnRate = 2f;
-  private float _timer = 0f;
   private float _startX = 4.5f;
   private float _startY = -0.875f;
   private Transform _transform;
 
-  public Fox fox;
+  
+  [SerializeField] private GameObject rf;
+  [SerializeField] private GameObject sf;
+
   void Start()
   {
     _transform = GetComponent<Transform>();
     _transform.localPosition = new Vector3(_startX, _startY, _transform.position.z);
+    StartCoroutine(SpawnFoxes());
   }
 
-  void Update()
+  private IEnumerator SpawnFoxes()
   {
-    if (_timer < _spawnRate)
+    while (true) // TODO - Needs to listen to a Game Status Even, only true if game is playing/not paused
     {
-      _timer += Time.deltaTime;
-      return;
+      InstantiateRandomFox();
+      yield return new WaitForSeconds(2);
     }
+  }
 
-    Instantiate<Fox>(fox, _transform.position, _transform.rotation);
-    _timer = 0;
+  
+
+  void InstantiateRandomFox()
+  {
+    if (Random.value < 0.5f)
+    {
+      // Create RunningFox
+      Instantiate<GameObject>(rf, _transform.position, _transform.rotation);
+    return;
+    } 
+      Instantiate<GameObject>(sf, _transform.position, _transform.rotation);
   }
 
 }

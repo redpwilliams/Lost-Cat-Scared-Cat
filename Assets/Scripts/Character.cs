@@ -27,13 +27,17 @@ public abstract class Character : MonoBehaviour
   /// <summary>Parameter name in the animator tab</summary>
   protected string animParameter;
 
+  protected virtual void Awake()
+  {
+    isGrounded = true;
+    stateParam = "state"; // "state" by default
+  }
+
   protected virtual void Start()
   {
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
     state = MovementState.Running;
-    isGrounded = true;
-    stateParam = "state"; // "state" by default
   }
 
   protected virtual void Update()
