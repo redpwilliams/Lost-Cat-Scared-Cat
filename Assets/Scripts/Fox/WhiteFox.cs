@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SittingFox : Fox
+public class WhiteFox : Fox
 {
 
   protected override void Awake()
@@ -13,6 +13,12 @@ public class SittingFox : Fox
     base.Start();
   }
 
+  protected override void Update()
+  {
+    base.Update();
+    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+  }
+
   protected override void FixedUpdate()
   {
     base.FixedUpdate();
@@ -21,6 +27,5 @@ public class SittingFox : Fox
   protected override void Attack()
   {
     hasAttacked = true;
-    rb.velocity = new Vector2(rb.velocity.x, jumpVelocity); // Just jumps
   }
 }

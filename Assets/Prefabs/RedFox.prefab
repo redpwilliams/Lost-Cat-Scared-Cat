@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5645074907809119961}
   - component: {fileID: 5645074907809119960}
   m_Layer: 7
-  m_Name: SittingFox
+  m_Name: RedFox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

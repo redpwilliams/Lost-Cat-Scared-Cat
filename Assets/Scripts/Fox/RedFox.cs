@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class RunningFox : Fox
+public class RedFox : Fox
 {
+
+  protected float jumpVelocity;
 
   protected override void Awake()
   {
@@ -11,6 +13,12 @@ public class RunningFox : Fox
   protected override void Start()
   {
     base.Start();
+  }
+
+  protected override void Update()
+  {
+    base.Update();
+    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
   }
 
   protected override void FixedUpdate()

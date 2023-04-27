@@ -6,9 +6,6 @@ public abstract class Character : MonoBehaviour
   [SerializeField] protected Rigidbody2D rb;
   [SerializeField] protected Animator anim;
 
-  /// <summary>Upward velocity magnitude use for jump speed/height </summary>
-  [SerializeField] protected float jumpVelocity;
-
   /// <summary>Boolean if the character is touching the main ground</summary>
   protected bool isGrounded;
 

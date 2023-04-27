@@ -8,10 +8,9 @@ using UnityEngine;
 public abstract class Fox : Character
 {
 
-  /// <summary> The Fox's horizontal velocity </summary>
-  protected float horizontalVelocity = -3f;
-  // NOTE -1.5f for "sitting" so it moves along with the background
   // Then, variable horizontal velocity for normal running foxes
+  protected float runSpeed = -3f;
+  protected float sitSpeed = -1.5f;
 
   /// <summary> Fox will self destruct after reaching this value </summary>
   public static float deadZone = -4.5f;
@@ -42,19 +41,17 @@ public abstract class Fox : Character
     base.Update();
 
     // Destroy on off-screen
-    if (isOffscreen(transform.position.x, deadZone)) Destroy(gameObject);
+    if (IsOffscreen(transform.position.x, deadZone)) Destroy(gameObject);
   }
 
   protected override void FixedUpdate()
   {
     // Distance between Fox and Player's position && isRunning
     float distanceFromPlayer = Mathf.Abs(Player.PLAYER_X_POS - transform.position.x); 
-    if (!hasAttacked && (distanceFromPlayer < spaceBeforeAttack) && state == MovementState.Running)
+    if (!hasAttacked && (IsInPosition(distanceFromPlayer,spaceBeforeAttack)) && state == MovementState.Running)
     {
       Attack();
     }
-    // Use the "previous state's" velocity vector
-    rb.velocity = new Vector2(horizontalVelocity, rb.velocity.y);
   }
 
   /// <summary>
@@ -62,9 +59,14 @@ public abstract class Fox : Character
   /// </summary>
   protected abstract void Attack();
 
-  bool isOffscreen(float currPos, float deadZone)
+  bool IsOffscreen(float currPos, float deadZone)
   {
     return currPos < deadZone;
+  }
+
+  bool IsInPosition(float distance, float spacing)
+  {
+    return distance < spacing;
   }
 
 }
