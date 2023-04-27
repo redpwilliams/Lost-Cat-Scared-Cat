@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5645074907809119961}
   - component: {fileID: 5645074907809119960}
   m_Layer: 7
-  m_Name: WhiteFox
+  m_Name: White Fox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -850073654, guid: 6a541d2224303a544ab645ff4ee1544f, type: 3}
+  m_Sprite: {fileID: -30871566, guid: 9cfb4633b04fd1c4cb9632509a45baaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5645074907809119961}
   anim: {fileID: 5645074907809119958}
-  jumpVelocity: 3
 --- !u!95 &5645074907809119958
 Animator:
   serializedVersion: 4
@@ -185,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 5645074907809119955}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f869e6007bee0840aea01222ddd3952, type: 2}
+  m_Controller: {fileID: 9100000, guid: 12e567897dfe2fe4abb467666b62bd47, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -232,7 +231,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.475}
     oldSize: {x: 0.32, y: 0.21}
     newSize: {x: 0.32, y: 0.22}
     adaptiveTilingThreshold: 0.5

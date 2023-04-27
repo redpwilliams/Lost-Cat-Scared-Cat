@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a541d2224303a544ab645ff4ee1544f
+guid: 9fde575cfd3bbb14694dd55f62c02ce6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,169 +117,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fox_Idle_0
+      name: White_Fox_Fall_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 7
-        width: 31
-        height: 20
+        x: 9
+        y: 11
+        width: 37
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd34933a051fb4542a5044dc1f8a8656
-      internalID: -1340039248
+      spriteID: 670d2249d46807745b35937c316d7303
+      internalID: -1987717975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Idle_1
+      name: White_Fox_Fall_1
       rect:
         serializedVersion: 2
-        x: 71
-        y: 7
-        width: 32
-        height: 20
+        x: 69
+        y: 11
+        width: 37
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa3e9eacfae7fa84f8fdee51833a1352
-      internalID: -1909275377
+      spriteID: d47ceb636419bb047b9ce0701a339c7a
+      internalID: -1708407835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Idle_2
+      name: White_Fox_Fall_2
       rect:
         serializedVersion: 2
-        x: 131
-        y: 7
-        width: 32
-        height: 21
+        x: 129
+        y: 11
+        width: 37
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35db75fea348271429a1b4995b7f0e2e
-      internalID: -850073654
+      spriteID: 0ab0925c9783d434189639e856631330
+      internalID: -1159780655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Idle_3
+      name: White_Fox_Fall_3
       rect:
         serializedVersion: 2
-        x: 191
-        y: 7
-        width: 32
-        height: 22
+        x: 189
+        y: 11
+        width: 37
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b17abafe0b8e1154288cba2d396ade7f
-      internalID: -455073986
+      spriteID: 4b81d948d9d626344b595a14df3ab192
+      internalID: 1430078816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Idle_4
+      name: White_Fox_Fall_4
       rect:
         serializedVersion: 2
-        x: 251
-        y: 7
-        width: 32
-        height: 23
+        x: 249
+        y: 11
+        width: 37
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 270d0cd2954c64446a453c4a5747c47e
-      internalID: 1864077544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fox_Idle_5
-      rect:
-        serializedVersion: 2
-        x: 313
-        y: 7
-        width: 30
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94bd9d0fc13e3eb4db86d96aef90bbe7
-      internalID: -2080723466
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fox_Idle_6
-      rect:
-        serializedVersion: 2
-        x: 373
-        y: 7
-        width: 30
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41c1c03cb4124f2498137035ce0e7ceb
-      internalID: -1346750354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fox_Idle_7
-      rect:
-        serializedVersion: 2
-        x: 433
-        y: 7
-        width: 30
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65d7e5ddc2a830848819b14463ced226
-      internalID: -857248916
+      spriteID: 73b7a242bab37ff4cbfcc4c00f89a769
+      internalID: 120687324
       vertices: []
       indices: 
       edges: []
@@ -295,14 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fox_Idle_6: -1346750354
-      Fox_Idle_5: -2080723466
-      Fox_Idle_0: -1340039248
-      Fox_Idle_1: -1909275377
-      Fox_Idle_7: -857248916
-      Fox_Idle_2: -850073654
-      Fox_Idle_3: -455073986
-      Fox_Idle_4: 1864077544
+      White_Fox_Fall_2: -1159780655
+      White_Fox_Fall_4: 120687324
+      White_Fox_Fall_1: -1708407835
+      White_Fox_Fall_0: -1987717975
+      White_Fox_Fall_3: 1430078816
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

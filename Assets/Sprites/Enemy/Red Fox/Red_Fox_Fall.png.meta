@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fox_Fall_0
+      name: Red_Fox_Fall_0
       rect:
         serializedVersion: 2
         x: 9
@@ -125,7 +125,7 @@ TextureImporter:
         width: 37
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Fall_1
+      name: Red_Fox_Fall_1
       rect:
         serializedVersion: 2
         x: 69
@@ -146,7 +146,7 @@ TextureImporter:
         width: 37
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Fall_2
+      name: Red_Fox_Fall_2
       rect:
         serializedVersion: 2
         x: 129
@@ -167,7 +167,7 @@ TextureImporter:
         width: 37
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,15 +180,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Fall_3
+      name: Red_Fox_Fall_3
       rect:
         serializedVersion: 2
-        x: 190
+        x: 189
         y: 11
-        width: 36
+        width: 37
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,7 +201,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Fall_4
+      name: Red_Fox_Fall_4
       rect:
         serializedVersion: 2
         x: 249
@@ -209,7 +209,7 @@ TextureImporter:
         width: 37
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,11 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fox_Fall_4: 484391022
-      Fox_Fall_2: 1779988521
-      Fox_Fall_1: 2037471629
-      Fox_Fall_3: 257347714
-      Fox_Fall_0: -793866851
+      Red_Fox_Fall_1: 2037471629
+      Red_Fox_Fall_2: 1779988521
+      Red_Fox_Fall_3: 257347714
+      Red_Fox_Fall_4: 484391022
+      Red_Fox_Fall_0: -793866851
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

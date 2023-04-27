@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fox_Jump
+  m_Name: Red_Fox_Jump
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -23,25 +23,25 @@ AnimationClip:
       value: {fileID: 1130088633, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
     - time: 0.1
       value: {fileID: -1279071985, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 0.2
+    - time: 0.21666667
       value: {fileID: 545161952, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
     - time: 0.3
       value: {fileID: -1774727460, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 0.43333334
+    - time: 0.41666666
       value: {fileID: 1820903821, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 0.5
+    - time: 0.51666665
       value: {fileID: -205025448, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 0.6
+    - time: 0.6166667
       value: {fileID: 60009933, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 0.73333335
+    - time: 0.71666664
       value: {fileID: -112516239, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 0.8333333
+    - time: 0.81666666
       value: {fileID: -1845084724, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 0.9
+    - time: 0.9166667
       value: {fileID: -876350699, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
     - time: 1.0333333
       value: {fileID: -825784665, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
-    - time: 1.1333333
+    - time: 1.1166667
       value: {fileID: -749085848, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}
     - time: 1.2333333
       value: {fileID: -550364568, guid: 9679ed318c610e0489a9bb34fdedaa49, type: 3}

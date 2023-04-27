@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 76c924b90b55f1843ad2275f892b7cc6
+guid: 9679ed318c610e0489a9bb34fdedaa49
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,169 +117,295 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fox_Run_0
+      name: Red_Fox_Jump_0
       rect:
         serializedVersion: 2
-        x: 11
+        x: 12
         y: 7
-        width: 32
-        height: 22
+        width: 31
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 329a59ea370ee7c45adef7630e80708c
-      internalID: 1367892845
+      spriteID: 747f16100bb650f438a373455077d9a4
+      internalID: 1130088633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Run_1
+      name: Red_Fox_Jump_1
       rect:
         serializedVersion: 2
         x: 71
         y: 7
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60104c9fb24559e439ec9d9b58c43255
+      internalID: -1279071985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 9
         width: 34
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa76504d05c812d41ae8ced91ede7f46
-      internalID: -2009711393
+      spriteID: b97d4d99de90a8048b401973ae48e0ed
+      internalID: 545161952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Run_2
+      name: Red_Fox_Jump_3
       rect:
         serializedVersion: 2
-        x: 129
-        y: 11
-        width: 37
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16698395ed8ca4c4b8b65993cd54e6ed
-      internalID: -980195152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fox_Run_3
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 7
-        width: 34
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 208ac38de0877484c8bddde1abd2a97c
-      internalID: 829863506
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fox_Run_4
-      rect:
-        serializedVersion: 2
-        x: 249
+        x: 191
         y: 9
-        width: 35
-        height: 20
+        width: 34
+        height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9b9601344771414b836b64bd2f16fe8
-      internalID: 307189959
+      spriteID: d84b8d6026c4dc447a705a364964d198
+      internalID: -1774727460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Run_5
+      name: Red_Fox_Jump_4
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d5922653145ea41958a1c963d2473f
+      internalID: 1820903821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_5
       rect:
         serializedVersion: 2
         x: 311
-        y: 10
-        width: 33
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 615c2ad14e099094585d4ab16ec03c0e
-      internalID: -1001139027
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fox_Run_6
-      rect:
-        serializedVersion: 2
-        x: 372
         y: 9
-        width: 33
-        height: 20
+        width: 34
+        height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 011857235f59d6140a2519ba3d6b4708
-      internalID: -1345889122
+      spriteID: 5454e5e825cf44849baeef7bee887f8e
+      internalID: -205025448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fox_Run_7
+      name: Red_Fox_Jump_6
       rect:
         serializedVersion: 2
-        x: 432
-        y: 10
-        width: 33
-        height: 20
+        x: 371
+        y: 9
+        width: 34
+        height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb29f83126d70324fbe80d2734af1484
-      internalID: -606353396
+      spriteID: 536c327cd496b8f4e969fda276128a01
+      internalID: 60009933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_7
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4706795000e68af46aea0b85bf277c5d
+      internalID: -112516239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_8
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80664cc32bb56624cac9e9b5a605ed90
+      internalID: -1845084724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_9
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fe2bf496b2b5a24389f6e4f447705d0
+      internalID: -876350699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_10
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f0866478cace34a891ff23cf42a125
+      internalID: -825784665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_11
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d217a16ff32173243870e3db1311302f
+      internalID: -749085848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_12
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7851d5d9a765518458952eef0e028eee
+      internalID: -550364568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Fox_Jump_13
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 9
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ffd1d7fd100604d9a1c30fc758e9f9
+      internalID: 126975234
       vertices: []
       indices: 
       edges: []
@@ -295,14 +421,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fox_Run_5: -1001139027
-      Fox_Run_0: 1367892845
-      Fox_Run_7: -606353396
-      Fox_Run_2: -980195152
-      Fox_Run_1: -2009711393
-      Fox_Run_3: 829863506
-      Fox_Run_4: 307189959
-      Fox_Run_6: -1345889122
+      Red_Fox_Jump_6: 60009933
+      Red_Fox_Jump_9: -876350699
+      Red_Fox_Jump_7: -112516239
+      Red_Fox_Jump_10: -825784665
+      Red_Fox_Jump_5: -205025448
+      Red_Fox_Jump_1: -1279071985
+      Red_Fox_Jump_0: 1130088633
+      Red_Fox_Jump_2: 545161952
+      Red_Fox_Jump_13: 126975234
+      Red_Fox_Jump_4: 1820903821
+      Red_Fox_Jump_8: -1845084724
+      Red_Fox_Jump_11: -749085848
+      Red_Fox_Jump_12: -550364568
+      Red_Fox_Jump_3: -1774727460
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
