@@ -3,9 +3,12 @@ using UnityEngine;
 public class WhiteFox : Fox
 {
 
+  private float jumpVelocity;
+
   protected override void Awake()
   {
     base.Awake();
+    jumpVelocity = 3f;
   }
 
   protected override void Start()
@@ -27,5 +30,6 @@ public class WhiteFox : Fox
   protected override void Attack()
   {
     hasAttacked = true;
+    rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
   }
 }
