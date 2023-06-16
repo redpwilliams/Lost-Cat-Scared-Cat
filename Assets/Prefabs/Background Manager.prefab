@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8064f7790fcaa444b9a29e58e4463909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bg: {fileID: 0}
+  numAdditionalBgs: 1
+  bg: {fileID: 8186637361178167864, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
   sm: {fileID: 7696287208559053857}
+  scrollVelocity: 1.5
 --- !u!331 &7696287208559053857
 SpriteMask:
   m_ObjectHideFlags: 0
