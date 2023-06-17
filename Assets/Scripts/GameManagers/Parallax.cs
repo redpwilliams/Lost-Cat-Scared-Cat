@@ -26,9 +26,12 @@ public class Parallax : MonoBehaviour
 
   void FixedUpdate()
   {
+    
+    // Set Scroll Velocity
     float scrollVelocity = bgm.GetScrollVelocity();
+
     // Set apparent screen movement speed
-    rb.velocity = Vector2.left * parallaxEffect * scrollVelocity;
+    rb.velocity = Vector2.left * parallaxEffect * (bgm.ShouldMove() ? scrollVelocity : 0); // With debug option
 
     // If object is to the left of the camera & out-of-bounds
     if (!isVisible && scrollVelocity > 0 && transform.position.x < Camera.main.transform.position.x)

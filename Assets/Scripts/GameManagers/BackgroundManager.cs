@@ -5,19 +5,29 @@ public sealed class BackgroundManager : MonoBehaviour
 {
   // How many extra backgrounds to make
   public int numAdditionalBgs = 1;
+
+  [Header("Background Prefab")]
   [SerializeField] private GameObject bg;
+
+  [Header("Spritemask")]
   [SerializeField] private SpriteMask sm;
 
   // How fast the screen moves
   [SerializeField] private float scrollVelocity = 1.5f;
 
+  [Header("Debug")]
+  [SerializeField] private bool shouldMove;
+
   public float GetScrollVelocity() { return scrollVelocity; }
+
   public void SetScrollVelocity(float sv)
   {
     scrollVelocity = sv;
     Debug.Log("New scroll velocity: " + scrollVelocity);
   }
-  // Start is called before the first frame update
+
+  public bool ShouldMove() { return shouldMove; }
+
   void Start()
   {
     Assert.IsTrue(numAdditionalBgs > 0);

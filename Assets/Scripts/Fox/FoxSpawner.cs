@@ -8,23 +8,28 @@ public class FoxSpawner : MonoBehaviour
   private float _startY = -0.875f;
   private Transform _transform;
   
+  [Header("Fox Prefabs")]
   [SerializeField] private GameObject redFox;
   [SerializeField] private GameObject whiteFox;
+
+  [Header("Debug")]
+  [SerializeField] private bool shouldSpawn;
 
   void Start()
   {
     _transform = GetComponent<Transform>();
     _transform.localPosition = new Vector3(_startX, _startY, _transform.position.z);
 
+
     StartCoroutine(SpawnFoxes());
   }
 
   private IEnumerator SpawnFoxes()
   {
-    while (true) // TODO - Needs to listen to a Game Status Even, only true if game is playing/not paused
+    while (true)
     {
-      InstantiateRandomFox();
-      yield return new WaitForSeconds(2);
+      if (shouldSpawn) InstantiateRandomFox();
+      yield return new WaitForSeconds(2); // TODO - Make variable
     }
   }
 
