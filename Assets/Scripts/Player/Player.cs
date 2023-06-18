@@ -12,15 +12,26 @@ public class Player : Character
     base.Awake();
     jumpVelocity = 3f;
   }
+
   protected override void Start()
   {
     base.Start();
+    state = MovementState.Idle;
+
+    // Put Player on specific location on screen
     gameObject.transform.position = new Vector3(PLAYER_X_POS, this.transform.position.y, this.transform.position.z);
   }
+
   protected override void FixedUpdate()
   {
+    // Handle Jump input
     if (Input.GetKey(KeyCode.Space) && state == MovementState.Running)
       rb.velocity = Vector2.up * jumpVelocity;
+  }
+
+  protected override bool IsRunning()
+  {
+    return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
   }
 
 }

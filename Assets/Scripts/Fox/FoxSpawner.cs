@@ -38,21 +38,17 @@ public class FoxSpawner : MonoBehaviour
   void InstantiateRandomFox()
   {
     GameObject foxClone;
-    string s = "I am a ";
 
     if (Random.value < 0.5f)
     {
       // Create RunningFox
       foxClone = Instantiate<GameObject>(redFox, _transform.position, _transform.rotation);
       foxClone.name = "Red Fox (Clone)";
-      s += "Red Fox";
     }
     else  
     {
       foxClone = Instantiate<GameObject>(whiteFox, _transform.position, _transform.rotation);
       foxClone.name = "White Fox (Clone)";
-      s += "White Fox";
     }
-    Debug.Log(s);
   }
 }

@@ -47,7 +47,7 @@ public abstract class Character : MonoBehaviour
     else if (IsFalling())
       state = MovementState.Falling;
     else
-      state = null;
+      state = MovementState.Idle;
     UpdateAnimationState();
   }
 
@@ -66,7 +66,7 @@ public abstract class Character : MonoBehaviour
   /// Returns whether or not the character is running
   /// </summary>
   /// <returns>isGrounded, bool value of character grounded status</returns>
-  private bool IsRunning()
+  protected virtual bool IsRunning()
   {
     return isGrounded; 
     /* NOTE

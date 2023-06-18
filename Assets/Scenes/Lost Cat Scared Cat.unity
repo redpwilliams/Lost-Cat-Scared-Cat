@@ -1478,7 +1478,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &1915981026
 MonoBehaviour:
@@ -1494,6 +1494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redFox: {fileID: 5645074907809119955, guid: b79d8ed02967934498cc1bf803e0c2f6, type: 3}
   whiteFox: {fileID: 5645074907809119955, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
+  shouldSpawn: 0
 --- !u!4 &1915981027
 Transform:
   m_ObjectHideFlags: 0
@@ -1746,6 +1747,14 @@ PrefabInstance:
       propertyPath: bg
       value: 
       objectReference: {fileID: 1134151221}
+    - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
+      propertyPath: shouldMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
+      propertyPath: scrollVelocity
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: numAdditionalBgs
       value: 1
