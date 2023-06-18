@@ -99,7 +99,7 @@ public abstract class Character : MonoBehaviour
   /// </returns>
   private bool IsFalling()
   {
-    return rb.velocity.y < -0.01f;
+    return rb.velocity.y < -0.1f;
   }
 
   /// <summary>
