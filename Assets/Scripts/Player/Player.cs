@@ -2,21 +2,17 @@ using UnityEngine;
 
 public class Player : Character
 {
-  public static float PLAYER_X_POS = -1.75f;
+  public static float PLAYER_X_POS = 0f;
 
-  /// <summary>Upward velocity magnitude use for jump speed/height </summary>
-  [SerializeField] private float jumpVelocity;
-
+  [SerializeField] private float jumpForce;
   [SerializeField] private float topSpeed;
+  [SerializeField] private GameObject alignedBackground;
 
   private SpriteRenderer sr;
 
   protected override void Awake()
   {
     base.Awake();
-    jumpVelocity = 3f;
-    topSpeed = 4f;
-
     sr = GetComponent<SpriteRenderer>();
   }
 
@@ -36,6 +32,12 @@ public class Player : Character
 
     // Handle Jump input
     HandleJump();
+
+    if (!IsRunning()) 
+    { 
+      float bgCurrentSpeed = alignedBackground.GetComponent<Rigidbody2D>().velocity.x;
+      rb.velocity = new Vector2(bgCurrentSpeed, rb.velocity.y);
+    }
   }
 
   protected override bool IsRunning()
@@ -62,8 +64,8 @@ public class Player : Character
 
   private void HandleJump()
   {
-    if (Input.GetKey(KeyCode.Space) && state == MovementState.Running)
-      rb.velocity = Vector2.up * jumpVelocity;
+    if (Input.GetKey(KeyCode.Space) && this.isGrounded)
+      rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
   }
 
   private float GetInputDirection()
@@ -83,11 +85,6 @@ public class Player : Character
 
       case 1:
         sr.flipX = false;
-        break;
-
-      case 0:
-        if (rb.velocity.x < 0) sr.flipX = true;
-        else if (rb.velocity.x > 0) sr.flipX = false;
         break;
     }
   }

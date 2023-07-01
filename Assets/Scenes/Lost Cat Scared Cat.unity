@@ -335,6 +335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8064f7790fcaa444b9a29e58e4463909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &215643342 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7834204335144625145, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+  m_PrefabInstance: {fileID: 7834204334111902350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &241924344 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8186637362152207605, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -669,6 +674,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &665064738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4113464525388928682, guid: 6f7760bdd34750d438f40ec07186c1da, type: 3}
+  m_PrefabInstance: {fileID: 4113464527049433666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &710951742 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8186637361548807987, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1494,7 +1504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redFox: {fileID: 5645074907809119955, guid: b79d8ed02967934498cc1bf803e0c2f6, type: 3}
   whiteFox: {fileID: 5645074907809119955, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
-  shouldSpawn: 0
+  shouldSpawn: 1
 --- !u!4 &1915981027
 Transform:
   m_ObjectHideFlags: 0
@@ -1749,11 +1759,11 @@ PrefabInstance:
       objectReference: {fileID: 1134151221}
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: shouldMove
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: scrollVelocity
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: numAdditionalBgs
@@ -1769,16 +1779,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: jumpVelocity
-      value: 2.75
+      propertyPath: bc
+      value: 
+      objectReference: {fileID: 215643342}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: ground
+      value: 
+      objectReference: {fileID: 665064738}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: topSpeed
+      value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: jumpForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: jumpVelocity
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: alignedBackground
+      value: 
+      objectReference: {fileID: 710951742}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_LocalPosition.y
