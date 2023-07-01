@@ -40,7 +40,7 @@ public abstract class Character : MonoBehaviour
   protected virtual void Update()
   {
     // Set 'state' variable for current kinematics state
-    if (IsRunning())
+    if (IsRunning() && this.isGrounded)
       state = MovementState.Running;
     else if (IsJumping())
       state = MovementState.Jumping;
