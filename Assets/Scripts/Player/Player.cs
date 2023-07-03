@@ -4,8 +4,13 @@ public class Player : Character
 {
   public static float PLAYER_X_POS = 0f;
 
+  [Header("Movement Parameters")]
   [SerializeField] private float jumpForce;
   [SerializeField] private float topSpeed;
+  [SerializeField] private float aerialDrag;
+
+  [Header("Aligned Background Game Object")]
+  [Tooltip("Moves the Player at the same negative velocity of the provided background")]
   [SerializeField] private GameObject alignedBackground;
 
   private SpriteRenderer sr;
@@ -33,11 +38,13 @@ public class Player : Character
     // Handle Jump input
     HandleJump();
 
-    if (!IsRunning()) 
+    if (!IsRunning() && this.isGrounded) 
     { 
       float bgCurrentSpeed = alignedBackground.GetComponent<Rigidbody2D>().velocity.x;
       rb.velocity = new Vector2(bgCurrentSpeed, rb.velocity.y);
     }
+
+    rb.drag = (IsJumping() || IsFalling()) ? aerialDrag : 0;
   }
 
   protected override bool IsRunning()
@@ -47,13 +54,14 @@ public class Player : Character
 
   private void HandleRun()
   {
-    float acceleration = 2.5f;
+    float acceleration = 3.5f;
     float deceleration = 2f;
 
     // Force-based movement
-    float targetSpeed = GetInputDirection() * topSpeed;
-    float speedDiff = targetSpeed - rb.velocity.x;
-    float accelerationRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
+    float targetVelocity = GetInputDirection() * topSpeed;
+    Debug.Log(targetVelocity);
+    float speedDiff = targetVelocity - rb.velocity.x;
+    float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f) ? acceleration : deceleration;
     float movement = Mathf.Abs(speedDiff) * accelerationRate * Mathf.Sign(speedDiff);
     rb.AddForce(movement * Vector2.right);
 

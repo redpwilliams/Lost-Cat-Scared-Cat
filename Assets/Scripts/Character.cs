@@ -86,7 +86,7 @@ public abstract class Character : MonoBehaviour
   /// This is independent from the animation (animation relies on this/math)
   /// </summary>
   /// <returns>Status of Character jumping</returns>
-  private bool IsJumping()
+  protected virtual bool IsJumping()
   {
     return rb.velocity.y > 0.01f;
   }
@@ -97,7 +97,7 @@ public abstract class Character : MonoBehaviour
   /// <returns>
   ///  rb.velocity.y, bool state if the Character is falling
   /// </returns>
-  private bool IsFalling()
+  protected virtual bool IsFalling()
   {
     return rb.velocity.y < -0.1f;
   }
