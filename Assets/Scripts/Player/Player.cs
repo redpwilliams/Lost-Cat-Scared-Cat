@@ -53,6 +53,8 @@ public class Player : Character
     }
 
     rb.drag = (IsJumping() || IsFalling()) ? aerialDrag : 0;
+
+    Debug.Log(this.state);
   }
 
   protected override bool IsRunning()
@@ -67,7 +69,6 @@ public class Player : Character
 
     // Force-based movement
     float targetVelocity = GetInputDirection() * topSpeed;
-    Debug.Log(targetVelocity);
     float speedDiff = targetVelocity - rb.velocity.x;
     float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f) ? acceleration : deceleration;
     float movement = Mathf.Abs(speedDiff) * accelerationRate * Mathf.Sign(speedDiff);

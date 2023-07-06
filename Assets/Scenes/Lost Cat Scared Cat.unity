@@ -1701,6 +1701,10 @@ PrefabInstance:
       value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4113464525388928686, guid: 6f7760bdd34750d438f40ec07186c1da, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113464525388928686, guid: 6f7760bdd34750d438f40ec07186c1da, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 04601efb4e9131542bb3edb9548350f4, type: 2}
@@ -1800,7 +1804,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: jumpForce
-      value: 2
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: aerialDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: jumpVelocity
@@ -1810,6 +1818,10 @@ PrefabInstance:
       propertyPath: alignedBackground
       value: 
       objectReference: {fileID: 710951742}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: fallGravityMultiplier
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1858,6 +1870,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: e0a834c2bb33f704a93927b8a9b6e3c1, type: 2}
+    - target: {fileID: 7834204335144625142, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625142, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625144, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_Name
       value: Player
