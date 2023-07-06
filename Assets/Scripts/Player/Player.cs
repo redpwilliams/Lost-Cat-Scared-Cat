@@ -8,6 +8,10 @@ public class Player : Character
   [SerializeField] private float jumpForce;
   [SerializeField] private float topSpeed;
   [SerializeField] private float aerialDrag;
+  
+  [Range(1, 5)]
+  [SerializeField] private float fallGravityMultiplier;
+  private float legacyGravityScale;
 
   [Header("Aligned Background Game Object")]
   [Tooltip("Moves the Player at the same negative velocity of the provided background")]
@@ -25,6 +29,7 @@ public class Player : Character
   {
     base.Start();
     state = MovementState.Idle;
+    legacyGravityScale = this.rb.gravityScale;
 
     // Put Player on specific location on screen
     gameObject.transform.position = new Vector3(PLAYER_X_POS, this.transform.position.y, this.transform.position.z);
@@ -37,6 +42,9 @@ public class Player : Character
 
     // Handle Jump input
     HandleJump();
+
+    // Handle Fall input
+    HandleFall();
 
     if (!IsRunning() && this.isGrounded) 
     { 
@@ -74,6 +82,17 @@ public class Player : Character
   {
     if (Input.GetKey(KeyCode.Space) && this.isGrounded)
       rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+  }
+
+  private void HandleFall()
+  {
+    if (this.IsFalling())
+      rb.gravityScale = legacyGravityScale * fallGravityMultiplier;
+    else
+      rb.gravityScale = legacyGravityScale;
+
+    // if (this.IsJumping() && !Input.GetKey(KeyCode.Space))
+    //   rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.25f);
   }
 
   private float GetInputDirection()
