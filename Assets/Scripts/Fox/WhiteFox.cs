@@ -3,12 +3,11 @@ using UnityEngine;
 public class WhiteFox : Fox
 {
 
-  private float jumpVelocity;
+  private AnimationState animState;
 
   protected override void Awake()
   {
     base.Awake();
-    jumpVelocity = 3f;
   }
 
   protected override void Start()
@@ -19,17 +18,25 @@ public class WhiteFox : Fox
   protected override void Update()
   {
     base.Update();
-    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
   }
 
   protected override void FixedUpdate()
   {
+    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
     base.FixedUpdate();
+    Debug.Log(state);
   }
 
   protected override void Attack()
   {
     hasAttacked = true;
-    rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+    Debug.Log("Jumped");
+  }
+
+  [SerializeField]
+  private void HandleJump()
+  {
+    rb.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
+    isVisiblyJumping = false;
   }
 }
