@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37482af1-02f1-4f79-825f-f4e7f1702aa2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Run.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Run.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" afterDir="false" />
@@ -12,9 +11,6 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/RedFox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/RedFox.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +93,7 @@
       <workItem from="1682531440818" duration="3000" />
       <workItem from="1688835488650" duration="1791000" />
       <workItem from="1688837366327" duration="2405000" />
-      <workItem from="1688841371938" duration="2049000" />
+      <workItem from="1688841371938" duration="2576000" />
     </task>
     <servers />
   </component>
@@ -124,19 +120,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs</url>
-          <line>21</line>
-          <properties documentPath="C:\Users\redexe\Projects\Unity\Lost Cat Scared Cat\Assets\Scripts\Fox\WhiteFox.cs" initialLine="21" containingFunctionPresentation="method 'HandleJump'">
-            <startOffsets>
-              <option value="340" />
-            </startOffsets>
-            <endOffsets>
-              <option value="390" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
