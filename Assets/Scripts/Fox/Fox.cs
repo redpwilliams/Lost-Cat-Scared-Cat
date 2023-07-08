@@ -21,9 +21,9 @@ public abstract class Fox : Character
   /// <summary> The amount of space between the Fox and Player to initiate Fox attack</summary>
   // TODO - I could change this into an array to accommodate for sitting foxes
   // Each value in the array would dictate the spacing before each action of a sitting fox
-  protected float spaceBeforeAttack = 1.5f;
+  private readonly float spaceBeforeAttack = 1.5f;
 
-  protected bool isVisiblyJumping = false;
+  protected bool isVisiblyJumping;
 
   private static readonly int Running = Animator.StringToHash("IsRunning");
   private static readonly int Jumping = Animator.StringToHash("IsJumping");
@@ -32,9 +32,8 @@ public abstract class Fox : Character
   protected override void Start()
   {
     base.Start();
-    Rigidbody2D rb2d = base.rb;
     // Flip sprite horizontally
-    Transform rbTransform = rb2d.transform;
+    Transform rbTransform = this.rb.transform;
     Vector3 localScale = rbTransform.localScale;
     localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
     rbTransform.localScale = localScale;
@@ -71,7 +70,7 @@ public abstract class Fox : Character
   /// </summary>
   protected abstract void Attack();
 
-  bool IsOffscreen(float currPos, float deadZone)
+  private static bool IsOffscreen(float currPos, float deadZone)
   {
     return currPos < deadZone;
   }
