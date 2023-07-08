@@ -174,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5645074907809119961}
   anim: {fileID: 5645074907809119958}
-  jumpVelocity: 0
 --- !u!95 &5645074907809119958
 Animator:
   serializedVersion: 4
@@ -214,7 +213,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &5645074907809119960
 BoxCollider2D:

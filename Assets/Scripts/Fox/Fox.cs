@@ -23,6 +23,8 @@ public abstract class Fox : Character
   // Each value in the array would dictate the spacing before each action of a sitting fox
   protected float spaceBeforeAttack = 1.5f;
 
+  protected bool isVisiblyJumping = false;
+
   protected override void Awake()
   {
     base.Awake();
@@ -38,10 +40,17 @@ public abstract class Fox : Character
 
   protected override void Update()
   {
-    base.Update();
-
     // Destroy on off-screen
-    if (IsOffscreen(transform.position.x, deadZone)) Destroy(gameObject);
+    if (IsOffscreen(transform.position.x, deadZone)) 
+    {
+      Destroy(gameObject);
+      return;
+    }
+
+    // Update animation
+    this.anim.SetBool("IsRunning", this.IsRunning());
+    this.anim.SetBool("IsJumping", isVisiblyJumping); // I delayed the jump impulse force to line up with the jump animation
+    this.anim.SetBool("IsFalling", this.IsFalling());
   }
 
   protected override void FixedUpdate()
@@ -50,6 +59,7 @@ public abstract class Fox : Character
     float distanceFromPlayer = Mathf.Abs(Player.PLAYER_X_POS - transform.position.x); 
     if (!hasAttacked && (IsInPosition(distanceFromPlayer,spaceBeforeAttack)) && state == MovementState.Running)
     {
+      isVisiblyJumping = true;
       Attack();
     }
   }

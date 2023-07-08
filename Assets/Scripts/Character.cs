@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour
   /// <summary>Current state of the animation</summary>
   protected enum MovementState
   {
-    Idle, Running, Jumping, Falling,
+    Idle, Running, Jumping, Falling, Landing
   }
 
   /// <summary>Current animation state</summary>
@@ -39,19 +39,29 @@ public abstract class Character : MonoBehaviour
 
   protected virtual void Update()
   {
+  }
+
+  protected virtual void FixedUpdate()
+  {
     // Set 'state' variable for current kinematics state
-    if (IsRunning() && this.isGrounded)
-      state = MovementState.Running;
-    else if (IsJumping())
+    if (IsJumping())
       state = MovementState.Jumping;
     else if (IsFalling())
       state = MovementState.Falling;
-    else
+    // else if (state == MovementState.Falling)
+    //   state = MovementState.Landing;
+    else if (IsRunning() && this.isGrounded)
+    {
+      state = MovementState.Running;
+      Debug.Log("Is grounded, chose is grounded");
+    }
+    else if (!isGrounded)
       state = MovementState.Idle;
+    else
+      state = null;
     UpdateAnimationState();
-  }
 
-  protected abstract void FixedUpdate();
+  }
 
   /// <summary>
   /// Updates the animation state through the animator tab
@@ -68,17 +78,7 @@ public abstract class Character : MonoBehaviour
   /// <returns>isGrounded, bool value of character grounded status</returns>
   protected virtual bool IsRunning()
   {
-    return isGrounded; 
-    /* NOTE
-      This has to be temporary/overriden by a child class.
-      This works in the main context of the game, but in places
-      like a start menu or character select, the implementation
-      might be different. 
-    */
-    /* REVIEW
-      Consider a separate 'isGrounded' method, in addition to isRunning
-    */ 
-    
+    return this.isGrounded && Mathf.Abs(this.rb.velocity.x) > 0.1f;
   }
 
   /// <summary>
