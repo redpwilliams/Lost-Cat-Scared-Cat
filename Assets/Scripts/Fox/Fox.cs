@@ -9,33 +9,35 @@ public abstract class Fox : Character
 {
 
   // Then, variable horizontal velocity for normal running foxes
-  protected float runSpeed = -3f;
+  [SerializeField] protected float runSpeed = -3f;
   protected float sitSpeed = -1.5f;
 
   /// <summary> Fox will self destruct after reaching this value </summary>
-  public static float deadZone = -4.5f;
+  private readonly float deadZone = -4.5f;
 
   /// <summary> Fox only attacks once </summary>
   protected bool hasAttacked = false;
 
-  /// <summary> The amount of space between the Fox and Player to initiate Fox attack
+  /// <summary> The amount of space between the Fox and Player to initiate Fox attack</summary>
   // TODO - I could change this into an array to accommodate for sitting foxes
   // Each value in the array would dictate the spacing before each action of a sitting fox
   protected float spaceBeforeAttack = 1.5f;
 
   protected bool isVisiblyJumping = false;
 
-  protected override void Awake()
-  {
-    base.Awake();
-  }
+  private static readonly int Running = Animator.StringToHash("IsRunning");
+  private static readonly int Jumping = Animator.StringToHash("IsJumping");
+  private static readonly int Falling = Animator.StringToHash("IsFalling");
 
   protected override void Start()
   {
     base.Start();
     Rigidbody2D rb2d = base.rb;
     // Flip sprite horizontally
-    rb2d.transform.localScale = new Vector3(-rb2d.transform.localScale.x, rb2d.transform.localScale.y, rb2d.transform.localScale.z);
+    Transform rbTransform = rb2d.transform;
+    Vector3 localScale = rbTransform.localScale;
+    localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
+    rbTransform.localScale = localScale;
   }
 
   protected override void Update()
@@ -48,20 +50,20 @@ public abstract class Fox : Character
     }
 
     // Update animation
-    this.anim.SetBool("IsRunning", this.IsRunning());
-    this.anim.SetBool("IsJumping", isVisiblyJumping); // I delayed the jump impulse force to line up with the jump animation
-    this.anim.SetBool("IsFalling", this.IsFalling());
+    this.anim.SetBool(Running, this.IsRunning());
+    this.anim.SetBool(Jumping, isVisiblyJumping); // I delayed the jump impulse force to line up with the jump animation
+    this.anim.SetBool(Falling, this.IsFalling());
   }
 
   protected override void FixedUpdate()
   {
     // Distance between Fox and Player's position && isRunning
-    float distanceFromPlayer = Mathf.Abs(Player.PLAYER_X_POS - transform.position.x); 
-    if (!hasAttacked && (IsInPosition(distanceFromPlayer,spaceBeforeAttack)) && state == MovementState.Running)
-    {
-      isVisiblyJumping = true;
-      Attack();
-    }
+    float distanceFromPlayer = Mathf.Abs(Player.PLAYER_X_POS - transform.position.x);
+    if (hasAttacked || (!IsInPosition(distanceFromPlayer, this.spaceBeforeAttack)) ||
+        this.state != MovementState.Running) return;
+    
+    this.isVisiblyJumping = true;
+    Attack();
   }
 
   /// <summary>
