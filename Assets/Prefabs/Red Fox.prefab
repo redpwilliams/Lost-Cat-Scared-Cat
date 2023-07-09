@@ -80,10 +80,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5645074907809119957}
+  - component: {fileID: 5645074907809119961}
   - component: {fileID: 5645074907809119954}
   - component: {fileID: -4918045702206965090}
   - component: {fileID: 5645074907809119958}
-  - component: {fileID: 5645074907809119961}
   - component: {fileID: 5645074907809119960}
   m_Layer: 7
   m_Name: Red Fox
@@ -108,6 +108,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &5645074907809119961
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645074907809119955}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0.75
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!212 &5645074907809119954
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -174,6 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5645074907809119961}
   anim: {fileID: 5645074907809119958}
+  runSpeed: -3
 --- !u!95 &5645074907809119958
 Animator:
   serializedVersion: 4
@@ -194,27 +216,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &5645074907809119961
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5645074907809119955}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0.75
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &5645074907809119960
 BoxCollider2D:
   m_ObjectHideFlags: 0
