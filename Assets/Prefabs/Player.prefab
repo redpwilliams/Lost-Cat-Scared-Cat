@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7834204335144625141}
+  - component: {fileID: 7834204335144625142}
   - component: {fileID: 7834204335144625140}
   - component: {fileID: 7834204335144625143}
-  - component: {fileID: 7834204335144625142}
   - component: {fileID: 7834204335144625145}
   - component: {fileID: 7834204335144625138}
   m_Layer: 0
@@ -36,6 +36,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &7834204335144625142
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7834204335144625144}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 3
+  m_AngularDrag: 0
+  m_GravityScale: 0.75
+  m_Material: {fileID: 6200000, guid: 52c8982f4ce11f3479785ec28f58b1e6, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &7834204335144625140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +71,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7834204335144625142}
   anim: {fileID: 7834204335144625138}
-  jumpVelocity: 3
+  jumpForce: 2.5
+  topSpeed: 3.5
+  aerialDrag: 0
+  fallGravityMultiplier: 2.5
+  alignedBackground: {fileID: 0}
 --- !u!212 &7834204335144625143
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,27 +128,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7834204335144625142
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7834204335144625144}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0.75
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &7834204335144625145
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +137,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7834204335144625144}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e0a834c2bb33f704a93927b8a9b6e3c1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

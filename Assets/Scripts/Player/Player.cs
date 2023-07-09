@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class Player : Character
 {
-  public static float PLAYER_X_POS = 0f;
+  internal static readonly float PlayerXPos = 0f;
 
   [Header("Movement Parameters")]
   [SerializeField] private float jumpForce;
   [SerializeField] private float topSpeed;
-  [SerializeField] private float aerialDrag;
   
   [Range(1, 5)]
   [SerializeField] private float fallGravityMultiplier;
   private float legacyGravityScale;
 
   [Header("Aligned Background Game Object")]
-  [Tooltip("Moves the Player at the same negative velocity of the provided background")]
+  [Tooltip("Moves the Player at the same negative velocity of the provided background while Player is Idle")]
   [SerializeField] private GameObject alignedBackground;
 
   private SpriteRenderer sr;
+  private Rigidbody2D alignedBgRigidBody;
 
   protected override void Awake()
   {
@@ -27,34 +27,50 @@ public class Player : Character
 
   protected override void Start()
   {
+    this.alignedBgRigidBody = this.alignedBackground.GetComponent<Rigidbody2D>();
     base.Start();
-    state = MovementState.Idle;
     legacyGravityScale = this.rb.gravityScale;
 
     // Put Player on specific location on screen
-    gameObject.transform.position = new Vector3(PLAYER_X_POS, this.transform.position.y, this.transform.position.z);
+    Vector3 position = this.transform.position;
+    gameObject.transform.position = new Vector3(PlayerXPos, position.y, position.z);
   }
 
-  protected override void FixedUpdate()
+  protected void Update()
+  {
+    SetRunAnimationParam(IsVisiblyRunning);
+    SetJumpAnimationParam(IsVisiblyJumping);
+    SetFallAnimationParam(IsFalling());
+  }
+
+  protected void FixedUpdate()
   {
     // Handle Run input
-    HandleRun();
+    if (IsRunning())
+    {
+      IsVisiblyRunning = true;
+      HandleRunInput();
+    } else { IsVisiblyRunning = false; }
 
-    // Handle Jump input
-    HandleJump();
+    if (IsJumping())
+    {
+      // Handle Jump input
+      HandleJumpInput();
+      IsVisiblyJumping = true;
+    } else { IsVisiblyJumping = false; }
 
-    // Handle Fall input
-    HandleFall();
+    // Conditionally Handle Fall
+    if (IsFalling()) HandleFall();
+    else ResetGravity();
 
-    if (!IsRunning() && this.isGrounded) 
+    // When Idle
+    if (!IsRunning() && this.IsGrounded) 
     { 
-      float bgCurrentSpeed = alignedBackground.GetComponent<Rigidbody2D>().velocity.x;
+      float bgCurrentSpeed = this.alignedBgRigidBody.velocity.x;
       rb.velocity = new Vector2(bgCurrentSpeed, rb.velocity.y);
     }
 
-    rb.drag = (IsJumping() || IsFalling()) ? aerialDrag : 0;
-
-    Debug.Log(this.state);
+    // rb.drag = (IsJumping() || IsFalling()) ? aerialDrag : 0;
   }
 
   protected override bool IsRunning()
@@ -62,7 +78,7 @@ public class Player : Character
     return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
   }
 
-  private void HandleRun()
+  private void HandleRunInput()
   {
     float acceleration = 3.5f;
     float deceleration = 2f;
@@ -76,24 +92,30 @@ public class Player : Character
 
     // Switch direction
     HandleFlipSprite();
-
+   
+    // Player is now running/in motion
+    IsVisiblyRunning = true;
   }
 
-  private void HandleJump()
+  protected override bool IsJumping()
   {
-    if (Input.GetKey(KeyCode.Space) && this.isGrounded)
+    return (Input.GetKey(KeyCode.Space) && this.IsGrounded);
+  }
+
+  private void HandleJumpInput()
+  {
+    if (IsJumping())
       rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
   }
 
   private void HandleFall()
   {
-    if (this.IsFalling())
       rb.gravityScale = legacyGravityScale * fallGravityMultiplier;
-    else
-      rb.gravityScale = legacyGravityScale;
+  }
 
-    // if (this.IsJumping() && !Input.GetKey(KeyCode.Space))
-    //   rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.25f);
+  private void ResetGravity()
+  {
+    this.rb.gravityScale = this.legacyGravityScale;
   }
 
   private float GetInputDirection()

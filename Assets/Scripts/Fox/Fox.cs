@@ -22,9 +22,6 @@ public abstract class Fox : Character
   // Each value in the array would dictate the spacing before each action of a sitting fox
   private readonly float spaceBeforeAttack = 1.5f;
 
-  protected bool isVisiblyJumping;
-
-
   protected override void Start()
   {
     base.Start();

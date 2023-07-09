@@ -1,10 +1,11 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public abstract class Character : MonoBehaviour
 {
-  [Header("Components")] // REVIEW - Might
-  [SerializeField] protected Rigidbody2D rb;
-  [SerializeField] protected Animator anim;
+  protected Rigidbody2D rb;
+  private Animator anim;
 
   /// <summary>Boolean if the character is touching the main ground</summary>
   private bool isGrounded;
@@ -14,6 +15,18 @@ public abstract class Character : MonoBehaviour
     get => this.isGrounded;
     set => this.isGrounded = value;
   }
+
+  private bool isVisiblyJumping;
+
+  protected bool IsVisiblyJumping
+  {
+    get => this.isVisiblyJumping;
+    set => this.isVisiblyJumping = value;
+  }
+
+  private bool isVisiblyRunning;
+
+  protected bool IsVisiblyRunning { get; set; }
 
   private bool hasInputJump;
 
@@ -31,6 +44,7 @@ public abstract class Character : MonoBehaviour
   {
     this.isGrounded = true;
     this.hasInputJump = false;
+    this.isVisiblyJumping = false;
   }
   
   protected virtual void Start()
@@ -39,7 +53,6 @@ public abstract class Character : MonoBehaviour
     anim = GetComponent<Animator>();
   }
 
-  
   /// <summary>
   /// Returns whether or not the character is running
   /// </summary>
@@ -54,7 +67,7 @@ public abstract class Character : MonoBehaviour
   /// This is independent from the animation (animation relies on this/math)
   /// </summary>
   /// <returns>Status of Character jumping</returns>
-  protected bool IsJumping()
+  protected virtual bool IsJumping()
   {
     return rb.velocity.y > 0.01f;
   }

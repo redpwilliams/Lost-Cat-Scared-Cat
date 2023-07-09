@@ -3,11 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="37482af1-02f1-4f79-825f-f4e7f1702aa2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Red Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Red Fox.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/White Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/White Fox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Fall.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Land.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Land.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Fall.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Land.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Land.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Jump.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Land.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Land.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Run.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Run.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ground.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lost Cat Scared Cat.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lost Cat Scared Cat.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/RedFox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/RedFox.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
     </list>
@@ -43,7 +56,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectId" id="2OPo8zzVCT6s7XFSh7uf3VUp4m1" />
   <component name="ProjectViewState">
@@ -121,7 +134,7 @@
       <workItem from="1688837366327" duration="2405000" />
       <workItem from="1688841371938" duration="2576000" />
       <workItem from="1688844076677" duration="3005000" />
-      <workItem from="1688849215674" duration="11250000" />
+      <workItem from="1688849215674" duration="16321000" />
     </task>
     <servers />
   </component>
@@ -132,38 +145,6 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs</url>
-          <line>11</line>
-          <properties documentPath="C:\Users\redexe\Projects\Unity\Lost Cat Scared Cat\Assets\Scripts\Fox\WhiteFox.cs" initialLine="11" containingFunctionPresentation="method 'Attack'">
-            <startOffsets>
-              <option value="189" />
-            </startOffsets>
-            <endOffsets>
-              <option value="214" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs</url>
-          <line>15</line>
-          <properties documentPath="C:\Users\redexe\Projects\Unity\Lost Cat Scared Cat\Assets\Scripts\Fox\WhiteFox.cs" initialLine="15" containingFunctionPresentation="method 'HandleJump'">
-            <startOffsets>
-              <option value="250" />
-            </startOffsets>
-            <endOffsets>
-              <option value="251" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

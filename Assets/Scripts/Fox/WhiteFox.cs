@@ -16,7 +16,7 @@ public class WhiteFox : Fox
   {
     // Used in White Fox animation event at start of Jump clip
     rb.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
-    isVisiblyJumping = true;
+    IsVisiblyJumping = true;
     HasInputJump = false;
   }
 
