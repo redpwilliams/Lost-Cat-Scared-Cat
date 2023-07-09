@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37482af1-02f1-4f79-825f-f4e7f1702aa2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Run.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Run.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Red Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Red Fox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/White Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/White Fox.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/RedFox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/RedFox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +16,34 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e9b71fdf5d7d40a3b3ba85664cafc7aa3a00/7b/05956d5d/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fox/RedFox.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OPo8zzVCT6s7XFSh7uf3VUp4m1" />
   <component name="ProjectViewState">
@@ -68,10 +95,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14376">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="14376" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -94,7 +121,7 @@
       <workItem from="1688837366327" duration="2405000" />
       <workItem from="1688841371938" duration="2576000" />
       <workItem from="1688844076677" duration="3005000" />
-      <workItem from="1688849215674" duration="618000" />
+      <workItem from="1688849215674" duration="11250000" />
     </task>
     <servers />
   </component>
@@ -109,18 +136,31 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs</url>
-          <line>64</line>
-          <properties documentPath="C:\Users\redexe\Projects\Unity\Lost Cat Scared Cat\Assets\Scripts\Fox\Fox.cs" initialLine="70" containingFunctionPresentation="method 'FixedUpdate'">
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\redexe\Projects\Unity\Lost Cat Scared Cat\Assets\Scripts\Fox\WhiteFox.cs" initialLine="11" containingFunctionPresentation="method 'Attack'">
             <startOffsets>
-              <option value="2213" />
+              <option value="189" />
             </startOffsets>
             <endOffsets>
-              <option value="2222" />
+              <option value="214" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs</url>
+          <line>15</line>
+          <properties documentPath="C:\Users\redexe\Projects\Unity\Lost Cat Scared Cat\Assets\Scripts\Fox\WhiteFox.cs" initialLine="15" containingFunctionPresentation="method 'HandleJump'">
+            <startOffsets>
+              <option value="250" />
+            </startOffsets>
+            <endOffsets>
+              <option value="251" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

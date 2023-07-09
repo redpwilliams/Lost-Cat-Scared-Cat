@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class WhiteFox : Fox
@@ -5,21 +6,18 @@ public class WhiteFox : Fox
 
   private AnimationState animState;
 
-  protected override void FixedUpdate()
-  {
-    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-    base.FixedUpdate();
-  }
-
   protected override void Attack()
   {
-    hasAttacked = true;
+    this.hasAttacked = true;
+    this.HasInputJump = true;
   }
 
-  [SerializeField]
-  private void HandleJump()
+  [UsedImplicitly] private void HandleJump()
   {
+    // Used in White Fox animation event at start of Jump clip
     rb.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
-    isVisiblyJumping = false;
+    isVisiblyJumping = true;
+    HasInputJump = false;
   }
+
 }

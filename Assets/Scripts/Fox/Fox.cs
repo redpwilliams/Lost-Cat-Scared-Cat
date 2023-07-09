@@ -7,9 +7,8 @@ using UnityEngine;
 ///</summary>
 public abstract class Fox : Character
 {
-
-  // Then, variable horizontal velocity for normal running foxes
-  [SerializeField] protected float runSpeed = -3f;
+  /// <summary>Fox default run speed</summary>
+  [SerializeField] private float runSpeed = -3f;
   protected float sitSpeed = -1.5f;
 
   /// <summary> Fox will self destruct after reaching this value </summary>
@@ -25,9 +24,6 @@ public abstract class Fox : Character
 
   protected bool isVisiblyJumping;
 
-  private static readonly int Running = Animator.StringToHash("IsRunning");
-  private static readonly int Jumping = Animator.StringToHash("IsJumping");
-  private static readonly int Falling = Animator.StringToHash("IsFalling");
 
   protected override void Start()
   {
@@ -39,7 +35,7 @@ public abstract class Fox : Character
     rbTransform.localScale = localScale;
   }
 
-  protected override void Update()
+  protected void Update()
   {
     // Destroy on off-screen
     if (IsOffscreen(transform.position.x, deadZone)) 
@@ -49,19 +45,21 @@ public abstract class Fox : Character
     }
 
     // Update animation
-    this.anim.SetBool(Running, this.IsRunning());
-    this.anim.SetBool(Jumping, isVisiblyJumping); // I delayed the jump impulse force to line up with the jump animation
-    this.anim.SetBool(Falling, this.IsFalling());
+    SetRunAnimationParam(this.IsRunning());
+    SetJumpAnimationParam(this.HasInputJump);
+    SetFallAnimationParam(this.IsFalling());
   }
 
-  protected override void FixedUpdate()
+  protected void FixedUpdate()
   {
-    // Distance between Fox and Player's position && isRunning
-    float distanceFromPlayer = Mathf.Abs(Player.PLAYER_X_POS - transform.position.x);
-    if (hasAttacked || (!IsInPosition(distanceFromPlayer, this.spaceBeforeAttack)) ||
-        this.state != MovementState.Running) return;
+    // Keep velocity
+    this.rb.velocity = new Vector2(this.runSpeed, this.rb.velocity.y);
     
-    this.isVisiblyJumping = true;
+    // Distance between Fox and Player's position && isRunning
+    float distanceFromPlayer = Mathf.Abs(Player.PlayerXPos - transform.position.x);
+    if (hasAttacked || (!IsInPosition(distanceFromPlayer, this.spaceBeforeAttack)) 
+        ) return;
+    
     Attack();
   }
 

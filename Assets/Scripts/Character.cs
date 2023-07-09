@@ -2,76 +2,44 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-  [Header("Components")]
+  [Header("Components")] // REVIEW - Might
   [SerializeField] protected Rigidbody2D rb;
   [SerializeField] protected Animator anim;
 
   /// <summary>Boolean if the character is touching the main ground</summary>
-  protected bool isGrounded;
+  private bool isGrounded;
 
-  /// <summary>Name of the 'state' parameter in the Animator</summary>
-  protected string stateParam;
-
-  /// <summary>Current state of the animation</summary>
-  protected enum MovementState
+  protected bool IsGrounded
   {
-    Idle, Running, Jumping, Falling, Landing
+    get => this.isGrounded;
+    set => this.isGrounded = value;
   }
 
-  /// <summary>Current animation state</summary>
-  protected MovementState? state;
+  private bool hasInputJump;
 
-  /// <summary>Parameter name in the animator tab</summary>
-  protected string animParameter;
+  protected bool HasInputJump
+  {
+    get => this.hasInputJump;
+    set => this.hasInputJump = value;
+  }
 
+  private static readonly int Running = Animator.StringToHash("IsRunning");
+  private static readonly int Jumping = Animator.StringToHash("IsJumping");
+  private static readonly int Falling = Animator.StringToHash("IsFalling");
+  
   protected virtual void Awake()
   {
-    isGrounded = true;
-    stateParam = "state"; // "state" by default
+    this.isGrounded = true;
+    this.hasInputJump = false;
   }
-
+  
   protected virtual void Start()
   {
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
-    state = MovementState.Running;
   }
 
-  protected virtual void Update()
-  {
-  }
-
-  protected virtual void FixedUpdate()
-  {
-    // Set 'state' variable for current kinematics state
-    if (IsJumping())
-      state = MovementState.Jumping;
-    else if (IsFalling())
-      state = MovementState.Falling;
-    // else if (state == MovementState.Falling)
-    //   state = MovementState.Landing;
-    else if (IsRunning() && this.isGrounded)
-    {
-      state = MovementState.Running;
-      Debug.Log("Is grounded, chose is grounded");
-    }
-    else if (!isGrounded)
-      state = MovementState.Idle;
-    else
-      state = null;
-    UpdateAnimationState();
-
-  }
-
-  /// <summary>
-  /// Updates the animation state through the animator tab
-  /// </summary>
-  protected virtual void UpdateAnimationState()
-  {
-    if (state == null) return; // No update when in between transitions
-    anim.SetInteger(stateParam, (int)state);
-  }
-
+  
   /// <summary>
   /// Returns whether or not the character is running
   /// </summary>
@@ -86,7 +54,7 @@ public abstract class Character : MonoBehaviour
   /// This is independent from the animation (animation relies on this/math)
   /// </summary>
   /// <returns>Status of Character jumping</returns>
-  protected virtual bool IsJumping()
+  protected bool IsJumping()
   {
     return rb.velocity.y > 0.01f;
   }
@@ -97,26 +65,43 @@ public abstract class Character : MonoBehaviour
   /// <returns>
   ///  rb.velocity.y, bool state if the Character is falling
   /// </returns>
-  protected virtual bool IsFalling()
+  protected bool IsFalling()
   {
     return rb.velocity.y < -0.1f;
   }
 
+  // protected abstract void HandleRun();
+  // protected abstract void HandleJump();
+  // protected abstract void HandleFall();
+
+  protected void SetRunAnimationParam(bool value)
+  {
+    this.anim.SetBool(Running, value);
+  }
+
+  protected void SetJumpAnimationParam(bool value)
+  {
+    this.anim.SetBool(Jumping, value);
+  }
+
+  protected void SetFallAnimationParam(bool value)
+  {
+    this.anim.SetBool(Falling, value);
+  }
+  
   /// <summary>
   /// Called when this object collides with something
   /// </summary>
-  ///<param name="col">Collision2D object Character collided with</param>
-  private void OnCollisionEnter2D(Collision2D col)
+  private void OnCollisionEnter2D()
   {
-    isGrounded = true;
+    this.isGrounded = true;
   }
 
   /// <summary>
   /// Called when this object leaves a collider
   /// </summary>
-  ///<param name="col">Collision2D object Character exits collision with</param>
-  private void OnCollisionExit2D(Collision2D col)
+  private void OnCollisionExit2D()
   {
-    isGrounded = false;
+    this.isGrounded = false;
   }
 }
