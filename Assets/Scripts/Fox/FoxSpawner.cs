@@ -4,9 +4,9 @@ using System.Collections;
 public class FoxSpawner : MonoBehaviour
 {
   
-  private float _startX = 4.5f;
-  private float _startY = -0.875f;
-  private Transform _transform;
+  private readonly float startX = 4.5f;
+  private readonly float startY = -0.875f;
+  private Transform trans;
   
   [Header("Fox Prefabs")]
   [SerializeField] private GameObject redFox;
@@ -15,39 +15,36 @@ public class FoxSpawner : MonoBehaviour
   [Header("Debug")]
   [SerializeField] private bool shouldSpawn;
 
-  void Start()
+  private void Start()
   {
-    _transform = GetComponent<Transform>();
-    _transform.localPosition = new Vector3(_startX, _startY, _transform.position.z);
-
+    this.trans = GetComponent<Transform>();
+    this.trans.localPosition = new Vector3(this.startX, this.startY, this.trans.position.z);
 
     StartCoroutine(SpawnFoxes());
   }
 
   private IEnumerator SpawnFoxes()
   {
-    while (true)
+    while (this.shouldSpawn)
     {
-      if (shouldSpawn) InstantiateRandomFox();
-      yield return new WaitForSeconds(2); // TODO - Make variable
+      InstantiateRandomFox();
+      yield return new WaitForSeconds(2);
     }
   }
 
-  
-
-  void InstantiateRandomFox()
+  private void InstantiateRandomFox()
   {
     GameObject foxClone;
 
     if (Random.value < 0.5f)
     {
       // Create RunningFox
-      foxClone = Instantiate<GameObject>(redFox, _transform.position, _transform.rotation);
+      foxClone = Instantiate(redFox, this.trans.position, this.trans.rotation);
       foxClone.name = "Red Fox (Clone)";
     }
     else  
     {
-      foxClone = Instantiate<GameObject>(whiteFox, _transform.position, _transform.rotation);
+      foxClone = Instantiate(whiteFox, this.trans.position, this.trans.rotation);
       foxClone.name = "White Fox (Clone)";
     }
   }

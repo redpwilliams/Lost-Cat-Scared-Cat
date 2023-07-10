@@ -3,7 +3,6 @@ using UnityEngine;
 /// <summary>
 /// Represents all foxes. 
 /// All sub-instances either jump or don't jump
-
 ///</summary>
 public abstract class Fox : Character
 {
