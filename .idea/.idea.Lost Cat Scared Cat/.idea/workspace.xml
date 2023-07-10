@@ -3,26 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="37482af1-02f1-4f79-825f-f4e7f1702aa2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lost Cat Scared Cat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Fall.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Land.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Red Fox/Red_Fox_Land.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Fall.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Land.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/White Fox/White_Fox_Land.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Fall.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Jump.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Land.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Land.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Player_Run.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Player_Run.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ground.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lost Cat Scared Cat.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lost Cat Scared Cat.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/Fox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fox/WhiteFox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +114,7 @@
       <workItem from="1688837366327" duration="2405000" />
       <workItem from="1688841371938" duration="2576000" />
       <workItem from="1688844076677" duration="3005000" />
-      <workItem from="1688849215674" duration="16321000" />
+      <workItem from="1688849215674" duration="16322000" />
     </task>
     <servers />
   </component>
