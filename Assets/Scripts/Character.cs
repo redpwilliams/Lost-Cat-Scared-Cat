@@ -7,34 +7,15 @@ public abstract class Character : MonoBehaviour
   protected Rigidbody2D rb;
   private Animator anim;
 
-  /// <summary>Boolean if the character is touching the main ground</summary>
-  private bool isGrounded;
+  protected bool IsGrounded { get; private set; }
 
-  protected bool IsGrounded
-  {
-    get => this.isGrounded;
-    set => this.isGrounded = value;
-  }
-
-  private bool isVisiblyJumping;
-
-  protected bool IsVisiblyJumping
-  {
-    get => this.isVisiblyJumping;
-    set => this.isVisiblyJumping = value;
-  }
+  protected bool IsVisiblyJumping { get; set; }
 
   private bool isVisiblyRunning;
 
   protected bool IsVisiblyRunning { get; set; }
 
-  private bool hasInputJump;
-
-  protected bool HasInputJump
-  {
-    get => this.hasInputJump;
-    set => this.hasInputJump = value;
-  }
+  protected bool HasInputJump { get; set; }
 
   private static readonly int Running = Animator.StringToHash("IsRunning");
   private static readonly int Jumping = Animator.StringToHash("IsJumping");
@@ -42,9 +23,9 @@ public abstract class Character : MonoBehaviour
   
   protected virtual void Awake()
   {
-    this.isGrounded = true;
-    this.hasInputJump = false;
-    this.isVisiblyJumping = false;
+    this.IsGrounded = true;
+    this.HasInputJump = false;
+    this.IsVisiblyJumping = false;
   }
   
   protected virtual void Start()
@@ -59,7 +40,7 @@ public abstract class Character : MonoBehaviour
   /// <returns>isGrounded, bool value of character grounded status</returns>
   protected virtual bool IsRunning()
   {
-    return this.isGrounded && Mathf.Abs(this.rb.velocity.x) > 0.1f;
+    return this.IsGrounded && Mathf.Abs(this.rb.velocity.x) > 0.1f;
   }
 
   /// <summary>
@@ -83,10 +64,6 @@ public abstract class Character : MonoBehaviour
     return rb.velocity.y < -0.1f;
   }
 
-  // protected abstract void HandleRun();
-  // protected abstract void HandleJump();
-  // protected abstract void HandleFall();
-
   protected void SetRunAnimationParam(bool value)
   {
     this.anim.SetBool(Running, value);
@@ -107,7 +84,7 @@ public abstract class Character : MonoBehaviour
   /// </summary>
   private void OnCollisionEnter2D()
   {
-    this.isGrounded = true;
+    this.IsGrounded = true;
   }
 
   /// <summary>
@@ -115,6 +92,6 @@ public abstract class Character : MonoBehaviour
   /// </summary>
   private void OnCollisionExit2D()
   {
-    this.isGrounded = false;
+    this.IsGrounded = false;
   }
 }
