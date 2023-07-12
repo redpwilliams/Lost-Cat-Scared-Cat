@@ -1,5 +1,6 @@
-using UnityEngine.Assertions;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public sealed class BackgroundManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public sealed class BackgroundManager : MonoBehaviour
   [Header("Background Prefab")]
   [SerializeField] private GameObject bg;
 
-  [Header("Spritemask")]
+  [Header("Sprite Mask")]
   [SerializeField] private SpriteMask sm;
 
   // How fast the screen moves
@@ -20,6 +21,7 @@ public sealed class BackgroundManager : MonoBehaviour
 
   public float GetScrollVelocity() { return scrollVelocity; }
 
+  // Will probably use when accelerating screen
   public void SetScrollVelocity(float sv)
   {
     scrollVelocity = sv;
@@ -28,7 +30,7 @@ public sealed class BackgroundManager : MonoBehaviour
 
   public bool ShouldMove() { return shouldMove; }
 
-  void Start()
+  private void Start()
   {
     Assert.IsTrue(numAdditionalBgs > 0);
     GameObject[] duplicates = MakeDuplicates(numAdditionalBgs);
@@ -37,24 +39,25 @@ public sealed class BackgroundManager : MonoBehaviour
   }
 
   // Makes num number of Background duplicates
-  GameObject[] MakeDuplicates(int num)
+  private GameObject[] MakeDuplicates(int num)
   {
-    GameObject[] dups = new GameObject[num];
+    GameObject[] duplicates = new GameObject[num];
     for (int i = 0; i < num; i++)
     {
-      dups[i] = Instantiate(bg);
-      dups[i].name = $"Background Copy ({i + 1})";
+      duplicates[i] = Instantiate(bg);
+      duplicates[i].name = $"Background Copy ({i + 1})";
     }
 
-    return dups;
+    return duplicates;
   }
 
   // Position each background on the screen
-  void PositionBackgrounds(GameObject[] dups, float length)
+  private void PositionBackgrounds(IReadOnlyList<GameObject> duplicates, float length)
   {
-    for (int i = 1; i <= dups.Length; i++)
-      dups[i - 1].transform.position = new Vector3(bg.transform.position.x + (length * i), bg.transform.position.y, bg.transform.position.z);
+    for (int i = 1; i <= duplicates.Count; i++)
+    {
+      Vector3 position = bg.transform.position;
+      duplicates[i - 1].transform.position = new Vector3(position.x + (length * i), position.y, position.z);
+    }
   }
-
-
 }
