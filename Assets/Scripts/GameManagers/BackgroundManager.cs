@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 public sealed class BackgroundManager : MonoBehaviour
 {
   // How many extra backgrounds to make
-  public int numAdditionalBgs = 1;
+  [FormerlySerializedAs("numAdditionalBgs")] public int backgroundCount = 1;
 
   [Header("Background Prefab")]
   [SerializeField] private GameObject bg;
@@ -32,8 +33,8 @@ public sealed class BackgroundManager : MonoBehaviour
 
   private void Start()
   {
-    Assert.IsTrue(numAdditionalBgs > 0);
-    GameObject[] duplicates = MakeDuplicates(numAdditionalBgs);
+    Assert.IsTrue(this.backgroundCount > 0);
+    GameObject[] duplicates = MakeDuplicates(this.backgroundCount);
     float length = sm.bounds.size.x;
     PositionBackgrounds(duplicates, length);
   }

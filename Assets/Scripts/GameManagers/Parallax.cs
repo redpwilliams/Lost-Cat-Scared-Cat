@@ -9,45 +9,53 @@ public class Parallax : MonoBehaviour
   // How much parallax to add
   [SerializeField] private float parallaxEffect;
   [SerializeField] private BackgroundManager bgm;
+  [SerializeField] private new Camera camera;
+  
+  private new Transform transform;
+  private int numBackgrounds;
 
   // If the sprite is visible/off screen
   private bool isVisible;
 
-  // Rigidbody2D to set velocity
-  private Rigidbody2D rb;
-
-  void Start()
+  private void Start()
   {
     spriteLength = GetComponent<SpriteRenderer>().bounds.size.x;
-    bgm = bgm.GetComponent<BackgroundManager>();
+    transform = GetComponent<Transform>();
+    numBackgrounds = this.bgm.backgroundCount;
     isVisible = true;
-    rb = GetComponent<Rigidbody2D>();
   }
 
-  void FixedUpdate()
+  private void Update()
   {
     
     // Set Scroll Velocity
     float scrollVelocity = bgm.GetScrollVelocity();
 
-    // Set apparent screen movement speed
-    rb.velocity = Vector2.left * parallaxEffect * (bgm.ShouldMove() ? scrollVelocity : 0); // With debug option
+    // Determine new background position based on its parallax value
+    Vector3 currentPosition = transform.position;
 
-    // If object is to the left of the camera & out-of-bounds
-    if (!isVisible && scrollVelocity > 0 && transform.position.x < Camera.main.transform.position.x)
-    {
-      // Move sprite 2 positions over (to cover for BackgroundManager's additional sprites)
-      transform.position = new Vector3(transform.position.x + 2 * spriteLength, transform.position.y, transform.position.z);
-    }
+    // Set its new position
+    this.transform.position =
+      new Vector3(currentPosition.x - scrollVelocity * this.parallaxEffect * Time.deltaTime,
+        currentPosition.y, currentPosition.z);
+    
+    // If object is visible in the camera & not out-of-bounds
+    if (this.isVisible || !(transform.position.x < camera.transform.position.x)) return;
+    // Move sprite the number of background sets + 1 positions over
+    // (to cover for BackgroundManager's possible additional sprites)
+    currentPosition = this.transform.position;
+    
+   transform.position = new Vector3(currentPosition.x + (this.numBackgrounds + 1) * this.spriteLength,
+      currentPosition.y, currentPosition.z);
 
   }
 
-  void OnBecameInvisible()
+  private void OnBecameInvisible()
   {
     isVisible = false;
   }
 
-  void OnBecameVisible()
+  private void OnBecameVisible()
   {
     isVisible = true;
   }
