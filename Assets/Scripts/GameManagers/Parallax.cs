@@ -15,7 +15,9 @@ public class Parallax : MonoBehaviour
   private int numBackgrounds;
 
   // If the sprite is visible/off screen
-  private bool isVisible;
+  public bool isVisible;
+
+  public float ParallaxBackgroundSpeed { get; set; }
 
   private void Start()
   {
@@ -23,20 +25,18 @@ public class Parallax : MonoBehaviour
     transform = GetComponent<Transform>();
     numBackgrounds = this.bgm.backgroundCount;
     isVisible = true;
+    ParallaxBackgroundSpeed =
+      this.bgm.GetScrollVelocity() * this.parallaxEffect;
   }
 
   private void Update()
   {
-    
-    // Set Scroll Velocity
-    float scrollVelocity = bgm.GetScrollVelocity();
-
     // Determine new background position based on its parallax value
     Vector3 currentPosition = transform.position;
 
     // Set its new position
     this.transform.position =
-      new Vector3(currentPosition.x - scrollVelocity * this.parallaxEffect * Time.deltaTime,
+      new Vector3(currentPosition.x - ParallaxBackgroundSpeed * Time.deltaTime,
         currentPosition.y, currentPosition.z);
     
     // If object is visible in the camera & not out-of-bounds
@@ -58,6 +58,11 @@ public class Parallax : MonoBehaviour
   private void OnBecameVisible()
   {
     isVisible = true;
+  }
+
+  public bool Test()
+  {
+    return true;
   }
 
 }

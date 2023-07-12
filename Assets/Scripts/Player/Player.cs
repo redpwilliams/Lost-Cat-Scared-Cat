@@ -9,40 +9,50 @@ public class Player : Character
   [SerializeField] private float topSpeed;
   [SerializeField] private float acceleration = 3.5f;
   [SerializeField] private float deceleration = 2f;
+
+  [SerializeField] private BackgroundManager bgm;
+  private new Transform transform;
   
   [Range(1, 5)]
   [SerializeField] private float fallGravityMultiplier;
   private float legacyGravityScale;
 
-  [Header("Aligned Background Game Object")]
-  [Tooltip("Moves the Player at the same negative velocity of the provided background while Player is Idle")]
-  [SerializeField] private GameObject alignedBackground;
-
   private SpriteRenderer sr;
-  private Rigidbody2D alignedBgRigidBody;
 
   protected override void Awake()
   {
     base.Awake();
     sr = GetComponent<SpriteRenderer>();
+    transform = GetComponent<Transform>();
   }
 
   protected override void Start()
   {
-    this.alignedBgRigidBody = this.alignedBackground.GetComponent<Rigidbody2D>();
     base.Start();
     legacyGravityScale = this.rb.gravityScale;
 
     // Put Player on specific location on screen
     Vector3 position = this.transform.position;
     gameObject.transform.position = new Vector3(PlayerXPos, position.y, position.z);
+    
   }
 
   protected void Update()
   {
+    
+    // When Idle
+    
     SetRunAnimationParam(IsVisiblyRunning);
     SetJumpAnimationParam(IsVisiblyJumping);
     SetFallAnimationParam(IsFalling());
+    
+    if (IsRunning() || !this.IsGrounded) return;
+    float bgCurrentSpeed = this.bgm.GetScrollVelocity() * 1.1f;
+    Vector3 currentPosition = transform.position;
+    Vector3 newPosition =
+      new Vector3(currentPosition.x - bgCurrentSpeed * Time.deltaTime,
+        currentPosition.y, currentPosition.z);
+    transform.position = newPosition;
   }
 
   protected void FixedUpdate()
@@ -65,10 +75,6 @@ public class Player : Character
     if (IsFalling()) HandleFall();
     else ResetGravity();
 
-    // When Idle
-    if (IsRunning() || !this.IsGrounded) return;
-    float bgCurrentSpeed = this.alignedBgRigidBody.velocity.x;
-    this.rb.velocity = new Vector2(bgCurrentSpeed, this.rb.velocity.y);
   }
 
   protected override bool IsRunning()
