@@ -1494,6 +1494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redFox: {fileID: 5645074907809119955, guid: b79d8ed02967934498cc1bf803e0c2f6, type: 3}
   whiteFox: {fileID: 5645074907809119955, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
+  skulkSpawnInterval: 3
+  foxSpawnInterval: 1
   shouldSpawn: 1
 --- !u!4 &1915981027
 Transform:
@@ -1768,6 +1770,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: topSpeed
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: alignedBackground
       value: 

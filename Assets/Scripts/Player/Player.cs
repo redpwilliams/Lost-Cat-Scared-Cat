@@ -7,6 +7,8 @@ public class Player : Character
   [Header("Movement Parameters")]
   [SerializeField] private float jumpForce;
   [SerializeField] private float topSpeed;
+  [SerializeField] private float acceleration = 3.5f;
+  [SerializeField] private float deceleration = 2f;
   
   [Range(1, 5)]
   [SerializeField] private float fallGravityMultiplier;
@@ -64,13 +66,9 @@ public class Player : Character
     else ResetGravity();
 
     // When Idle
-    if (!IsRunning() && this.IsGrounded) 
-    { 
-      float bgCurrentSpeed = this.alignedBgRigidBody.velocity.x;
-      rb.velocity = new Vector2(bgCurrentSpeed, rb.velocity.y);
-    }
-
-    // rb.drag = (IsJumping() || IsFalling()) ? aerialDrag : 0;
+    if (IsRunning() || !this.IsGrounded) return;
+    float bgCurrentSpeed = this.alignedBgRigidBody.velocity.x;
+    this.rb.velocity = new Vector2(bgCurrentSpeed, this.rb.velocity.y);
   }
 
   protected override bool IsRunning()
@@ -80,8 +78,6 @@ public class Player : Character
 
   private void HandleRunInput()
   {
-    float acceleration = 3.5f;
-    float deceleration = 2f;
 
     // Force-based movement
     float targetVelocity = GetInputDirection() * topSpeed;
