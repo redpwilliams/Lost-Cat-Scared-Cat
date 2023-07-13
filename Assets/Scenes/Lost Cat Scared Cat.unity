@@ -1464,8 +1464,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 156896622}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: topSpeed
       value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: acceleration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
+      propertyPath: deceleration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: alignedBackground
@@ -1541,6 +1553,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637360898303690, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637360898303690, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: parallaxEffect
       value: 1
       objectReference: {fileID: 0}
@@ -1554,6 +1570,10 @@ PrefabInstance:
       objectReference: {fileID: 156896622}
     - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1625,6 +1645,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637361185635936, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637361185635936, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: parallaxEffect
       value: 0.5
       objectReference: {fileID: 0}
@@ -1638,6 +1662,10 @@ PrefabInstance:
       objectReference: {fileID: 156896622}
     - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1657,6 +1685,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637361415500548, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637361415500548, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: parallaxEffect
       value: 0.4
       objectReference: {fileID: 0}
@@ -1670,6 +1702,10 @@ PrefabInstance:
       objectReference: {fileID: 156896622}
     - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1701,6 +1737,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637361626847503, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637361626847503, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: parallaxEffect
       value: 1.2
       objectReference: {fileID: 0}
@@ -1714,6 +1754,10 @@ PrefabInstance:
       objectReference: {fileID: 156896622}
     - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1733,6 +1777,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637362138481828, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637362138481828, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: parallaxEffect
       value: 0.7
       objectReference: {fileID: 0}
@@ -1746,6 +1794,10 @@ PrefabInstance:
       objectReference: {fileID: 156896622}
     - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1765,6 +1817,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637362404519128, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637362404519128, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: parallaxEffect
       value: 0.1
       objectReference: {fileID: 0}
@@ -1778,6 +1834,10 @@ PrefabInstance:
       objectReference: {fileID: 156896622}
     - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
       propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
+      propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}

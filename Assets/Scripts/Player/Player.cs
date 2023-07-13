@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : Character
@@ -39,15 +40,14 @@ public class Player : Character
 
   protected void Update()
   {
-    
-    // When Idle
-    
     SetRunAnimationParam(IsVisiblyRunning);
     SetJumpAnimationParam(IsVisiblyJumping);
     SetFallAnimationParam(IsFalling());
     
-    if (IsRunning() || !this.IsGrounded) return;
+    if (IsRunning() || !this.IsGrounded || this.rb.velocity.x > 0.1f) return;
     float bgCurrentSpeed = this.bgm.GetScrollVelocity() * 1.1f;
+    
+    // When Idle
     Vector3 currentPosition = transform.position;
     Vector3 newPosition =
       new Vector3(currentPosition.x - bgCurrentSpeed * Time.deltaTime,
@@ -58,11 +58,8 @@ public class Player : Character
   protected void FixedUpdate()
   {
     // Handle Run input
-    if (IsRunning())
-    {
-      IsVisiblyRunning = true;
-      HandleRunInput();
-    } else { IsVisiblyRunning = false; }
+    IsVisiblyRunning = IsRunning();
+    HandleRunInput();
 
     if (IsJumping())
     {
@@ -90,13 +87,16 @@ public class Player : Character
     float speedDiff = targetVelocity - rb.velocity.x;
     float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f) ? acceleration : deceleration;
     float movement = Mathf.Abs(speedDiff) * accelerationRate * Mathf.Sign(speedDiff);
+    // Debug.Log(Math.Abs(accelerationRate - this.acceleration) < Acceleratingk
+    //   ? $"Accelerating, Force = {movement}"
+    //   : $"Decelerating, Force = {movement}");
     rb.AddForce(movement * Vector2.right);
 
     // Switch direction
     HandleFlipSprite();
    
     // Player is now running/in motion
-    IsVisiblyRunning = true;
+    // IsVisiblyRunning = true;
   }
 
   protected override bool IsJumping()
@@ -123,7 +123,7 @@ public class Player : Character
   private float GetInputDirection()
   {
     if (Input.GetKey(KeyCode.RightArrow)) return 1;
-    else if (Input.GetKey(KeyCode.LeftArrow)) return -1;
+    if (Input.GetKey(KeyCode.LeftArrow)) return -1;
     return 0;
   }
 
