@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Serialization;
 
 public sealed class BackgroundManager : MonoBehaviour
 {
@@ -10,7 +8,7 @@ public sealed class BackgroundManager : MonoBehaviour
   public static BackgroundManager bgm;
   
   // How many extra backgrounds to make
-  [FormerlySerializedAs("numAdditionalBgs")] public int backgroundCount = 1;
+  public int backgroundCount = 1;
 
   [Header("Background Prefab")]
   [SerializeField] private GameObject bg;
