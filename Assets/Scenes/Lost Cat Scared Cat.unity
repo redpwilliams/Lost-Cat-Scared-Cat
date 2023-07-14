@@ -565,11 +565,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &710951742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8186637361548807987, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-  m_PrefabInstance: {fileID: 8186637362259725325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134151221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8186637361178167864, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -1467,22 +1462,6 @@ PrefabInstance:
       propertyPath: bgm
       value: 
       objectReference: {fileID: 156896622}
-    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: topSpeed
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: acceleration
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: deceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7834204335144625140, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
-      propertyPath: alignedBackground
-      value: 
-      objectReference: {fileID: 710951742}
     - target: {fileID: 7834204335144625141, guid: 3a07944777c65a44a9acc046fccf3fac, type: 3}
       propertyPath: m_RootOrder
       value: 1

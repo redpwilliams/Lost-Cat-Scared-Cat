@@ -1,29 +1,23 @@
 using UnityEngine;
 
-/// <summary>
-/// Represents all foxes. 
-/// All sub-instances either jump or don't jump
-///</summary>
 public abstract class Fox : Character
 {
-  /// <summary>Fox default run speed</summary>
+  /// Default Fox velocity
   [SerializeField] private float runSpeed = -3f;
-  protected float sitSpeed = -1.5f;
 
-  /// <summary> Fox will self destruct after reaching this value </summary>
+  /// Fox destruction point
   private readonly float deadZone = -4.5f;
 
-  /// <summary> Fox only attacks once </summary>
+  /// True if the Fox has initiated its `Attack()` method
   protected bool hasAttacked = false;
 
-  /// <summary> The amount of space between the Fox and Player to initiate Fox attack</summary>
-  // TODO - I could change this into an array to accommodate for sitting foxes
-  // Each value in the array would dictate the spacing before each action of a sitting fox
+  /// The amount of space between the Fox and Player to initiate Fox attack
   private readonly float spaceBeforeAttack = 1.5f;
+  // REVIEW - I could change this into an array to accommodate for sitting foxes
+  // Each value in the array would dictate the spacing before each action of a sitting fox
 
-  protected override void Start()
+  protected void Start()
   {
-    base.Start();
     // Flip sprite horizontally
     Transform rbTransform = this.rb.transform;
     Vector3 localScale = rbTransform.localScale;
@@ -59,17 +53,17 @@ public abstract class Fox : Character
     Attack();
   }
 
-  /// <summary>
   /// A Fox's attack sequence
-  /// </summary>
   protected abstract void Attack();
 
+  /// Returns true if the Fox is outside the dead zone
   private static bool IsOffscreen(float currPos, float deadZone)
   {
     return currPos < deadZone;
   }
 
-  bool IsInPosition(float distance, float spacing)
+  /// Returns true if the Fox is at the correct distance to Attack
+  private static bool IsInPosition(float distance, float spacing)
   {
     return distance < spacing;
   }

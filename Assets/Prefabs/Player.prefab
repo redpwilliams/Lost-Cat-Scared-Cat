@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7834204335144625141}
-  - component: {fileID: 7834204335144625142}
   - component: {fileID: 7834204335144625140}
+  - component: {fileID: 7834204335144625142}
   - component: {fileID: 7834204335144625143}
   - component: {fileID: 7834204335144625145}
   - component: {fileID: 7834204335144625138}
@@ -36,6 +36,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7834204335144625140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7834204335144625144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1d97a8f39ecb438549b07b63d639a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 2.5
+  topSpeed: 5.5
+  acceleration: 4
+  deceleration: 10
+  fallGravityMultiplier: 2.5
+  bgm: {fileID: 0}
 --- !u!50 &7834204335144625142
 Rigidbody2D:
   serializedVersion: 4
@@ -57,25 +75,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &7834204335144625140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7834204335144625144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07d1d97a8f39ecb438549b07b63d639a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 7834204335144625142}
-  anim: {fileID: 7834204335144625138}
-  jumpForce: 2.5
-  topSpeed: 3.5
-  aerialDrag: 0
-  fallGravityMultiplier: 2.5
-  alignedBackground: {fileID: 0}
 --- !u!212 &7834204335144625143
 SpriteRenderer:
   m_ObjectHideFlags: 0

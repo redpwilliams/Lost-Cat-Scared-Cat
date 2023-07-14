@@ -1,23 +1,27 @@
-using System;
 using UnityEngine;
 
 public class Player : Character
 {
-  internal static readonly float PlayerXPos = 0f;
+  /// Initial starting point of player
+  internal const float PlayerXPos = 0f;
 
   [Header("Movement Parameters")]
-  [SerializeField] private float jumpForce;
+  [SerializeField] private float jumpForce; 
   [SerializeField] private float topSpeed;
-  [SerializeField] private float acceleration = 3.5f;
-  [SerializeField] private float deceleration = 2f;
+  [SerializeField] private float acceleration = 4f; 
+  [SerializeField] private float deceleration = 10f; // Bigger value = harder stop
 
-  [SerializeField] private BackgroundManager bgm;
-  private new Transform transform;
-  
+  /// How much to change the gravity when Player is falling
   [Range(1, 5)]
   [SerializeField] private float fallGravityMultiplier;
+  
+  /// "Normal" gravity when not jumping
   private float legacyGravityScale;
-
+  
+  /// BackgroundManager for access to scroll velocity
+  [SerializeField] private BackgroundManager bgm;
+  
+  private new Transform transform;
   private SpriteRenderer sr;
 
   protected override void Awake()
@@ -25,29 +29,30 @@ public class Player : Character
     base.Awake();
     sr = GetComponent<SpriteRenderer>();
     transform = GetComponent<Transform>();
+    legacyGravityScale = this.rb.gravityScale;
   }
 
-  protected override void Start()
+  protected void Start()
   {
-    base.Start();
-    legacyGravityScale = this.rb.gravityScale;
-
     // Put Player on specific location on screen
     Vector3 position = this.transform.position;
-    gameObject.transform.position = new Vector3(PlayerXPos, position.y, position.z);
-    
+    this.transform.position = new Vector3(PlayerXPos, position.y, position.z);
   }
 
   protected void Update()
   {
+    // Set animation parameters
     SetRunAnimationParam(IsVisiblyRunning);
     SetJumpAnimationParam(IsVisiblyJumping);
     SetFallAnimationParam(IsFalling());
     
+    // Return if Player is in any motion
     if (IsRunning() || !this.IsGrounded || this.rb.velocity.x > 0.1f) return;
+    
+    // TODO - Reference specific background instead of direct parallax coefficient
     float bgCurrentSpeed = this.bgm.GetScrollVelocity() * 1.1f;
     
-    // When Idle
+    // Set new position using Transform component (avoids material friction)
     Vector3 currentPosition = transform.position;
     Vector3 newPosition =
       new Vector3(currentPosition.x - bgCurrentSpeed * Time.deltaTime,
@@ -58,8 +63,9 @@ public class Player : Character
   protected void FixedUpdate()
   {
     // Handle Run input
-    IsVisiblyRunning = IsRunning();
-    HandleRunInput();
+    int playerInputDirection = GetInputDirection();
+    IsVisiblyRunning = playerInputDirection != 0;
+    HandleRunInput(playerInputDirection); 
 
     if (IsJumping())
     {
@@ -71,32 +77,24 @@ public class Player : Character
     // Conditionally Handle Fall
     if (IsFalling()) HandleFall();
     else ResetGravity();
-
   }
-
+  
   protected override bool IsRunning()
   {
     return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
   }
 
-  private void HandleRunInput()
+  private void HandleRunInput(int inputDirection)
   {
-
     // Force-based movement
-    float targetVelocity = GetInputDirection() * topSpeed;
+    float targetVelocity = inputDirection * topSpeed;
     float speedDiff = targetVelocity - rb.velocity.x;
     float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f) ? acceleration : deceleration;
     float movement = Mathf.Abs(speedDiff) * accelerationRate * Mathf.Sign(speedDiff);
-    // Debug.Log(Math.Abs(accelerationRate - this.acceleration) < Acceleratingk
-    //   ? $"Accelerating, Force = {movement}"
-    //   : $"Decelerating, Force = {movement}");
     rb.AddForce(movement * Vector2.right);
 
     // Switch direction
     HandleFlipSprite();
-   
-    // Player is now running/in motion
-    // IsVisiblyRunning = true;
   }
 
   protected override bool IsJumping()
@@ -106,8 +104,7 @@ public class Player : Character
 
   private void HandleJumpInput()
   {
-    if (IsJumping())
-      rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
   }
 
   private void HandleFall()
@@ -120,7 +117,7 @@ public class Player : Character
     this.rb.gravityScale = this.legacyGravityScale;
   }
 
-  private float GetInputDirection()
+  private static int GetInputDirection()
   {
     if (Input.GetKey(KeyCode.RightArrow)) return 1;
     if (Input.GetKey(KeyCode.LeftArrow)) return -1;
@@ -129,17 +126,11 @@ public class Player : Character
 
   private void HandleFlipSprite()
   {
-    switch(GetInputDirection())
+    this.sr.flipX = GetInputDirection() switch
     {
-      case -1: 
-        sr.flipX = true;
-        break;
-
-      case 1:
-        sr.flipX = false;
-        break;
-    }
+      -1 => true,
+      1 => false,
+      _ => this.sr.flipX
+    };
   }
-
-
 }

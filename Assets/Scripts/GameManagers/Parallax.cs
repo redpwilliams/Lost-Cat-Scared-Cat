@@ -2,29 +2,36 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-
-  // The sprite's length
+  /// The sprite's length
   private float spriteLength;
 
-  // How much parallax to add
+  /// How much parallax to add / Parallax coefficient
   [SerializeField] private float parallaxEffect;
   [SerializeField] private BackgroundManager bgm;
   [SerializeField] private new Camera camera;
   
   private new Transform transform;
+  
+  /// The number of backgrounds in sequence, left to right
   private int numBackgrounds;
 
-  // If the sprite is visible/off screen
-  public bool isVisible;
+  /// If the sprite is visible/off screen
+  private bool isVisible;
 
-  public float ParallaxBackgroundSpeed { get; set; }
+  /// The calculated background speed.
+  /// Product of the BGM scroll velocity and the parallax effect
+  private float ParallaxBackgroundSpeed { get; set; }
 
-  private void Start()
+  private void Awake()
   {
     spriteLength = GetComponent<SpriteRenderer>().bounds.size.x;
     transform = GetComponent<Transform>();
-    numBackgrounds = this.bgm.backgroundCount;
     isVisible = true;
+  }
+
+  private void Start()
+  {
+    numBackgrounds = this.bgm.backgroundCount;
     ParallaxBackgroundSpeed =
       this.bgm.GetScrollVelocity() * this.parallaxEffect;
   }
@@ -41,13 +48,14 @@ public class Parallax : MonoBehaviour
     
     // If object is visible in the camera & not out-of-bounds
     if (this.isVisible || !(transform.position.x < camera.transform.position.x)) return;
+    
     // Move sprite the number of background sets + 1 positions over
     // (to cover for BackgroundManager's possible additional sprites)
     currentPosition = this.transform.position;
     
+    // And set
    transform.position = new Vector3(currentPosition.x + (this.numBackgrounds + 1) * this.spriteLength,
       currentPosition.y, currentPosition.z);
-
   }
 
   private void OnBecameInvisible()
@@ -59,10 +67,4 @@ public class Parallax : MonoBehaviour
   {
     isVisible = true;
   }
-
-  public bool Test()
-  {
-    return true;
-  }
-
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,25 +12,18 @@ public sealed class BackgroundManager : MonoBehaviour
   [Header("Background Prefab")]
   [SerializeField] private GameObject bg;
 
-  [Header("Sprite Mask")]
-  [SerializeField] private SpriteMask sm;
+  /// SpriteMask component
+  private SpriteMask sm;
 
-  // How fast the screen moves
+  /// How fast the screen moves
   [SerializeField] private float scrollVelocity = 1.5f;
-
-  [Header("Debug")]
-  [SerializeField] private bool shouldMove;
 
   public float GetScrollVelocity() { return scrollVelocity; }
 
-  // Will probably use when accelerating screen
-  public void SetScrollVelocity(float sv)
+  private void Awake()
   {
-    scrollVelocity = sv;
-    Debug.Log("New scroll velocity: " + scrollVelocity);
+    sm = GetComponent<SpriteMask>();
   }
-
-  public bool ShouldMove() { return shouldMove; }
 
   private void Start()
   {
@@ -39,7 +33,7 @@ public sealed class BackgroundManager : MonoBehaviour
     PositionBackgrounds(duplicates, length);
   }
 
-  // Makes num number of Background duplicates
+  /// Makes num number of Background duplicates
   private GameObject[] MakeDuplicates(int num)
   {
     GameObject[] duplicates = new GameObject[num];
@@ -52,7 +46,7 @@ public sealed class BackgroundManager : MonoBehaviour
     return duplicates;
   }
 
-  // Position each background on the screen
+  /// Position each background on the screen
   private void PositionBackgrounds(IReadOnlyList<GameObject> duplicates, float length)
   {
     for (int i = 1; i <= duplicates.Count; i++)

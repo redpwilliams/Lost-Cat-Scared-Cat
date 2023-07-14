@@ -23,16 +23,17 @@ public abstract class Character : MonoBehaviour
   
   protected virtual void Awake()
   {
+    rb = GetComponent<Rigidbody2D>();
+    anim = GetComponent<Animator>();
+    
     this.IsGrounded = true;
     this.HasInputJump = false;
     this.IsVisiblyJumping = false;
   }
   
-  protected virtual void Start()
-  {
-    rb = GetComponent<Rigidbody2D>();
-    anim = GetComponent<Animator>();
-  }
+  // protected virtual void Start()
+  // {
+  // }
 
   /// <summary>
   /// Returns whether or not the character is running
