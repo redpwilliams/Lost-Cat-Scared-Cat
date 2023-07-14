@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public sealed class UIManager : MonoBehaviour
 {
   /// Singleton Instance
   public static UIManager ui;
   
-  // Pause state
-  public static bool GameIsPaused = false;
+  /// Pause state
+  private bool gameIsPaused;
 
+  /// Mileage / Number of steps / Distance Player has traveled
   private float mileage;
 
   [Header("Mileage Props")]
@@ -19,34 +19,40 @@ public sealed class UIManager : MonoBehaviour
 
   [Header("Pause Menu Props")]
   [SerializeField] private GameObject pauseMenu;
+  
   [Range(0.01f, 1f)]
   [SerializeField] private float pauseMenuWidthFactor = 1f;
+  
   [Range(0.01f, 1f)]
   [SerializeField] private float pauseMenuHeightFactor = 1f;
 
-  // Used for scroll velocity
-  [Header("Background Manager Instance")]
-  [SerializeField] private BackgroundManager bgm;
+  /// BackgroundManager Instance,
+  /// Used for scroll velocity
+  private BackgroundManager bgm;
 
-  // UIManager RectTransform componenet
+  /// UIManager RectTransform component
   private RectTransform rt;
 
   private void Awake()
   {
-    if (ui == null) ui = this;
-    else Destroy(ui);
+    if (bgm != null)
+    {
+      Destroy(ui);
+      return;
+    }
+    
+    ui = this;
+    bgm = BackgroundManager.bgm;
+    rt = GetComponent<RectTransform>();
   }
 
   private void Start()
   {
-    bgm = BackgroundManager.bgm;
-    rt = GetComponent<RectTransform>();
-
     InitMileage();
     InitPauseMenu();
   }
 
-  void Update()
+  private void Update()
   {
     mileage += bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
     SetMileageText();
@@ -55,20 +61,16 @@ public sealed class UIManager : MonoBehaviour
     if (PauseKeyDown()) HandlePause();
   }
 
-  /// <summary>
   /// Updates the mileage field on the screen
-  /// </summary>
-  void SetMileageText()
+  private void SetMileageText()
   {
     // Update mileage
-    mileageText.text = String.Format("{0:#} steps", mileage);
+    mileageText.text = $"{this.mileage:#} steps";
   }
 
-  /// <summary>
-  /// Sets the Mileage text on the screen
+  /// Sets the Mileage text on the screen.
   /// Customizable in GameObject Component
-  /// </summary>
-  void InitMileage()
+  private void InitMileage()
   {
     stepsPadding = 50f;
     stepsMultiplier = 3.0f;
@@ -78,49 +80,41 @@ public sealed class UIManager : MonoBehaviour
     mileageRT.anchoredPosition = new Vector2(-stepsPadding, mileageRT.anchoredPosition.y - mileageRT.rect.height);
   }
 
-  /// <summary>
-  /// Sets the Pause Menu size and location
+  /// Sets the Pause Menu size and location.
   /// Inits to covering the full screen 
-  /// </summary>
-  void InitPauseMenu()
+  private void InitPauseMenu()
   {
-    RectTransform pauseMenuRT = pauseMenu.GetComponent<RectTransform>();
-
+    Rect rect = this.rt.rect;
     // Get Width and Height . . . 
-    float width = rt.rect.width * pauseMenuWidthFactor;
-    float height = rt.rect.height * pauseMenuHeightFactor;
+    float width = rect.width * pauseMenuWidthFactor;
+    float height = rect.height * pauseMenuHeightFactor;
 
     // . . . And Set
-    pauseMenuRT.sizeDelta = new Vector2(width, height);
+    this.rt.sizeDelta = new Vector2(width, height);
 
     // Disable PauseMenu by default
     pauseMenu.SetActive(false);
   }
 
   
-  /// <summary>
   /// Defines what the PauseKey is
-  /// </summary>
-  /// <returns></returns>
-  bool PauseKeyDown() { return Input.GetKeyDown(KeyCode.Escape); }
+  private static bool PauseKeyDown() { return Input.GetKeyDown(KeyCode.Escape); }
 
-  /// <summary>
   /// Handles what pressing Pause does
-  /// </summary>
   public void HandlePause()
   {
-    if (GameIsPaused)
+    if (this.gameIsPaused)
     {
       // Resume
       pauseMenu.SetActive(false);
       Time.timeScale = 1f;
-      GameIsPaused = false;
+      this.gameIsPaused = false;
       return;
     }
 
     // Pause
     pauseMenu.SetActive(true);
     Time.timeScale = 0f;
-    GameIsPaused = true;
+    this.gameIsPaused = true;
   }
 }
