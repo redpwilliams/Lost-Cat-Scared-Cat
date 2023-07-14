@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class ForegroundManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
   // Pause state
   public static bool GameIsPaused = false;
