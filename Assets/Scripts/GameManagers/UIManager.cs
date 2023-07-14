@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class UIManager : MonoBehaviour
+public sealed class UIManager : MonoBehaviour
 {
-  // Singleton Instance
+  /// Singleton Instance
   public static UIManager ui;
+  
   // Pause state
   public static bool GameIsPaused = false;
 
@@ -36,9 +37,9 @@ public class UIManager : MonoBehaviour
     else Destroy(ui);
   }
 
-  void Start()
+  private void Start()
   {
-    bgm = bgm.GetComponent<BackgroundManager>();
+    bgm = BackgroundManager.bgm;
     rt = GetComponent<RectTransform>();
 
     InitMileage();

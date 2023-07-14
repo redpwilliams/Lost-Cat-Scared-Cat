@@ -6,6 +6,9 @@ using UnityEngine.Serialization;
 
 public sealed class BackgroundManager : MonoBehaviour
 {
+  /// Singleton Instance
+  public static BackgroundManager bgm;
+  
   // How many extra backgrounds to make
   [FormerlySerializedAs("numAdditionalBgs")] public int backgroundCount = 1;
 
@@ -22,6 +25,14 @@ public sealed class BackgroundManager : MonoBehaviour
 
   private void Awake()
   {
+    // Craft singleton instance
+    if (bgm != null)
+    {
+      Destroy(bgm);
+      return;
+    }
+
+    bgm = this;
     sm = GetComponent<SpriteMask>();
   }
 
