@@ -763,7 +763,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 1607694178}
   pauseMenuWidthFactor: 1
   pauseMenuHeightFactor: 1
-  bgm: {fileID: 156896622}
 --- !u!1 &1429674349
 GameObject:
   m_ObjectHideFlags: 0
