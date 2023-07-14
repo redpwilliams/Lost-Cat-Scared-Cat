@@ -4,6 +4,8 @@ using System;
 
 public class UIManager : MonoBehaviour
 {
+  // Singleton Instance
+  public static UIManager ui;
   // Pause state
   public static bool GameIsPaused = false;
 
@@ -27,6 +29,12 @@ public class UIManager : MonoBehaviour
 
   // UIManager RectTransform componenet
   private RectTransform rt;
+
+  private void Awake()
+  {
+    if (ui == null) ui = this;
+    else Destroy(ui);
+  }
 
   void Start()
   {
