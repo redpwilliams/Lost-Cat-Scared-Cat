@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,7 +115,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 7
+        width: 33
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e7ad65b590c804d8fc13fdcee120bd
+      internalID: 790777882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 7
+        width: 35
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd356cfd606340d43a34897364d4c7ae
+      internalID: -1984259096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 7
+        width: 35
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517bb052af31e4d4da6f8450cc8a0af9
+      internalID: 1834261910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_3
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 7
+        width: 35
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817230c55dc104e48af47056132c9342
+      internalID: 422221084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_4
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 7
+        width: 33
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 373aec96a6188f444b4e644f516c564f
+      internalID: -13309476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_5
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 7
+        width: 33
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e8b84eddb93894dadf2a0156777e14
+      internalID: -1641222107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_6
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 7
+        width: 33
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42963455e69c74c4cb22c2b5b32d5042
+      internalID: -518867891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brown_Fox_Crouch_7
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 7
+        width: 33
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167ca1cef26aa0c46ba7e57196f2c99e
+      internalID: -741674091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +294,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Brown_Fox_Crouch_2: 1834261910
+      Brown_Fox_Crouch_6: -518867891
+      Brown_Fox_Crouch_4: -13309476
+      Brown_Fox_Crouch_1: -1984259096
+      Brown_Fox_Crouch_3: 422221084
+      Brown_Fox_Crouch_5: -1641222107
+      Brown_Fox_Crouch_0: 790777882
+      Brown_Fox_Crouch_7: -741674091
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

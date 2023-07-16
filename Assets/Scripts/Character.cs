@@ -20,6 +20,7 @@ public abstract class Character : MonoBehaviour
   private static readonly int Running = Animator.StringToHash("IsRunning");
   private static readonly int Jumping = Animator.StringToHash("IsJumping");
   private static readonly int Falling = Animator.StringToHash("IsFalling");
+  private static readonly int Crouching = Animator.StringToHash("IsCrouching");
   
   protected virtual void Awake()
   {
@@ -49,22 +50,28 @@ public abstract class Character : MonoBehaviour
     return rb.velocity.y < -0.1f;
   }
 
-  /// Sets the passed `IsRunning()` parameter in the Animator tab
+  /// Sets the passed `IsRunning` parameter in the Animator tab
   protected void SetRunAnimationParam(bool value)
   {
     this.anim.SetBool(Running, value);
   }
 
-  /// Sets the passed `IsJumping()` parameter in the Animator tab
+  /// Sets the passed `IsJumping` parameter in the Animator tab
   protected void SetJumpAnimationParam(bool value)
   {
     this.anim.SetBool(Jumping, value);
   }
 
-  /// Sets the passed `IsFalling()` parameter in the Animator tab
+  /// Sets the passed `IsFalling` parameter in the Animator tab
   protected void SetFallAnimationParam(bool value)
   {
     this.anim.SetBool(Falling, value);
+  }
+  
+  /// Sets the passed `IsCrouching` parameter in the Animator tab
+  protected void SetCrouchingAnimationParam(bool value)
+  {
+    this.anim.SetBool(Crouching, value);
   }
   
   /// Called when this object collides with something

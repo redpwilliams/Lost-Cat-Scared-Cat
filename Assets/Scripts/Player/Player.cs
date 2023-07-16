@@ -19,7 +19,7 @@ public class Player : Character
   private float legacyGravityScale;
   
   /// BackgroundManager for access to scroll velocity
-  [SerializeField] private BackgroundManager bgm;
+  [SerializeField] private BackgroundManager bgm; // FIXME - Should use Singleton
   
   private new Transform transform;
   private SpriteRenderer sr;

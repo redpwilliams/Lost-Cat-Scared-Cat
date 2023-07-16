@@ -1,8 +1,23 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
 public class RedFox : Fox
 {
-
+  protected override void HandleMovement()
+  {
+    // Keep velocity
+    this.rb.velocity = new Vector2(this.RunSpeed, this.rb.velocity.y);
+  }
+  
   protected override void Attack()
   {
-    this.hasAttacked = true;
+    this.HasAttacked = true;
+  }
+
+  protected override void SetAnimationParams()
+  {
+    SetRunAnimationParam(this.IsRunning());
+    // SetJumpAnimationParam(this.HasInputJump);
+    // SetFallAnimationParam(this.IsFalling());
   }
 }

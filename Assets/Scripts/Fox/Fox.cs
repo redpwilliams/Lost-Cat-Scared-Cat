@@ -1,4 +1,3 @@
-using System;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -6,13 +5,14 @@ public abstract class Fox : Character
 {
   /// Default Fox velocity
   [SerializeField] private float runSpeed = -3f;
+  protected float RunSpeed => runSpeed;
 
   /// Fox destruction point
   private readonly float deadZone = -4.5f;
 
   /// True if the Fox has initiated its `Attack()` method
-  protected bool hasAttacked = false;
-
+  // protected bool hasAttacked = false;
+  protected bool HasAttacked { get; set; }
   /// The amount of space between the Fox and Player to initiate Fox attack
   private readonly float spaceBeforeAttack = 1.5f;
   // REVIEW - I could change this into an array to accommodate for sitting foxes
@@ -27,7 +27,7 @@ public abstract class Fox : Character
     rbTransform.localScale = localScale;
   }
 
-  protected void Update()
+  protected virtual void Update()
   {
     // Destroy on off-screen
     if (IsOffscreen(transform.position.x, deadZone)) 
@@ -37,24 +37,23 @@ public abstract class Fox : Character
     }
 
     // Update animation
-    SetRunAnimationParam(this.IsRunning());
-    SetJumpAnimationParam(this.HasInputJump);
-    SetFallAnimationParam(this.IsFalling());
+    SetAnimationParams();
   }
 
   protected void FixedUpdate()
   {
-    // Keep velocity
-    this.rb.velocity = new Vector2(this.runSpeed, this.rb.velocity.y);
+    HandleMovement();
     
     // Distance between Fox and Player's position && isRunning
     float distanceFromPlayer = Mathf.Abs(Player.PlayerXPos - transform.position.x);
-    if (hasAttacked || (!IsInPosition(distanceFromPlayer, this.spaceBeforeAttack)) 
+    if (HasAttacked || (!IsInPosition(distanceFromPlayer, this.spaceBeforeAttack)) 
         ) return;
     
     Attack();
   }
 
+  protected abstract void HandleMovement();
+  
   /// A Fox's attack sequence
   protected abstract void Attack();
 
@@ -69,18 +68,16 @@ public abstract class Fox : Character
   {
     return distance < spacing;
   }
-
-  private void HandleAttackPosition()
-  {
-    throw new NotImplementedException();
-  }
   
-  [UsedImplicitly] private void HandleAttackAction(float jumpForce)
+  /// Applies the jump force to the RigidBody2D, used as an Animation Event
+  [UsedImplicitly] private void HandleJumpAnimationEvent(float jumpForce)
   {
     // Used in White Fox animation event at start of Jump clip
-    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // TODO - Export 3f to variable
+    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
     IsVisiblyJumping = true;
     HasInputJump = false;
   }
+
+  protected abstract void SetAnimationParams();
 
 }
