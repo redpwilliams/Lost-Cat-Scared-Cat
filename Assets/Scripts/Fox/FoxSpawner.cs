@@ -14,6 +14,8 @@ public class FoxSpawner : MonoBehaviour
   [Header("Fox Prefabs")]
   [SerializeField] private GameObject redFox;
   [SerializeField] private GameObject whiteFox;
+  [SerializeField] private GameObject brownFox;
+  
   private GameObject[] foxPrefabs;
 
   [SerializeField] private float skulkSpawnInterval = 5f;
@@ -27,7 +29,7 @@ public class FoxSpawner : MonoBehaviour
     this.trans = GetComponent<Transform>();
     this.trans.localPosition = new Vector3(this.startX, this.startY, this.trans.position.z);
 
-    foxPrefabs = new[] { redFox, whiteFox };
+    foxPrefabs = new[] { redFox, whiteFox, this.brownFox };
 
     StartCoroutine(SpawnFoxes());
   }

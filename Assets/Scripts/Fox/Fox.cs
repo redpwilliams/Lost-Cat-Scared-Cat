@@ -1,3 +1,5 @@
+using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public abstract class Fox : Character
@@ -66,6 +68,19 @@ public abstract class Fox : Character
   private static bool IsInPosition(float distance, float spacing)
   {
     return distance < spacing;
+  }
+
+  private void HandleAttackPosition()
+  {
+    throw new NotImplementedException();
+  }
+  
+  [UsedImplicitly] private void HandleAttackAction(float jumpForce)
+  {
+    // Used in White Fox animation event at start of Jump clip
+    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // TODO - Export 3f to variable
+    IsVisiblyJumping = true;
+    HasInputJump = false;
   }
 
 }
