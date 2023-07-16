@@ -1205,8 +1205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcad0b26e8ad5541bd8c85a41fccf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redFox: {fileID: 5645074907809119955, guid: b79d8ed02967934498cc1bf803e0c2f6, type: 3}
-  whiteFox: {fileID: 5645074907809119955, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
+  foxPrefabs:
+  - {fileID: 5645074907809119955, guid: b79d8ed02967934498cc1bf803e0c2f6, type: 3}
+  - {fileID: 5645074907809119955, guid: 7266324afcd72e34fb56bca0f4e2758b, type: 3}
   skulkSpawnInterval: 3
   foxSpawnInterval: 1
   shouldSpawn: 1
