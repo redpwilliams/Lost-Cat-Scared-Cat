@@ -1,8 +1,11 @@
+using UnityEngine;
+
 public class WhiteFox : Fox
 {
   protected override void HandleMovement()
   {
-    throw new System.NotImplementedException();
+    // Keep velocity
+    this.rb.velocity = new Vector2(this.RunSpeed, this.rb.velocity.y);
   }
 
   protected override void Attack()
