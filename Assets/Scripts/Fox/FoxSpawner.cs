@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +34,7 @@ public class FoxSpawner : MonoBehaviour
       yield return new WaitForSeconds(this.skulkSpawnInterval);
       
       // Create skulk
-      Skulk skulk = new Skulk(this.foxPrefabs);
+      Skulk skulk = new Skulk(4, this.foxPrefabs);
       IEnumerable<GameObject> foxes = skulk.GetSkulk();
 
       // Spawn each Fox in the skulk
@@ -46,23 +45,21 @@ public class FoxSpawner : MonoBehaviour
       }
     }
   }
-
 }
 
 
 public class Skulk
 {
   private static readonly int MaxSize = 5;
+  private static readonly int MinSize = 3;
+  
   private readonly GameObject[] skulk;
   private readonly GameObject[] foxPrefabs;
 
-  public Skulk(GameObject[] foxPrefabs) : this((Range(1, MaxSize)), foxPrefabs) { }
+  public Skulk(GameObject[] foxPrefabs) : this((Range(MinSize, MaxSize)), foxPrefabs) { }
 
   public Skulk(int size, GameObject[] foxPrefabs)
   {
-    // Set size
-    if (size > MaxSize) 
-      throw new ArgumentException($"Size {size} given is not within maximum {MaxSize}");
     
     // Include Fox prefabs
     this.foxPrefabs = foxPrefabs;
