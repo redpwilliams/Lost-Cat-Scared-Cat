@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gray_Fox
+  m_Controller: {fileID: 9100000, guid: dc7603b530869b043b84d229b53b2f8b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: b21fe8b174147f442b01a2aa21862ce0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 267a1e996bbc71d40900ec43a587e106, type: 2}
