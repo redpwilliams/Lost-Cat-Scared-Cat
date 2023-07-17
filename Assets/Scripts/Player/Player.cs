@@ -18,25 +18,21 @@ public class Player : Character
   /// "Normal" gravity when not jumping
   private float legacyGravityScale;
   
-  /// BackgroundManager for access to scroll velocity
-  [SerializeField] private BackgroundManager bgm; // FIXME - Should use Singleton
-  
-  private new Transform transform;
   private SpriteRenderer sr;
 
   protected override void Awake()
   {
     base.Awake();
     sr = GetComponent<SpriteRenderer>();
-    transform = GetComponent<Transform>();
     legacyGravityScale = this.rb.gravityScale;
   }
 
   protected void Start()
   {
     // Put Player on specific location on screen
-    Vector3 position = this.transform.position;
-    this.transform.position = new Vector3(PlayerXPos, position.y, position.z);
+    Vector3 position = transform.position;
+    Vector3 newPosition = new Vector3(PlayerXPos, position.y, position.z);
+    gameObject.transform.position = newPosition;
   }
 
   protected void Update()
@@ -48,16 +44,8 @@ public class Player : Character
     
     // Return if Player is in any motion
     if (IsRunning() || !this.IsGrounded || this.rb.velocity.x > 0.1f) return;
-    
-    // TODO - Reference specific background instead of direct parallax coefficient
-    float bgCurrentSpeed = this.bgm.GetScrollVelocity() * 1.1f;
-    
-    // Set new position using Transform component (avoids material friction)
-    Vector3 currentPosition = transform.position;
-    Vector3 newPosition =
-      new Vector3(currentPosition.x - bgCurrentSpeed * Time.deltaTime,
-        currentPosition.y, currentPosition.z);
-    transform.position = newPosition;
+
+    SetSpeedAsIdle();
   }
 
   protected void FixedUpdate()

@@ -6,6 +6,7 @@ public abstract class Character : MonoBehaviour
 {
   protected Rigidbody2D rb;
   private Animator anim;
+  private new Transform transform;
 
   protected bool IsGrounded { get; private set; }
 
@@ -27,7 +28,8 @@ public abstract class Character : MonoBehaviour
   {
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
-    
+    transform = GetComponent<Transform>();
+
     this.IsGrounded = true;
     this.HasInputJump = false;
     this.IsVisiblyJumping = false;
@@ -45,10 +47,21 @@ public abstract class Character : MonoBehaviour
     return rb.velocity.y > 0.01f;
   }
 
-  ///  If GameObject is falling. Is independent from animation
+  /// If GameObject is falling. Is independent from animation
   protected bool IsFalling()
   {
     return rb.velocity.y < -0.1f;
+  }
+
+  /// Sets GameObject's speed as idle aligned with the parallax background
+  protected void SetSpeedAsIdle()
+  {
+    float idleSpeed = BackgroundManager.bgm.GetScrollVelocity() * 1.1f;
+
+    Vector3 currentPosition = transform.position;
+    this.transform.position = new Vector3(
+      currentPosition.x - idleSpeed * Time.deltaTime, currentPosition.y,
+      currentPosition.z);
   }
 
   /// Sets the passed `IsRunning` parameter in the Animator tab

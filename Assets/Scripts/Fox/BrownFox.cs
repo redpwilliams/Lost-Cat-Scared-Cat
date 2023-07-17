@@ -3,13 +3,6 @@ using UnityEngine;
 
 public class BrownFox : Fox
 {
-    private new Transform transform;
-
-    protected override void Awake()
-    {
-       base.Awake();
-       this.transform = GetComponent<Transform>();
-    }
     
     protected override void Update()
     {
@@ -19,11 +12,7 @@ public class BrownFox : Fox
         if (IsVisiblyJumping) return;
 
         // Else, move when idle   
-        float idleSpeed = BackgroundManager.bgm.GetScrollVelocity() * 1.1f; // FIXME - Get 1.1f dynamically
-        // ^ Singleton?
-        Vector3 currentPosition = transform.position;
-        this.transform.position = new Vector3(currentPosition.x - idleSpeed * Time.deltaTime,
-                currentPosition.y, currentPosition.z);
+        SetSpeedAsIdle();
     }
     
     protected override void HandleMovement()

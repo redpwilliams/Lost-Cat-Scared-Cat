@@ -18,12 +18,11 @@ public class GrayFox : Fox
     this.HasAttacked = true;
     this.hasInputDash = true;
   }
-  
+
   /// Applies the dash force to the RigidBody2D, used as an Animation Event
   [UsedImplicitly] private void HandleDashStartAnimationEvent(float dashForce)
   {
     // Used in White Fox animation event at start of Jump clip
-    // FIXME - HandleMovement() is what kills this, consider adding parameter that turns on/off line 12
     rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse); 
   }
 
