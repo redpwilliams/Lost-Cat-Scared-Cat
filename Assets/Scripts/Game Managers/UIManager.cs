@@ -10,7 +10,7 @@ public sealed class UIManager : MonoBehaviour
   private bool gameIsPaused;
 
   /// Mileage / Number of steps / Distance Player has traveled
-  private int mileage;
+  private float mileage;
 
   [Header("Mileage Props")]
   [SerializeField] private Text mileageText;
@@ -47,8 +47,7 @@ public sealed class UIManager : MonoBehaviour
 
   private void Update()
   {
-    mileage +=
-      (int)(bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier);
+    mileage += bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
     SetMileageText();
 
     // Handle Pause
