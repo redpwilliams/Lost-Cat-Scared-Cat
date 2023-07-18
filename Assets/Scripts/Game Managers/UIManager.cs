@@ -14,7 +14,8 @@ public sealed class UIManager : MonoBehaviour
 
   [Header("Mileage Props")]
   [SerializeField] private Text mileageText;
-  [SerializeField] private float stepsMultiplier;
+
+  [SerializeField] private float stepsMultiplier = 3f;
 
   [Header("Pause Menu Props")]
   [SerializeField] private GameObject pauseMenu;
@@ -65,7 +66,6 @@ public sealed class UIManager : MonoBehaviour
   /// Customizable in GameObject Component
   private void InitMileage()
   {
-    stepsMultiplier = 3.0f;
     mileage = 0;
     mileageText = mileageText.GetComponent<Text>();
   }
