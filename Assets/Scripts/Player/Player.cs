@@ -5,6 +5,9 @@ public class Player : Character
   /// Initial starting point of player
   internal const float PlayerXPos = 0f;
 
+  /// Number of lives the Player has
+  internal const int NumLives = 9;
+
   [Header("Movement Parameters")]
   [SerializeField] private float jumpForce; 
   [SerializeField] private float topSpeed;

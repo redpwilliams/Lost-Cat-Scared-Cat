@@ -14,18 +14,19 @@ public sealed class UIManager : MonoBehaviour
 
   [Header("Mileage Props")]
   [SerializeField] private Text mileageText;
-
   [SerializeField] private float stepsMultiplier = 3f;
 
-  [Header("Pause Menu Props")]
+  /// Pause Menu GameObject
   [SerializeField] private GameObject pauseMenu;
+
+  /// Heart GameObject
+  [SerializeField] private GameObject heart;
+
+  private GameObject[] hearts;
   
   /// BackgroundManager Instance,
   /// Used for scroll velocity
   private BackgroundManager bgm;
-
-  /// UIManager RectTransform component
-  private RectTransform rt;
 
   private void Awake()
   {
@@ -37,13 +38,14 @@ public sealed class UIManager : MonoBehaviour
     
     ui = this;
     bgm = BackgroundManager.bgm;
-    rt = GetComponent<RectTransform>();
+    hearts = new GameObject[Player.NumLives];
   }
 
   private void Start()
   {
     InitMileage();
     InitPauseMenu();
+    InitHearts(Player.NumLives);
   }
 
   private void Update()
@@ -78,7 +80,27 @@ public sealed class UIManager : MonoBehaviour
     pauseMenu.SetActive(false);
   }
 
-  
+  /// Sets the number of hearts based on the Player class
+  private void InitHearts(int numHearts)
+  {
+    hearts[0] = this.heart;
+    Vector3 heartPos = this.heart.GetComponent<RectTransform>().position;
+    
+    for (int i = 1; i < numHearts; i++)
+    {
+      // Create new game object
+      GameObject heartClone = Instantiate(heart, transform);
+      heartClone.name = $"Heart ({i + 1})";
+
+      // Set its position
+      Vector3 clonePos = new Vector3(heartPos.x - 0.075f * i, heartPos.y, heartPos.z);
+      heartClone.GetComponent<RectTransform>().position = clonePos;
+      
+      // Add it to the list
+      hearts[i] = heartClone;
+    }
+  }
+
   /// Defines what the PauseKey is
   private static bool PauseKeyDown() { return Input.GetKeyDown(KeyCode.Escape); }
 
