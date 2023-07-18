@@ -21,8 +21,8 @@ public sealed class UIManager : MonoBehaviour
 
   /// Heart GameObject
   [SerializeField] private GameObject heart;
-
   private GameObject[] hearts;
+  private int numHeartsShown;
   
   /// BackgroundManager Instance,
   /// Used for scroll velocity
@@ -46,6 +46,7 @@ public sealed class UIManager : MonoBehaviour
     InitMileage();
     InitPauseMenu();
     InitHearts(Player.NumLives);
+    EventManager.events.FoxHitsPlayer += LoseHeart;
   }
 
   private void Update()
@@ -99,6 +100,8 @@ public sealed class UIManager : MonoBehaviour
       // Add it to the list
       hearts[i] = heartClone;
     }
+
+    this.numHeartsShown = numHearts;
   }
 
   /// Defines what the PauseKey is
@@ -120,5 +123,19 @@ public sealed class UIManager : MonoBehaviour
     pauseMenu.SetActive(true);
     Time.timeScale = 0f;
     this.gameIsPaused = true;
+  }
+
+  private void LoseHeart()
+  {
+    if (this.numHeartsShown <= 1)
+    {
+      // Handle game over logic
+      Debug.Log("Lost last heart, game over");
+      return;
+    }
+
+    // Destroy top-most heart
+    Destroy(this.hearts[this.numHeartsShown - 1]);
+    this.numHeartsShown--;
   }
 }
