@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6643924557101006439}
   m_Layer: 7
   m_Name: Red Fox
-  m_TagString: Untagged
+  m_TagString: Fox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -143759553
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: -850073654, guid: 6a541d2224303a544ab645ff4ee1544f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

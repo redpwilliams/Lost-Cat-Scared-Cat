@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : Character
@@ -17,6 +18,9 @@ public class Player : Character
   /// How much to change the gravity when Player is falling
   [Range(1, 5)]
   [SerializeField] private float fallGravityMultiplier;
+
+  [SerializeField] private int flashCount = 5;
+  [SerializeField] private float flickDuration = 0.1f;
   
   /// "Normal" gravity when not jumping
   private float legacyGravityScale;
@@ -38,7 +42,11 @@ public class Player : Character
     gameObject.transform.position = newPosition;
     
     // Subscribe to FoxHitsPlayer event
-    EventManager.events.FoxHitsPlayer += () => Debug.Log("I've been hit");
+    EventManager.events.FoxHitsPlayer += () =>
+    {
+      Debug.Log("I've been hit");
+      StartCoroutine(FlashEffect());
+    };
   }
 
   protected void Update()
@@ -126,5 +134,20 @@ public class Player : Character
       1 => false,
       _ => this.sr.flipX
     };
+  }
+
+  private IEnumerator FlashEffect()
+  {
+    for (int i = 0; i < flashCount; i++)
+    {
+      // Make the sprite transparent
+      sr.color = new Color(1f, 1f, 1f, 0.5f);
+      yield return new WaitForSeconds(this.flickDuration);
+      
+            
+      // Make the sprite opaque
+      sr.color = new Color(1f, 1f, 1f, 1f);
+      yield return new WaitForSeconds(this.flickDuration);
+    }
   }
 }
