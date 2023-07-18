@@ -10,22 +10,15 @@ public sealed class UIManager : MonoBehaviour
   private bool gameIsPaused;
 
   /// Mileage / Number of steps / Distance Player has traveled
-  private float mileage;
+  private int mileage;
 
   [Header("Mileage Props")]
   [SerializeField] private Text mileageText;
-  [SerializeField] private float stepsPadding;
   [SerializeField] private float stepsMultiplier;
 
   [Header("Pause Menu Props")]
   [SerializeField] private GameObject pauseMenu;
   
-  [Range(0.01f, 1f)]
-  [SerializeField] private float pauseMenuWidthFactor = 1f;
-  
-  [Range(0.01f, 1f)]
-  [SerializeField] private float pauseMenuHeightFactor = 1f;
-
   /// BackgroundManager Instance,
   /// Used for scroll velocity
   private BackgroundManager bgm;
@@ -54,7 +47,8 @@ public sealed class UIManager : MonoBehaviour
 
   private void Update()
   {
-    mileage += bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
+    mileage +=
+      (int)(bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier);
     SetMileageText();
 
     // Handle Pause
@@ -72,26 +66,15 @@ public sealed class UIManager : MonoBehaviour
   /// Customizable in GameObject Component
   private void InitMileage()
   {
-    stepsPadding = 50f;
     stepsMultiplier = 3.0f;
-    mileage = 0f;
+    mileage = 0;
     mileageText = mileageText.GetComponent<Text>();
-    RectTransform mileageRT = mileageText.GetComponent<RectTransform>();
-    mileageRT.anchoredPosition = new Vector2(-stepsPadding, mileageRT.anchoredPosition.y - mileageRT.rect.height);
   }
 
   /// Sets the Pause Menu size and location.
   /// Inits to covering the full screen 
   private void InitPauseMenu()
   {
-    Rect rect = this.rt.rect;
-    // Get Width and Height . . . 
-    float width = rect.width * pauseMenuWidthFactor;
-    float height = rect.height * pauseMenuHeightFactor;
-
-    // . . . And Set
-    this.rt.sizeDelta = new Vector2(width, height);
-
     // Disable PauseMenu by default
     pauseMenu.SetActive(false);
   }
