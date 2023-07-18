@@ -33,6 +33,9 @@ public class Player : Character
     Vector3 position = transform.position;
     Vector3 newPosition = new Vector3(PlayerXPos, position.y, position.z);
     gameObject.transform.position = newPosition;
+    
+    // Subscribe to FoxHitsPlayer event
+    EventManager.events.FoxHitsPlayer += () => Debug.Log("I've been hit");
   }
 
   protected void Update()
