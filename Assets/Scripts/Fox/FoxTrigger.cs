@@ -1,4 +1,5 @@
 using UnityEngine;
+using Character = UnityEngine.TextCore.Text.Character;
 
 public class FoxTrigger : MonoBehaviour
 {

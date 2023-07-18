@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class UIManager : MonoBehaviour
+public sealed class UIManager : MonoBehaviour, IFlashable
 {
   /// Singleton Instance
   public static UIManager ui;
@@ -137,5 +138,10 @@ public sealed class UIManager : MonoBehaviour
     // Destroy top-most heart
     Destroy(this.hearts[this.numHeartsShown - 1]);
     this.numHeartsShown--;
+  }
+
+  public IEnumerator FlashEffect()
+  {
+    throw new System.NotImplementedException();
   }
 }

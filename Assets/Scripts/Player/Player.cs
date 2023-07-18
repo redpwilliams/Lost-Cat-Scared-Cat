@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : Character
+public class Player : Character, IFlashable
 {
   /// Initial starting point of player
   internal const float PlayerXPos = 0f;
@@ -9,22 +9,24 @@ public class Player : Character
   /// Number of lives the Player has
   internal const int NumLives = 9;
 
-  [Header("Movement Parameters")]
-  [SerializeField] private float jumpForce; 
+  [Header("Movement Parameters")] [SerializeField]
+  private float jumpForce;
+
   [SerializeField] private float topSpeed;
-  [SerializeField] private float acceleration = 4f; 
-  [SerializeField] private float deceleration = 10f; // Bigger value = harder stop
+  [SerializeField] private float acceleration = 4f;
+
+  [SerializeField]
+  private float deceleration = 10f; // Bigger value = harder stop
 
   /// How much to change the gravity when Player is falling
-  [Range(1, 5)]
-  [SerializeField] private float fallGravityMultiplier;
+  [Range(1, 5)] [SerializeField] private float fallGravityMultiplier;
 
   [SerializeField] private int flashCount = 5;
   [SerializeField] private float flickDuration = 0.1f;
-  
+
   /// "Normal" gravity when not jumping
   private float legacyGravityScale;
-  
+
   private SpriteRenderer sr;
 
   protected override void Awake()
@@ -40,7 +42,7 @@ public class Player : Character
     Vector3 position = transform.position;
     Vector3 newPosition = new Vector3(PlayerXPos, position.y, position.z);
     gameObject.transform.position = newPosition;
-    
+
     // Subscribe to FoxHitsPlayer event
     EventManager.events.FoxHitsPlayer += () =>
     {
@@ -55,7 +57,7 @@ public class Player : Character
     SetRunAnimationParam(IsVisiblyRunning);
     SetJumpAnimationParam(IsVisiblyJumping);
     SetFallAnimationParam(IsFalling());
-    
+
     // Return if Player is in any motion
     if (IsRunning() || !this.IsGrounded || this.rb.velocity.x > 0.1f) return;
 
@@ -67,23 +69,28 @@ public class Player : Character
     // Handle Run input
     int playerInputDirection = GetInputDirection();
     IsVisiblyRunning = playerInputDirection != 0;
-    HandleRunInput(playerInputDirection); 
+    HandleRunInput(playerInputDirection);
 
     if (IsJumping())
     {
       // Handle Jump input
       HandleJumpInput();
       IsVisiblyJumping = true;
-    } else { IsVisiblyJumping = false; }
+    }
+    else
+    {
+      IsVisiblyJumping = false;
+    }
 
     // Conditionally Handle Fall
     if (IsFalling()) HandleFall();
     else ResetGravity();
   }
-  
+
   protected override bool IsRunning()
   {
-    return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
+    return (Input.GetKey(KeyCode.RightArrow) ||
+            Input.GetKey(KeyCode.LeftArrow));
   }
 
   private void HandleRunInput(int inputDirection)
@@ -91,8 +98,11 @@ public class Player : Character
     // Force-based movement
     float targetVelocity = inputDirection * topSpeed;
     float speedDiff = targetVelocity - rb.velocity.x;
-    float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f) ? acceleration : deceleration;
-    float movement = Mathf.Abs(speedDiff) * accelerationRate * Mathf.Sign(speedDiff);
+    float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f)
+      ? acceleration
+      : deceleration;
+    float movement = Mathf.Abs(speedDiff) * accelerationRate *
+                     Mathf.Sign(speedDiff);
     rb.AddForce(movement * Vector2.right);
 
     // Switch direction
@@ -111,7 +121,7 @@ public class Player : Character
 
   private void HandleFall()
   {
-      rb.gravityScale = legacyGravityScale * fallGravityMultiplier;
+    rb.gravityScale = legacyGravityScale * fallGravityMultiplier;
   }
 
   private void ResetGravity()
@@ -136,16 +146,16 @@ public class Player : Character
     };
   }
 
-  private IEnumerator FlashEffect()
+  public IEnumerator FlashEffect()
   {
     for (int i = 0; i < flashCount; i++)
     {
       // Make the sprite transparent
       sr.color = new Color(1f, 1f, 1f, 0.5f);
       yield return new WaitForSeconds(this.flickDuration);
-      
             
       // Make the sprite opaque
+      // ReSharper disable once Unity.InefficientPropertyAccess
       sr.color = new Color(1f, 1f, 1f, 1f);
       yield return new WaitForSeconds(this.flickDuration);
     }
