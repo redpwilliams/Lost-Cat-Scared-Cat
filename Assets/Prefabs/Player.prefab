@@ -53,7 +53,6 @@ MonoBehaviour:
   acceleration: 4
   deceleration: 10
   fallGravityMultiplier: 2.5
-  bgm: {fileID: 0}
 --- !u!50 &7834204335144625142
 Rigidbody2D:
   serializedVersion: 4

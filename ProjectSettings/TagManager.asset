@@ -41,6 +41,18 @@ TagManager:
   - name: Background
     uniqueID: 930599511
     locked: 0
+  - name: Red Fox
+    uniqueID: 4151207743
+    locked: 0
+  - name: Gray Fox
+    uniqueID: 3415116205
+    locked: 0
+  - name: Brown Fox
+    uniqueID: 2748715553
+    locked: 0
+  - name: Pause Menu
+    uniqueID: 1675048717
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
