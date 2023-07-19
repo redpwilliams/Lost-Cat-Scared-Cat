@@ -9,8 +9,8 @@ public class Player : Character, IFlashable
   /// Number of lives the Player has
   internal const int NumLives = 9;
 
-  [Header("Movement Parameters")] [SerializeField]
-  private float jumpForce;
+  [Header("Movement Parameters")] 
+  [SerializeField] private float jumpForce;
 
   [SerializeField] private float topSpeed;
   [SerializeField] private float acceleration = 4f;
@@ -27,6 +27,7 @@ public class Player : Character, IFlashable
   /// "Normal" gravity when not jumping
   private float legacyGravityScale;
 
+  /// Player's SpriteRenderer component
   private SpriteRenderer sr;
 
   protected override void Awake()
@@ -83,16 +84,19 @@ public class Player : Character, IFlashable
     }
 
     // Conditionally Handle Fall
-    if (IsFalling()) HandleFall();
+    if (IsFalling()) IncreaseFallGravity();
     else ResetGravity();
   }
 
+  /// Returns if either the Right Arrow key or Left Arrow key are held
   protected override bool IsRunning()
   {
     return (Input.GetKey(KeyCode.RightArrow) ||
             Input.GetKey(KeyCode.LeftArrow));
   }
 
+  /// Handles the acceleration and sprite direction after
+  /// the player has input Run
   private void HandleRunInput(int inputDirection)
   {
     // Force-based movement
@@ -108,27 +112,34 @@ public class Player : Character, IFlashable
     // Switch direction
     HandleFlipSprite();
   }
-
+  
+  /// Returns if the space-bar is pressed and the Player is grounded
   protected override bool IsJumping()
   {
     return (Input.GetKey(KeyCode.Space) && this.IsGrounded);
   }
 
+  /// Adds an upward Impulse force to the RigidBody2D
   private void HandleJumpInput()
   {
     rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
   }
 
-  private void HandleFall()
+  /// Strengthens the RigidBody2D fall gravity by a factor of
+  /// `fallGravityMultiplier`
+  private void IncreaseFallGravity()
   {
     rb.gravityScale = legacyGravityScale * fallGravityMultiplier;
   }
 
+  /// Resets the RigidBody2D's gravity scale to its original value
   private void ResetGravity()
   {
     this.rb.gravityScale = this.legacyGravityScale;
   }
 
+
+  /// Determines the direction of input from the user.
   private static int GetInputDirection()
   {
     if (Input.GetKey(KeyCode.RightArrow)) return 1;
@@ -136,6 +147,7 @@ public class Player : Character, IFlashable
     return 0;
   }
 
+  /// Flips the Player's sprite depending on its direction
   private void HandleFlipSprite()
   {
     this.sr.flipX = GetInputDirection() switch
