@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7834204335144625138}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,6 +53,8 @@ MonoBehaviour:
   acceleration: 4
   deceleration: 10
   fallGravityMultiplier: 2.5
+  flashCount: 25
+  flickDuration: 0.1
 --- !u!50 &7834204335144625142
 Rigidbody2D:
   serializedVersion: 4

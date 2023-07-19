@@ -12,8 +12,8 @@ public sealed class UIManager : MonoBehaviour
     /// Mileage / Number of steps / Distance Player has traveled
     private float mileage;
 
-    [Header("Mileage Props")] [SerializeField]
-    private Text mileageText;
+    [Header("Mileage Props")] 
+    [SerializeField] private Text mileageText;
 
     [SerializeField] private float stepsMultiplier = 3f;
 
@@ -26,23 +26,18 @@ public sealed class UIManager : MonoBehaviour
     private GameObject[] hearts;
     private int numHeartsShown;
 
-    /// BackgroundManager Instance,
-    /// Used for scroll velocity
-    private BackgroundManager bgm;
-
     /// SpriteRenderer of the active/top-most heart
     private SpriteRenderer sr;
 
     private void Awake()
     {
-        if (bgm != null)
+        if (ui != null)
         {
             Destroy(ui);
             return;
         }
 
         ui = this;
-        bgm = BackgroundManager.bgm;
         hearts = new GameObject[Player.NumLives];
     }
 
@@ -51,12 +46,11 @@ public sealed class UIManager : MonoBehaviour
         InitMileage();
         InitPauseMenu();
         InitHearts(Player.NumLives);
-        EventManager.events.FoxHitsPlayer += LoseHeart;
     }
 
     private void Update()
     {
-        mileage += bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
+        mileage += BackgroundManager.bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
         SetMileageText();
 
         // Handle Pause
@@ -134,7 +128,7 @@ public sealed class UIManager : MonoBehaviour
         this.gameIsPaused = true;
     }
 
-    private void LoseHeart()
+    public void LoseHeart()
     {
         if (this.numHeartsShown == 0) return;
 
@@ -147,6 +141,7 @@ public sealed class UIManager : MonoBehaviour
         this.numHeartsShown--;
         this.hearts[this.numHeartsShown] = null;
 
+        // TODO - Handle GameOver
         if (this.numHeartsShown == 0) Debug.Log("Lost last heart, game over");
     }
 }
