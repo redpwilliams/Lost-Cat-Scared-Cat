@@ -1,8 +1,7 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class UIManager : MonoBehaviour, IFlashable
+public sealed class UIManager : MonoBehaviour
 {
   /// Singleton Instance
   public static UIManager ui;
@@ -51,7 +50,6 @@ public sealed class UIManager : MonoBehaviour, IFlashable
     InitPauseMenu();
     InitHearts(Player.NumLives);
     EventManager.events.FoxHitsPlayer += LoseHeart;
-    SetHeartSpriteRenderer();
   }
 
   private void Update()
@@ -139,41 +137,13 @@ public sealed class UIManager : MonoBehaviour, IFlashable
       return;
     }
 
-    // Flash Heart (also destroys)
-    StartCoroutine(FlashEffect());
-  }
+    // Get current heart game object and destroy
+    Heart currentHeart = this.hearts[this.numHeartsShown - 1].GetComponent<Heart>();
+    currentHeart.Destroy();
 
-  // ReSharper disable Unity.PerformanceAnalysis
-  public IEnumerator FlashEffect()
-  {
-    int flashCount = 3;
-    float flickDuration = 0.3f;
-    for (int i = 0; i < flashCount; i++)
-    {
-      // Make the sprite transparent
-      sr.color = new Color(1f, 1f, 1f, 0.5f);
-      yield return new WaitForSeconds(flickDuration);
-
-      // Make the sprite opaque
-      // ReSharper disable once Unity.InefficientPropertyAccess
-      sr.color = new Color(1f, 1f, 1f, 1f);
-      yield return new WaitForSeconds(flickDuration);
-    }
-
-    DestroyHeartGameObject();
-  }
-
-  private void DestroyHeartGameObject()
-  {
-    // Destroy top-most heart
-    Destroy(this.hearts[this.numHeartsShown - 1]);
+    // Update list
     this.numHeartsShown--;
-    SetHeartSpriteRenderer();
-  }
 
-  private void SetHeartSpriteRenderer()
-  {
-    sr = this.hearts[this.numHeartsShown - 1].GetComponent<SpriteRenderer>();
   }
 }
 
