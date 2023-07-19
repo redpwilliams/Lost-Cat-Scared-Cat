@@ -1,6 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary> Represents a heart game object in the game. </summary>
+/// <remarks>
+/// This class implements the IFlashable interface,
+/// which allows hearts to exhibit a flashing effect when needed.
+/// </remarks>
 public class Heart : MonoBehaviour, IFlashable
 {
     private SpriteRenderer sr;
@@ -27,13 +32,14 @@ public class Heart : MonoBehaviour, IFlashable
         }
     }
 
-
+    /// Applies the Flash effect, then destroys the GameObject
     private IEnumerator DestroySelf()
     {
         yield return FlashEffect();
         Destroy(this.gameObject);
     }
 
+    /// Animates and removes the Heart GameObject from the scene
     public void Destroy()
     {
         StartCoroutine(DestroySelf());
