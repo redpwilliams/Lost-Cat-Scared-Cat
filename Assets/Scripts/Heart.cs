@@ -9,6 +9,10 @@ using UnityEngine;
 public class Heart : MonoBehaviour, IFlashable
 {
     private SpriteRenderer sr;
+    
+    [Header("Heart Flash Parameters")]
+    [SerializeField] private int flashCount = 3;
+    [SerializeField] private float flickDuration = 0.3f;
 
     private void Awake()
     {
@@ -17,8 +21,6 @@ public class Heart : MonoBehaviour, IFlashable
 
     public IEnumerator FlashEffect()
     {
-        int flashCount = 3;
-        float flickDuration = 0.3f;
         for (int i = 0; i < flashCount; i++)
         {
             // Make the sprite transparent

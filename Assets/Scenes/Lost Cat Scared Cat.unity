@@ -1321,6 +1321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d90bb1dd921c944cbf86e27a9b9c86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashCount: 4
+  flickDuration: 0.1
 --- !u!1 &1915981025
 GameObject:
   m_ObjectHideFlags: 0
