@@ -36,6 +36,7 @@ public class Player : Character, IFlashable
     {
         EventManager.Events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
     }
+    
     private void OnDisable()
     {
         EventManager.Events.OnFoxHitsPlayer -= HandleFoxHitsPlayer;
