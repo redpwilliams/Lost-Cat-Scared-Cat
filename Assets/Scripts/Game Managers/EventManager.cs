@@ -9,20 +9,21 @@ using UnityEngine;
 /// <code>EventManager.events.EventAction += YouMethod</code><para />
 /// To dispatch an event, <code>EventManager.events.OnYourEvent()</code>
 /// </remarks>
-public class EventManager : MonoBehaviour
+public sealed class EventManager : MonoBehaviour
 {
     /// Singleton Instance
-    public static EventManager events;
+    public static EventManager Events { get; private set; }
 
     private void Awake()
     {
-        if (events != null)
+        if (Events != null)
         {
-            Destroy(events);
+            Destroy(Events);
             return;
         }
 
-        events = this;
+        Events = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     /// Fox hits player event

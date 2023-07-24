@@ -34,11 +34,11 @@ public class Player : Character, IFlashable
 
     private void OnEnable()
     {
-        EventManager.events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
+        EventManager.Events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
     }
     private void OnDisable()
     {
-        EventManager.events.OnFoxHitsPlayer -= HandleFoxHitsPlayer;
+        EventManager.Events.OnFoxHitsPlayer -= HandleFoxHitsPlayer;
     }
 
     protected override void Awake()
@@ -169,7 +169,7 @@ public class Player : Character, IFlashable
         if (this.isInvincible) return;
 
         isInvincible = true;
-        EventManager.events.PlayerInvincible();
+        EventManager.Events.PlayerInvincible();
         UIManager.ui.LoseHeart();
         Debug.Log("... but now I'm invincible so it does not matter");
         StartCoroutine(FlashEffect());
@@ -191,6 +191,6 @@ public class Player : Character, IFlashable
         }
 
         this.isInvincible = false;
-        EventManager.events.PlayerVulnerable();
+        EventManager.Events.PlayerVulnerable();
     }
 }

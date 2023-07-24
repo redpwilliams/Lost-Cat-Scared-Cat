@@ -7,20 +7,20 @@ public class FoxTrigger : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.events.OnPlayerInvincible += PlayerIsInvincible;
-        EventManager.events.OnPlayerVulnerable += PlayerIsVulnerable;
+        EventManager.Events.OnPlayerInvincible += PlayerIsInvincible;
+        EventManager.Events.OnPlayerVulnerable += PlayerIsVulnerable;
     }
 
     private void OnDestroy()
     {
-        EventManager.events.OnPlayerInvincible -= PlayerIsInvincible;
-        EventManager.events.OnPlayerVulnerable -= PlayerIsVulnerable;
+        EventManager.Events.OnPlayerInvincible -= PlayerIsInvincible;
+        EventManager.Events.OnPlayerVulnerable -= PlayerIsVulnerable;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (this.playerIsInvincible || !col.CompareTag("Player")) return;
-        EventManager.events.FoxHitsPlayer();
+        EventManager.Events.FoxHitsPlayer();
     }
 
     private void PlayerIsInvincible()
