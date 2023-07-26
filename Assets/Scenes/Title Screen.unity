@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cat 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625145, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.47058824
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
 --- !u!1 &152385275
@@ -493,6 +497,10 @@ PrefabInstance:
     - target: {fileID: 7834204335144625144, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
       propertyPath: m_Name
       value: Cat 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625145, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.47058824
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
@@ -864,6 +872,10 @@ PrefabInstance:
     - target: {fileID: 7834204335144625144, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
       propertyPath: m_Name
       value: Cat 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625145, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.47058824
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
@@ -2004,6 +2016,10 @@ PrefabInstance:
     - target: {fileID: 7834204335144625144, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
       propertyPath: m_Name
       value: Cat 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625145, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.47058824
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e2ec65af1c26194db0ec67ebe680640, type: 3}
