@@ -38,7 +38,7 @@ This project is licensed under the GNU General Public License v3.0. A copy of th
 Special thanks to
 
 - [SeethingSwarm](https://seethingswarm.itch.io/) for providing the adorable cat and fox assets used in this game. You can find more of their work on [itch.io](https://seethingswarm.itch.io/) and follow them on [Twitter](https://twitter.com/SeethingSwarm).
-- [Eder Muniz (edermunizz)](https://edermunizz.itch.io/) for their beautiful pixel art forest backgrounds. More of their work is found on [itch.io](https://edermunizz.itch.io/) and [Twitter](https://twitter.com/edermunizpixels)
+- [Eder Muniz (edermunizz)](https://edermunizz.itch.io/) for their beautiful pixel art forest backgrounds. More of their work is found on [itch.io](https://edermunizz.itch.io/) and [Twitter](https://twitter.com/edermunizpixels).
 
 ## Contact
 
