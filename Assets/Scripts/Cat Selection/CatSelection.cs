@@ -6,7 +6,7 @@ public class CatSelection : MonoBehaviour, IPointerClickHandler
 {
     private bool isSelected;
     [field: SerializeField]
-    public int Id { get; private set; }
+    public uint Id { get; private set; }
     private Animator anim;
     private SpriteRenderer sr;
     private Sprite defaultSprite;
@@ -37,7 +37,7 @@ public class CatSelection : MonoBehaviour, IPointerClickHandler
         if (Id == 1) EnableAnimation();
     }
 
-    private void HandleCatClicked(int i)
+    private void HandleCatClicked(uint i)
     {
         // If cat is selected
         if (i == Id)
