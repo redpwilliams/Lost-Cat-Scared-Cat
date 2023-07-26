@@ -1,8 +1,7 @@
-using System;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public sealed class ButtonManager : MonoBehaviour
+public sealed class TitleScreenManager : MonoBehaviour
 {
 
     [UsedImplicitly]
