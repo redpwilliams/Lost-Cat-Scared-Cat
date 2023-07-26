@@ -1,27 +1,18 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public sealed class TitleScreenManager : MonoBehaviour
 {
-
     [UsedImplicitly]
-    private void HandlePlay()
+    public void HandlePlay()
     {
-        
+        SceneManager.LoadScene("Scenes/Game");
     }
 
     [UsedImplicitly]
-    private void HandleOptions()
+    public void HandleQuit()
     {
-    }
-
-    [UsedImplicitly]
-    private void HandleQuit()
-    {
-    }
-
-    [UsedImplicitly]
-    private void HandleReturn()
-    {
+        Application.Quit();
     }
 }

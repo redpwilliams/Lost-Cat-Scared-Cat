@@ -1111,7 +1111,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1138850994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 670548208}
+        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
+        m_MethodName: HandlePlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1138850994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,7 +1621,7 @@ GameObject:
   - component: {fileID: 1639311651}
   - component: {fileID: 1639311650}
   m_Layer: 5
-  m_Name: Main Menu Button Layer
+  m_Name: Main Menu Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2265,9 +2277,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: HandlePause
+      - m_Target: {fileID: 670548208}
+        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
+        m_MethodName: HandleQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
