@@ -5,28 +5,66 @@ using UnityEngine.EventSystems;
 public class CatSelection : MonoBehaviour, IPointerClickHandler
 {
     private bool isSelected;
+    [field: SerializeField]
+    public int Id { get; private set; }
     private Animator anim;
-    
+    private SpriteRenderer sr;
+    private Sprite defaultSprite;
+
+    private void OnEnable()
+    {
+        EventManager.Events.OnCatSelect += HandleCatClicked;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Events.OnCatSelect -= HandleCatClicked;
+    }
+
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        this.anim = GetComponent<Animator>();
+        DisableAnimation();
+
+        this.sr = GetComponent<SpriteRenderer>();
+        this.defaultSprite = this.sr.sprite;
+        
     }
 
-    private void Update()
-    { 
-        // this.anim.speed = this.isSelected ? 1 : 0;
-    }
-
-    public void ToggleSelected()
+    private void Start()
     {
-        this.isSelected = !this.isSelected;
-        Debug.Log($"{gameObject.name} is selected: {this.isSelected}");
+        // TODO: Eventually, set starting cat through player preferences
+        if (Id == 1) EnableAnimation();
     }
-    
-    
+
+    private void HandleCatClicked(int i)
+    {
+        // If cat is selected
+        if (i == Id)
+        {
+            EnableAnimation();
+            return;
+        }
+        
+        // Else, stop animation and reset sprite
+        DisableAnimation();
+        this.sr.sprite = this.defaultSprite;
+    }
+
+    private void EnableAnimation()
+    {
+        this.anim.speed = 1;
+    }
+
+    private void DisableAnimation()
+    {
+        this.anim.speed = 0;
+    }
+
     [UsedImplicitly]
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        //Output to console the clicked GameObject's name and the following message. You can replace this with your own actions for when clicking the GameObject.
+        // Output to console the clicked GameObject's name and the following message. 
         Debug.Log(name + " Game Object Clicked!");
+        EventManager.Events.CatSelect(Id);
     }}
