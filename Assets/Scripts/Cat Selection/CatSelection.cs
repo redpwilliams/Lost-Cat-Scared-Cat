@@ -64,7 +64,5 @@ public class CatSelection : MonoBehaviour, IPointerClickHandler
     [UsedImplicitly]
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        // Output to console the clicked GameObject's name and the following message. 
-        Debug.Log(name + " Game Object Clicked!");
         EventManager.Events.CatSelect(Id);
     }}
