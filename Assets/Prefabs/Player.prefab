@@ -57,6 +57,12 @@ MonoBehaviour:
   fallGravityMultiplier: 2.5
   flashCount: 25
   flickDuration: 0.1
+  sprites:
+  - {fileID: 7108339969198208228, guid: c96c37a10ab4a7e49b82f5b9a9ad0fe6, type: 3}
+  - {fileID: 7108339969198208228, guid: 60cb8514587251240a4baaf4875356fb, type: 3}
+  - {fileID: 7108339969198208228, guid: 8e046688a98612541a71dd983bae5316, type: 3}
+  - {fileID: 7108339969198208228, guid: ddf9d9a3d1f3c4146aa6560ed20b4469, type: 3}
+  - {fileID: 7108339969198208228, guid: 42378ec77b36e5f45916fb8f80661d75, type: 3}
 --- !u!50 &7834204335144625142
 Rigidbody2D:
   serializedVersion: 4

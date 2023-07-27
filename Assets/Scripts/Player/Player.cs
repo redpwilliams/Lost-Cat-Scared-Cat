@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.U2D.Animation;
 
 public class Player : Character, IFlashable
 {
@@ -32,6 +35,19 @@ public class Player : Character, IFlashable
     /// Player's SpriteRenderer component
     private SpriteRenderer sr;
 
+    /// Cat skins
+    [SerializeField] 
+    private SpriteLibraryAsset[] sprites = new SpriteLibraryAsset[5];
+
+    private void OnValidate()
+    {
+        if (sprites.Length == 5) return;
+        
+        Debug.LogWarning("\"Sprites\" array must be of length 5");
+        Array.Resize(ref this.sprites, 5);
+
+    }
+    
     private void OnEnable()
     {
         EventManager.Events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
@@ -47,6 +63,10 @@ public class Player : Character, IFlashable
         base.Awake();
         sr = GetComponent<SpriteRenderer>();
         legacyGravityScale = this.rb.gravityScale;
+
+        SpriteLibrary sl = GetComponent<SpriteLibrary>();
+        Debug.Log(sl.spriteLibraryAsset.name);
+        sl.spriteLibraryAsset = sprites[SaveSystem.LoadPreferences().CatID - 1];
     }
 
     protected void Start()
