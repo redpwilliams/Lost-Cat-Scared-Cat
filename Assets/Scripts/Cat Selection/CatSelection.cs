@@ -28,13 +28,10 @@ public class CatSelection : MonoBehaviour, IPointerClickHandler
 
         this.sr = GetComponent<SpriteRenderer>();
         this.defaultSprite = this.sr.sprite;
-        
-    }
 
-    private void Start()
-    {
-        // TODO: Eventually, set starting cat through player preferences
-        if (Id == 1) EnableAnimation();
+        var preferences = SaveSystem.LoadPreferences();
+        if (Id == preferences.CatID) EnableAnimation();
+
     }
 
     private void HandleCatClicked(uint i)

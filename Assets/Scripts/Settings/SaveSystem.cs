@@ -21,14 +21,14 @@ public static class SaveSystem
     // TODO - Load preferences on Game Start.
     // If returns null, then save preferences with default data ?
     // Use that to run tutorial
-    public static Preferences? LoadPreferences()
+    public static Preferences LoadPreferences()
     {
         try
         {
             if (!File.Exists(PrefsPath))
             {
                Debug.LogError($"File {PrefsPath} does not exist");
-               return null;
+               return new Preferences(true, 0);
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -41,6 +41,7 @@ public static class SaveSystem
         }
         catch (Exception e)
         {
+            // Problem fetching file
             Console.WriteLine(e);
             Debug.LogError($"{e}\nUsing default Preferences");
             return new Preferences();
