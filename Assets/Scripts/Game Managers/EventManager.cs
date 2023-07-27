@@ -54,14 +54,15 @@ public sealed class EventManager : MonoBehaviour
     /// Options screen cat is selected
     public event Action<uint> OnCatSelect;
 
-    public uint CurrentCatID { get; private set; } = 1; // TODO - Also use user preferences
+    private uint currentCatID;
 
     public void CatSelect(uint index)
     {
         // Ignore if user selects the already active Cat selection
-        if (index == this.CurrentCatID) return;
+        if (index == this.currentCatID) return;
         OnCatSelect?.Invoke(index);
-        this.CurrentCatID = index;
+        this.currentCatID = index;
+        SaveSystem.SavePreferences(new Preferences(false, index));
     }
 
 }
