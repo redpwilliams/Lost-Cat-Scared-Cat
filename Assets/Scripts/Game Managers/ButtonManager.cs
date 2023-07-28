@@ -8,16 +8,19 @@ using UnityEngine.SceneManagement;
 /// For example, buttons that call `GameObject.SetActive` can be handled
 /// natively in the editor.
 /// </remarks>
-public sealed class ButtonManager : Singleton<ButtonManager>
+[UsedImplicitly]
+public sealed class ButtonManager : MonoBehaviour
 {
     /// Handles the Title Screen's Play button by starting the Game scene
-    [UsedImplicitly] public void HandlePlay()
+    [UsedImplicitly]
+    public void HandlePlay()
     {
         SceneManager.LoadScene("Scenes/Game");
     }
 
     /// Handles the Title Screen's Quit button by exiting the application
-    [UsedImplicitly] public void HandleQuit()
+    [UsedImplicitly]
+    public void HandleQuit()
     {
         Application.Quit();
     }
@@ -26,6 +29,7 @@ public sealed class ButtonManager : Singleton<ButtonManager>
     [UsedImplicitly]
     public void HandleReturnToTitle()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Scenes/Title Screen");
     }
 }
