@@ -24,7 +24,6 @@ public sealed class EventManager : MonoBehaviour
 
         Events = this;
         DontDestroyOnLoad(gameObject);
-        Debug.Log("Events created");
     }
 
     /// Fox hits player event

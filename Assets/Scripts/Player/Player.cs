@@ -49,7 +49,6 @@ public class Player : Character, IFlashable
     
     private void OnEnable()
     {
-        Debug.Log("OnEnable started");
         EventManager.Events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
     }
     
@@ -65,7 +64,6 @@ public class Player : Character, IFlashable
         legacyGravityScale = this.rb.gravityScale;
 
         SpriteLibrary sl = GetComponent<SpriteLibrary>();
-        Debug.Log(sl.spriteLibraryAsset.name);
         sl.spriteLibraryAsset = sprites[SaveSystem.LoadPreferences().CatID - 1];
     }
 
@@ -145,8 +143,9 @@ public class Player : Character, IFlashable
         return (Input.GetKey(KeyCode.Space) && this.IsGrounded);
     }
 
-    protected override void HandleJumpAnimationEvent(float jumpForce)
+    protected override void HandleJumpAnimationEvent(float force)
     {
+        // TODO - Player jump on specific keyframe
         throw new NotImplementedException();
     }
 
@@ -156,8 +155,7 @@ public class Player : Character, IFlashable
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    /// Strengthens the RigidBody2D fall gravity by a factor of
-    /// `fallGravityMultiplier`
+    /// Strengthens the RigidBody2D fall gravity by a factor of `fallGravityMultiplier`
     private void IncreaseFallGravity()
     {
         rb.gravityScale = legacyGravityScale * fallGravityMultiplier;
@@ -191,13 +189,12 @@ public class Player : Character, IFlashable
 
     private void HandleFoxHitsPlayer()
     {
-        Debug.Log("I've been hit");
+        // Disregard if Player is already invincible
         if (this.isInvincible) return;
 
         isInvincible = true;
         EventManager.Events.PlayerInvincible();
         UIManager.ui.LoseHeart();
-        Debug.Log("... but now I'm invincible so it does not matter");
         StartCoroutine(FlashEffect());
         
     }
