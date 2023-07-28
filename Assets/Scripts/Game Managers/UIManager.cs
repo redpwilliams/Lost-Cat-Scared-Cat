@@ -14,11 +14,11 @@ public sealed class UIManager : MonoBehaviour
 
     [Header("Mileage Props")] 
     [SerializeField] private Text mileageText;
-
-    [SerializeField] private float stepsMultiplier = 3f;
+    private const float StepsMultiplier = 3f;
 
     /// Pause Menu GameObject
     [SerializeField] private GameObject pauseMenu;
+    private const float PauseTimeScale = 0f;
 
     /// Heart GameObject
     [SerializeField] private GameObject heart;
@@ -50,7 +50,7 @@ public sealed class UIManager : MonoBehaviour
 
     private void Update()
     {
-        mileage += BackgroundManager.bgm.GetScrollVelocity() * Time.deltaTime * stepsMultiplier;
+        mileage += BackgroundManager.bgm.GetScrollVelocity() * Time.deltaTime * StepsMultiplier;
         SetMileageText();
 
         // Handle Pause
@@ -69,7 +69,6 @@ public sealed class UIManager : MonoBehaviour
     private void InitMileage()
     {
         mileage = 0;
-        mileageText = mileageText.GetComponent<Text>();
     }
 
     /// Sets the Pause Menu size and location.
@@ -118,14 +117,15 @@ public sealed class UIManager : MonoBehaviour
             // Resume
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-            this.gameIsPaused = false;
-            return;
+        }
+        else
+        {
+            // Pause
+            pauseMenu.SetActive(true);
+            Time.timeScale = PauseTimeScale;
         }
 
-        // Pause
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        this.gameIsPaused = true;
+        this.gameIsPaused = !this.gameIsPaused;
     }
 
     public void LoseHeart()
