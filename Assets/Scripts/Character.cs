@@ -71,7 +71,7 @@ public abstract class Character : MonoBehaviour
   }
 
   [UsedImplicitly]
-  protected abstract void HandleJumpAnimationEvent(float jumpForce);
+  protected abstract void HandleJumpAnimationEvent();
   
   /// Sets the passed `IsRunning` parameter in the Animator tab
   protected void SetRunAnimationParam(bool value)

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RedFox : Fox
@@ -19,7 +18,7 @@ public class RedFox : Fox
     SetRunAnimationParam(this.IsRunning());
   }
 
-  protected override void HandleJumpAnimationEvent(float jumpForce)
+  protected override void HandleJumpAnimationEvent()
   {
     throw new System.NotImplementedException();
   }

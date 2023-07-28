@@ -49,7 +49,7 @@ public class GrayFox : Fox
     this.hasInputDash = false;
   }
   
-  protected override void HandleJumpAnimationEvent(float jumpForce)
+  protected override void HandleJumpAnimationEvent()
   {
     throw new System.NotImplementedException();
   }

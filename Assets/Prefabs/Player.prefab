@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d1d97a8f39ecb438549b07b63d639a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 2.5
+  jumpForce: 5
   topSpeed: 5.5
   acceleration: 4
   deceleration: 10

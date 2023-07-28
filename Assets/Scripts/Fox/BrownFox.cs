@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BrownFox : Fox
 {
+
+    [SerializeField] private float jumpForce = 3f;
     
     protected override void Update()
     {
@@ -31,7 +33,7 @@ public class BrownFox : Fox
     }
 
     /// Applies the jump force to the RigidBody2D, used as an Animation Event
-    [UsedImplicitly] protected override void HandleJumpAnimationEvent(float jumpForce)
+    [UsedImplicitly] protected override void HandleJumpAnimationEvent()
     {
       // Used in White Fox animation event at start of Jump clip
       rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 

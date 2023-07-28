@@ -362,6 +362,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7834204335144625140, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -873,7 +877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mileageText: {fileID: 1465337868}
-  stepsMultiplier: 3
   pauseMenu: {fileID: 1607694178}
   heart: {fileID: 1840491471}
 --- !u!1 &1429674349

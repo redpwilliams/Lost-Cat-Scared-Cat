@@ -96,16 +96,8 @@ public class Player : Character, IFlashable
         IsVisiblyRunning = playerInputDirection != 0;
         HandleRunInput(playerInputDirection);
 
-        if (IsJumping())
-        {
-            // Handle Jump input
-            HandleJumpInput();
-            IsVisiblyJumping = true;
-        }
-        else
-        {
-            IsVisiblyJumping = false;
-        }
+        // Handle Jump input
+        IsVisiblyJumping = IsJumping();
 
         // Conditionally Handle Fall
         if (IsFalling()) IncreaseFallGravity();
@@ -143,15 +135,9 @@ public class Player : Character, IFlashable
         return (Input.GetKey(KeyCode.Space) && this.IsGrounded);
     }
 
-    protected override void HandleJumpAnimationEvent(float force)
+    protected override void HandleJumpAnimationEvent()
     {
         // TODO - Player jump on specific keyframe
-        throw new NotImplementedException();
-    }
-
-    /// Adds an upward Impulse force to the RigidBody2D
-    private void HandleJumpInput()
-    {
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
