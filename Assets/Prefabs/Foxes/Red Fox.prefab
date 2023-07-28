@@ -82,11 +82,11 @@ GameObject:
   - component: {fileID: 5645074907809119957}
   - component: {fileID: 5645074907809119961}
   - component: {fileID: 5645074907809119954}
-  - component: {fileID: -4918045702206965090}
-  - component: {fileID: 5645074907809119958}
   - component: {fileID: 5645074907809119960}
   - component: {fileID: -958464662266602813}
   - component: {fileID: 6643924557101006439}
+  - component: {fileID: 90311833401804928}
+  - component: {fileID: 167012563764768350}
   m_Layer: 7
   m_Name: Red Fox
   m_TagString: Fox
@@ -183,39 +183,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4918045702206965090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5645074907809119955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3915015c0be57514aade48d53aea85c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runSpeed: -3
---- !u!95 &5645074907809119958
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5645074907809119955}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: b8e370a84c9a03c46821e6096090d654, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &5645074907809119960
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -255,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 46481e571790c8c42aa0a42a76b7e5d3, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 029e3f4ad96f91942a9c606c86e9f46f, type: 3}
 --- !u!114 &6643924557101006439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,4 +237,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CategoryHash: 0
   m_labelHash: 0
-  m_SpriteKey: 0
+  m_SpriteKey: -2.201815e+36
+--- !u!95 &90311833401804928
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645074907809119955}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce8ddcf6288c47c47b28e6fa18e1b709, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &167012563764768350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645074907809119955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3915015c0be57514aade48d53aea85c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: -3
