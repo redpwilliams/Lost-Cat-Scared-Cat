@@ -1,8 +1,13 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteLibrary))]
+[RequireComponent(typeof(SpriteResolver))]
 public abstract class Character : MonoBehaviour
 {
   protected Rigidbody2D rb;
