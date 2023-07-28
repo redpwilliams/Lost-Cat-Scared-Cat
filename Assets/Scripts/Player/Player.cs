@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.U2D.Animation;
 
 public class Player : Character, IFlashable
@@ -50,6 +49,7 @@ public class Player : Character, IFlashable
     
     private void OnEnable()
     {
+        Debug.Log("OnEnable started");
         EventManager.Events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
     }
     

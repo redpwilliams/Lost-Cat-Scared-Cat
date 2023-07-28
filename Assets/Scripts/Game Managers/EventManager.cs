@@ -16,7 +16,7 @@ public sealed class EventManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Events != null)
+        if (Events != null && Events != this)
         {
             Destroy(Events);
             return;
@@ -24,6 +24,7 @@ public sealed class EventManager : MonoBehaviour
 
         Events = this;
         DontDestroyOnLoad(gameObject);
+        Debug.Log("Events created");
     }
 
     /// Fox hits player event
