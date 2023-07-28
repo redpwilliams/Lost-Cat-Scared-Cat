@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class Fox : Character
@@ -16,6 +17,12 @@ public abstract class Fox : Character
   private readonly float spaceBeforeAttack = 1.5f;
   // REVIEW - I could change this into an array to accommodate for sitting foxes
   // Each value in the array would dictate the spacing before each action of a sitting fox
+
+  private void OnValidate()
+  {
+    if (this.runSpeed >= 0) return;
+    this.runSpeed = Mathf.Abs(this.runSpeed);
+  }
 
   protected void Start()
   {

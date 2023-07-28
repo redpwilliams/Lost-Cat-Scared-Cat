@@ -21,7 +21,7 @@ public class BrownFox : Fox
         if (!this.IsVisiblyJumping) return;
         
         // Keep velocity
-        this.rb.velocity = new Vector2(this.RunSpeed, this.rb.velocity.y);
+        this.rb.velocity = new Vector2(-this.RunSpeed, this.rb.velocity.y);
     }
     
     protected override void Attack()
