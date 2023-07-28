@@ -20,4 +20,9 @@ public class RedFox : Fox
     // SetJumpAnimationParam(this.HasInputJump);
     // SetFallAnimationParam(this.IsFalling());
   }
+
+  protected override void HandleJumpAnimationEvent(float jumpForce)
+  {
+    throw new System.NotImplementedException();
+  }
 }

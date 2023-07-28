@@ -5,10 +5,25 @@ public class GrayFox : Fox
 {
 
   private bool hasInputDash;
+  private bool isVisiblyDashing;
+
+  protected override void Update()
+  {
+    base.Update();
+    
+    // Carry on with normal Run if has started Attack
+    if (this.isVisiblyDashing) return;
+      
+    // Else, move when idle
+    SetSpeedAsIdle();
+  }
   
   protected override void HandleMovement()
   {
-    if (this.hasInputDash) return;
+    
+    // Stay crouching if the following is true
+    if (!this.isVisiblyDashing) return;
+    
     // Keep velocity
     this.rb.velocity = new Vector2(this.RunSpeed, this.rb.velocity.y);
   }
@@ -22,6 +37,8 @@ public class GrayFox : Fox
   /// Applies the dash force to the RigidBody2D, used as an Animation Event
   [UsedImplicitly] private void HandleDashStartAnimationEvent(float dashForce)
   {
+    this.isVisiblyDashing = true;
+    
     // Used in White Fox animation event at start of Jump clip
     rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse); 
   }
@@ -32,9 +49,15 @@ public class GrayFox : Fox
     this.hasInputDash = false;
   }
   
+  protected override void HandleJumpAnimationEvent(float jumpForce)
+  {
+    throw new System.NotImplementedException();
+  }
+  
   protected override void SetAnimationParams()
   {
     SetRunAnimationParam(this.IsRunning());
+    SetCrouchingAnimationParam(!this.HasAttacked);
     SetDashingAnimationParam(this.hasInputDash);
   }
 

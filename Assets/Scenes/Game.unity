@@ -1423,9 +1423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foxPrefabs:
-  - {fileID: 5645074907809119955, guid: b79d8ed02967934498cc1bf803e0c2f6, type: 3}
-  - {fileID: 5645074907809119955, guid: 7266324afcd72e34fb56bca0f4e2758b, type: 3}
-  - {fileID: 5645074907809119955, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
+  - {fileID: 5645074907809119955, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
   skulkSpawnInterval: 2.25
   foxSpawnInterval: 1
   shouldSpawn: 1

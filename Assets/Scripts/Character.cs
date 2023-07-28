@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -64,6 +65,9 @@ public abstract class Character : MonoBehaviour
       currentPosition.z);
   }
 
+  [UsedImplicitly]
+  protected abstract void HandleJumpAnimationEvent(float jumpForce);
+  
   /// Sets the passed `IsRunning` parameter in the Animator tab
   protected void SetRunAnimationParam(bool value)
   {

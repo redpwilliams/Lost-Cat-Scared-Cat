@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: -958464662266602813}
   - component: {fileID: 6643924557101006439}
   - component: {fileID: 90311833401804928}
-  - component: {fileID: -4900942379994159690}
+  - component: {fileID: 5900973502519952677}
   m_Layer: 7
   m_Name: Fox
   m_TagString: Fox
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 029e3f4ad96f91942a9c606c86e9f46f, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: d7df33c45c25adf4cba1f7da715b2c9c, type: 3}
 --- !u!114 &6643924557101006439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-4900942379994159690
+--- !u!114 &5900973502519952677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5645074907809119955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3915015c0be57514aade48d53aea85c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ff615abef0e81b448cf4030e2bdbcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: -3

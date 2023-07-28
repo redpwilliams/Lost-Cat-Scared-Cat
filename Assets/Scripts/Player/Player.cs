@@ -145,6 +145,11 @@ public class Player : Character, IFlashable
         return (Input.GetKey(KeyCode.Space) && this.IsGrounded);
     }
 
+    protected override void HandleJumpAnimationEvent(float jumpForce)
+    {
+        throw new NotImplementedException();
+    }
+
     /// Adds an upward Impulse force to the RigidBody2D
     private void HandleJumpInput()
     {

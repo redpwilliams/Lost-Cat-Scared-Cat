@@ -31,7 +31,7 @@ public class BrownFox : Fox
     }
 
     /// Applies the jump force to the RigidBody2D, used as an Animation Event
-    [UsedImplicitly] private void HandleJumpAnimationEvent(float jumpForce)
+    [UsedImplicitly] protected override void HandleJumpAnimationEvent(float jumpForce)
     {
       // Used in White Fox animation event at start of Jump clip
       rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
