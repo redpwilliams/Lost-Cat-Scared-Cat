@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7696287208559053856}
-  - component: {fileID: 7696287208559053863}
   - component: {fileID: 7696287208559053857}
+  - component: {fileID: 7734801857871862190}
   m_Layer: 0
   m_Name: Background Manager
   m_TagString: Untagged
@@ -33,22 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7696287208559053863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7696287208559053861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8064f7790fcaa444b9a29e58e4463909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numAdditionalBgs: 1
-  bg: {fileID: 8186637361178167864, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-  sm: {fileID: 7696287208559053857}
-  scrollVelocity: 1.5
 --- !u!331 &7696287208559053857
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -100,3 +84,17 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7734801857871862190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696287208559053861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8064f7790fcaa444b9a29e58e4463909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bg: {fileID: 0}
+  scrollVelocity: 1.5

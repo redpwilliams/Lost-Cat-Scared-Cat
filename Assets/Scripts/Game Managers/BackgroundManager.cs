@@ -1,67 +1,52 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 
-public sealed class BackgroundManager : MonoBehaviour
+public sealed class BackgroundManager : Singleton<BackgroundManager>
 {
-  /// Singleton Instance
-  public static BackgroundManager bgm;
   
   // How many extra backgrounds to make
-  public int backgroundCount = 1;
-
-  [Header("Background Prefab")]
-  [SerializeField] private GameObject bg;
-
-  /// SpriteMask component
-  private SpriteMask sm;
+  public const uint BackgroundCount = 1;
 
   /// How fast the screen moves
   [SerializeField] private float scrollVelocity = 1.5f;
 
-  public float GetScrollVelocity() { return scrollVelocity; }
+  /// BackgroundLayer represents each individual layer
+  [SerializeField] private BackgroundLayer[] layers;
 
-  private void Awake()
+  private Transform trans;
+  private float length;
+  
+  // BackgroundGroups include Forest, Snowy, Woody, etc.
+
+  // Current Environment to render
+
+  protected override void Awake()
   {
-    // Craft singleton instance
-    if (bgm != null)
-    {
-      Destroy(bgm);
-      return;
-    }
-
-    bgm = this;
-    sm = GetComponent<SpriteMask>();
+    base.Awake();
+    trans = transform;
+    length = GetComponent<SpriteMask>().bounds.size.x;
   }
 
   private void Start()
   {
-    Assert.IsTrue(this.backgroundCount > 0);
-    GameObject[] duplicates = MakeDuplicates(this.backgroundCount);
-    float length = sm.bounds.size.x;
-    PositionBackgrounds(duplicates, length);
+    // Set up self and duplicate adjacent layers
+    // (Backwards because it looks nice in the editor)
+    for (int i = this.layers.Length - 1; i >= 0; i--)
+    {
+      MakeDuplicates(layers[i], BackgroundCount);
+    }
   }
 
   /// Makes num number of Background duplicates
-  private GameObject[] MakeDuplicates(int num)
+  private void MakeDuplicates(BackgroundLayer layer, uint numDuplicates)
   {
-    GameObject[] duplicates = new GameObject[num];
-    for (int i = 0; i < num; i++)
+    for (int i = 0; i < numDuplicates; i++)
     {
-      duplicates[i] = Instantiate(bg);
-      duplicates[i].name = $"Background Copy ({i + 1})";
-    }
-
-    return duplicates;
-  }
-
-  /// Position each background on the screen
-  private void PositionBackgrounds(IReadOnlyList<GameObject> duplicates, float length)
-  {
-    for (int i = 1; i <= duplicates.Count; i++)
-    {
-      Vector3 position = bg.transform.position;
-      duplicates[i - 1].transform.position = new Vector3(position.x + (length * i), position.y, position.z);
+      GameObject go = layer.Initialize();
+      go.name = $"Background Copy ({i + 1})";
+      go.transform.Translate(Vector3.right * length * (i + 1));
     }
   }
+
+  public float GetScrollVelocity() { return scrollVelocity; }
+  
 }

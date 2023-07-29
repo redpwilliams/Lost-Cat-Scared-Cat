@@ -288,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
       propertyPath: m_LocalPosition.x
@@ -340,17 +340,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
---- !u!114 &156896622 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
-  m_PrefabInstance: {fileID: 7696287209802813300}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8064f7790fcaa444b9a29e58e4463909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &317881002
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,11 +597,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1134151221 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8186637361178167864, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-  m_PrefabInstance: {fileID: 8186637362259725325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1219121029
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,7 +663,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1276398609
 GameObject:
@@ -782,7 +766,7 @@ RectTransform:
   - {fileID: 1607694179}
   - {fileID: 1840491472}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1236,7 +1220,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1923307843
 GameObject:
@@ -1633,7 +1617,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4113464525388928680, guid: 6f7760bdd34750d438f40ec07186c1da, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4113464525388928680, guid: 6f7760bdd34750d438f40ec07186c1da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1690,7 +1674,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7696287208559053856, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7696287208559053856, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1732,6 +1716,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7696287208559053857, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7696287208559053861, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: m_Name
       value: Background Manager
@@ -1739,7 +1727,7 @@ PrefabInstance:
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: bg
       value: 
-      objectReference: {fileID: 1134151221}
+      objectReference: {fileID: 0}
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: shouldMove
       value: 1
@@ -1752,318 +1740,9 @@ PrefabInstance:
       propertyPath: numAdditionalBgs
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7734801857871862190, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
+      propertyPath: layers.Array.size
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
---- !u!1001 &8186637362259725325
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8186637360898303690, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637360898303690, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637360898303690, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637360898303690, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637360898303690, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361027551370, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167864, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_Name
-      value: Background
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361178167867, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361185635936, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361185635936, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637361185635936, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361185635936, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361185635936, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361385151336, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361415500548, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361415500548, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637361415500548, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361415500548, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361415500548, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361548808012, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361626847500, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361626847500, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361626847500, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 756714015
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361626847503, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637361626847503, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637361626847503, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361626847503, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637361626847503, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362044108652, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362138481828, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362138481828, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637362138481828, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362138481828, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362138481828, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362152207606, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362404519128, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362404519128, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637362404519128, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362404519128, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362404519128, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: bgm
-      value: 
-      objectReference: {fileID: 156896622}
-    - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 8186637362449539357, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
-      propertyPath: parallaxEffect
-      value: 0.2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}

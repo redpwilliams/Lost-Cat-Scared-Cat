@@ -13,7 +13,7 @@ public class Parallax : MonoBehaviour
   private new Transform transform;
   
   /// The number of backgrounds in sequence, left to right
-  private int numBackgrounds;
+  private uint numBackgrounds;
 
   /// If the sprite is visible/off screen
   private bool isVisible;
@@ -31,7 +31,7 @@ public class Parallax : MonoBehaviour
 
   private void Start()
   {
-    numBackgrounds = this.bgm.backgroundCount;
+    numBackgrounds = BackgroundManager.BackgroundCount;
     ParallaxBackgroundSpeed =
       this.bgm.GetScrollVelocity() * this.parallaxEffect;
   }
