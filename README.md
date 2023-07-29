@@ -27,7 +27,8 @@ To manage game assets, this project uses git **Large File Support (lfs)**. To su
 
 - Repeating and parallaxed backgrounds
 - Fluid rigid body controls
-- Character select
+- Character select and UI
+- Internal save system
 
 ## License
 
