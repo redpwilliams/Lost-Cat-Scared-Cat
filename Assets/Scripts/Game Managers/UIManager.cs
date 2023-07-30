@@ -6,9 +6,6 @@ public sealed class UIManager : MonoBehaviour
     /// Singleton Instance
     public static UIManager ui;
 
-    /// Pause state
-    private bool gameIsPaused;
-
     /// Mileage / Number of steps / Distance Player has traveled
     private float mileage;
 
@@ -16,9 +13,8 @@ public sealed class UIManager : MonoBehaviour
     [SerializeField] private Text mileageText;
     private const float StepsMultiplier = 3f;
 
-    /// Pause Menu GameObject
-    [SerializeField] private GameObject pauseMenu;
-    private const float PauseTimeScale = 0f;
+    /// True if game is paused
+    private bool isPaused;
 
     /// Heart GameObject
     [SerializeField] private GameObject heart;
@@ -44,7 +40,6 @@ public sealed class UIManager : MonoBehaviour
     private void Start()
     {
         InitMileage();
-        InitPauseMenu();
         InitHearts(Player.NumLives);
     }
 
@@ -54,7 +49,10 @@ public sealed class UIManager : MonoBehaviour
         SetMileageText();
 
         // Handle Pause
-        if (PauseKeyDown()) HandlePause();
+        if (!PauseKeyDown()) return;
+        
+        this.isPaused ^= true;
+        EventManager.Events.PauseKeyDown(this.isPaused);
     }
 
     /// Updates the mileage field on the screen
@@ -69,14 +67,6 @@ public sealed class UIManager : MonoBehaviour
     private void InitMileage()
     {
         mileage = 0;
-    }
-
-    /// Sets the Pause Menu size and location.
-    /// Inits to covering the full screen 
-    private void InitPauseMenu()
-    {
-        // Disable PauseMenu by default
-        pauseMenu.SetActive(false);
     }
 
     /// Sets the number of hearts based on the Player class
@@ -107,25 +97,6 @@ public sealed class UIManager : MonoBehaviour
     private static bool PauseKeyDown()
     {
         return Input.GetKeyDown(KeyCode.Escape);
-    }
-
-    /// Handles what pressing Pause does
-    public void HandlePause()
-    {
-        if (this.gameIsPaused)
-        {
-            // Resume
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            // Pause
-            pauseMenu.SetActive(true);
-            Time.timeScale = PauseTimeScale;
-        }
-
-        this.gameIsPaused = !this.gameIsPaused;
     }
 
     public void LoseHeart()

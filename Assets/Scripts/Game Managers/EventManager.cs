@@ -51,6 +51,21 @@ public sealed class EventManager : MonoBehaviour
         OnPlayerVulnerable?.Invoke();
     }
 
+    /// Active/Deactivate Pause Menu
+    public event Action<bool> OnPauseKeyDown;
+    
+    /// <summary>Fires when a change in Pause status is detected</summary>
+    /// <remarks>
+    /// If `isPaused` is true, Player just paused the game,
+    /// and logic of the paused state should be run.
+    /// If  `isPaused` is false, Player just unpaused the game,
+    /// and logic of the unpaused state should be run.
+    /// </remarks>
+    public void PauseKeyDown(bool isPaused)
+    {
+        OnPauseKeyDown?.Invoke(isPaused);
+    }
+
     /// Options screen cat is selected
     public event Action<uint> OnCatSelect;
 
