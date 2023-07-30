@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LineController : MonoBehaviour
@@ -32,28 +34,12 @@ public class LineController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Events.OnPauseKeyDown += (b =>
-        {
-            gameObject.SetActive(b);
-            
-            // Continue with vector calculations when game is paused
-            if (!b) return;
-            
-            Vector3 playerPosition = _player.transform.position;
-            Vector3 direction = ChooseDirection(playerPosition.x);
+        EventManager.Events.OnPauseKeyDown += SetLine;
+    }
 
-            // Calculate start position with an gap/offset from the player
-            Vector3 startPosition = playerPosition + direction *
-                (playerLineOffset * ParameterScaleFactor);
-
-            // Calculate the end position based on the line length and player's position
-            Vector3 endPosition = startPosition + direction * (lineLength * 
-                ParameterScaleFactor);
-
-            // Set the positions of the line renderer
-            _lr.SetPosition(0, startPosition);
-            _lr.SetPosition(1, endPosition);
-        });
+    private void OnDestroy()
+    {
+        EventManager.Events.OnPauseKeyDown -= SetLine;
     }
 
     private void Awake()
@@ -72,6 +58,29 @@ public class LineController : MonoBehaviour
     {
         _lr.startWidth = width;
         _lr.endWidth = width;
+    }
+
+    private void SetLine(bool isPaused)
+    {
+        gameObject.SetActive(isPaused);
+
+        // Continue with vector calculations when game is paused
+        if (!isPaused) return;
+
+        Vector3 playerPosition = _player.transform.position;
+        Vector3 direction = ChooseDirection(playerPosition.x);
+
+        // Calculate start position with an gap/offset from the player
+        Vector3 startPosition = playerPosition + direction *
+            (playerLineOffset * ParameterScaleFactor);
+
+        // Calculate the end position based on the line length and player's position
+        Vector3 endPosition = startPosition + direction * (lineLength *
+            ParameterScaleFactor);
+
+        // Set the positions of the line renderer
+        _lr.SetPosition(0, startPosition);
+        _lr.SetPosition(1, endPosition);
     }
 
     private static Vector3 ChooseDirection(float playerXPos)
