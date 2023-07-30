@@ -864,7 +864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d96b1d8a10b0744f86ae1a8670371f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 0.015
+  lineWidth: 0.15
+  lineLength: 3.5
+  playerLineOffset: 2
 --- !u!120 &988944023
 LineRenderer:
   m_ObjectHideFlags: 0
