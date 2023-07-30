@@ -26,13 +26,13 @@ public class Player : Character, IFlashable
     [Header("Flash Animation Parameters")]
     [SerializeField] private int flashCount = 5;
     [SerializeField] private float flickDuration = 0.1f;
-    private bool isInvincible;
+    private bool _isInvincible;
 
     /// "Normal" gravity when not jumping
-    private float legacyGravityScale;
+    private float _legacyGravityScale;
 
     /// Player's SpriteRenderer component
-    private SpriteRenderer sr;
+    private SpriteRenderer _sr;
 
     /// Cat skins
     [SerializeField] 
@@ -60,8 +60,8 @@ public class Player : Character, IFlashable
     protected override void Awake()
     {
         base.Awake();
-        sr = GetComponent<SpriteRenderer>();
-        legacyGravityScale = this.rb.gravityScale;
+        _sr = GetComponent<SpriteRenderer>();
+        _legacyGravityScale = rb.gravityScale;
 
         SpriteLibrary sl = GetComponent<SpriteLibrary>();
         sl.spriteLibraryAsset = sprites[SaveSystem.LoadPreferences().CatID - 1];
@@ -144,13 +144,13 @@ public class Player : Character, IFlashable
     /// Strengthens the RigidBody2D fall gravity by a factor of `fallGravityMultiplier`
     private void IncreaseFallGravity()
     {
-        rb.gravityScale = legacyGravityScale * fallGravityMultiplier;
+        rb.gravityScale = _legacyGravityScale * fallGravityMultiplier;
     }
 
     /// Resets the RigidBody2D's gravity scale to its original value
     private void ResetGravity()
     {
-        this.rb.gravityScale = this.legacyGravityScale;
+        this.rb.gravityScale = this._legacyGravityScale;
     }
 
 
@@ -165,20 +165,20 @@ public class Player : Character, IFlashable
     /// Flips the Player's sprite depending on its direction
     private void HandleFlipSprite()
     {
-        this.sr.flipX = GetInputDirection() switch
+        this._sr.flipX = GetInputDirection() switch
         {
             -1 => true,
             1 => false,
-            _ => this.sr.flipX
+            _ => this._sr.flipX
         };
     }
 
     private void HandleFoxHitsPlayer()
     {
         // Disregard if Player is already invincible
-        if (this.isInvincible) return;
+        if (this._isInvincible) return;
 
-        isInvincible = true;
+        _isInvincible = true;
         EventManager.Events.PlayerInvincible();
         UIManager.ui.LoseHeart();
         StartCoroutine(FlashEffect());
@@ -190,16 +190,16 @@ public class Player : Character, IFlashable
         for (int i = 0; i < flashCount; i++)
         {
             // Make the sprite transparent
-            sr.color = new Color(1f, 1f, 1f, 0.5f);
+            _sr.color = new Color(1f, 1f, 1f, 0.5f);
             yield return new WaitForSeconds(this.flickDuration);
 
             // Make the sprite opaque
             // ReSharper disable once Unity.InefficientPropertyAccess
-            sr.color = new Color(1f, 1f, 1f, 1f);
+            _sr.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(this.flickDuration);
         }
 
-        this.isInvincible = false;
+        this._isInvincible = false;
         EventManager.Events.PlayerVulnerable();
     }
 }
