@@ -91,15 +91,15 @@ public class LineController : MonoBehaviour
         // Get full Text object width
         Vector2 textDim = _speechText.GetDimensions();
         float textWidth = textDim.x;
-        float textHeight = textDim.y;
         
-        // Create offset of half width
-        // float offset = (textWidth / 2) + SpeechText.XOffset;
+        // Create offset of half width (with customs)
         Vector2 offset = new Vector2((textWidth / 2) + SpeechText.XOffset,
             SpeechText.YOffset);
-        //
         if (direction.x < 0) offset.x *= -1;
         _speechText.SetOffset(offset);
+        
+        // Apply nudging if offscreen if necessary
+        _speechText.NudgeAsNeeded();
     }
 
     private static Vector3 ChooseDirection(float playerXPos)

@@ -828,7 +828,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phrases:
-  - please help
+  - pls help
+  - dont press play
+  - get me outta here
 --- !u!1 &988944020
 GameObject:
   m_ObjectHideFlags: 0
