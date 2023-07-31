@@ -1742,18 +1742,18 @@ PrefabInstance:
     - target: {fileID: 7544913061381130738, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1276398614}
+      objectReference: {fileID: 2078395040}
     - target: {fileID: 7544913061381130738, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7544913061381130738, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HandlePause
+      value: HandleResume
       objectReference: {fileID: 0}
     - target: {fileID: 7544913061381130738, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIManager, Assembly-CSharp
+      value: ButtonManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7544913061381130738, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1854,6 +1854,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7544913061381130739, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
   m_PrefabInstance: {fileID: 2078395038}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2078395040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4608718560103555755, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
+  m_PrefabInstance: {fileID: 2078395038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd63e7d8164cdfe40a5c609c99f11a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2102234164
 PrefabInstance:
   m_ObjectHideFlags: 0

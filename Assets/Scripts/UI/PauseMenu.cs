@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     /// Handles what pressing Pause does
-    public void HandlePause(bool isNowPaused)
+    private void HandlePause(bool isNowPaused)
     {
         if (isNowPaused)
         {

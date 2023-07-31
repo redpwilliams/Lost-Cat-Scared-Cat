@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,16 @@ public sealed class UIManager : MonoBehaviour
     /// SpriteRenderer of the active/top-most heart
     private SpriteRenderer sr;
 
+    private void OnEnable()
+    {
+        EventManager.Events.OnPauseKeyDown += HandlePause;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Events.OnPauseKeyDown -= HandlePause;
+    }
+
     private void Awake()
     {
         if (ui != null)
@@ -49,10 +60,28 @@ public sealed class UIManager : MonoBehaviour
         SetMileageText();
 
         // Handle Pause
-        if (!PauseKeyDown()) return;
+        if (!HasInputPause()) return;
         
         this.isPaused ^= true;
+        // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
         EventManager.Events.PauseKeyDown(this.isPaused);
+    }
+
+    public void LoseHeart()
+    {
+        if (this.numHeartsShown == 0) return;
+
+        // Get current heart game object and destroy
+        Heart currentHeart =
+            this.hearts[this.numHeartsShown - 1].GetComponent<Heart>();
+        currentHeart.Destroy();
+
+        // Update list
+        this.numHeartsShown--;
+        this.hearts[this.numHeartsShown] = null;
+
+        // TODO - Handle GameOver
+        if (this.numHeartsShown == 0) Debug.Log("Lost last heart, game over");
     }
 
     /// Updates the mileage field on the screen
@@ -94,25 +123,13 @@ public sealed class UIManager : MonoBehaviour
     }
 
     /// Defines what the PauseKey is
-    private static bool PauseKeyDown()
+    private static bool HasInputPause()
     {
         return Input.GetKeyDown(KeyCode.Escape);
     }
 
-    public void LoseHeart()
+    private void HandlePause(bool isNowPaused)
     {
-        if (this.numHeartsShown == 0) return;
-
-        // Get current heart game object and destroy
-        Heart currentHeart =
-            this.hearts[this.numHeartsShown - 1].GetComponent<Heart>();
-        currentHeart.Destroy();
-
-        // Update list
-        this.numHeartsShown--;
-        this.hearts[this.numHeartsShown] = null;
-
-        // TODO - Handle GameOver
-        if (this.numHeartsShown == 0) Debug.Log("Lost last heart, game over");
+        isPaused = isNowPaused;
     }
 }

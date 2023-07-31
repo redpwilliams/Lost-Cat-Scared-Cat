@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,12 @@ public sealed class ButtonManager : MonoBehaviour
     public void HandleQuit()
     {
         Application.Quit();
+    }
+
+    [UsedImplicitly]
+    public void HandleResume()
+    {
+        EventManager.Events.PauseKeyDown(false);
     }
 
     /// Handles the Pause Menu's Quit button by returning to the title screen
