@@ -8,6 +8,9 @@ public class SpeechText : MonoBehaviour
     private Text _text;
     private RectTransform _rt;
 
+    public const float XOffset = 30f;
+    public const float YOffset = 50f;
+
     private void OnEnable()
     {
         EventManager.Events.OnPauseKeyDown += SetText;
@@ -45,12 +48,14 @@ public class SpeechText : MonoBehaviour
         // Set phrase
         _text.text = phrases[Random.Range(0, phrases.Length - 1)];
         
-        // Set Text box width to fit phrase
+        // Set Text box dimensions to fit phrase
         float textWidth = _text.preferredWidth;
+        float textHeight = _text.preferredHeight;
         
-        // Update the width of the RectTransform to match
+        // Update the dimensions of the RectTransform to match
         Vector2 sizeDelta = _rt.sizeDelta;
         sizeDelta.x = textWidth;
+        sizeDelta.y = textHeight;
         _rt.sizeDelta = sizeDelta;
     }
 
@@ -59,15 +64,15 @@ public class SpeechText : MonoBehaviour
         transform.position = lineEndPosition;
     }
 
-    public void SetOffset(float offset)
+    public void SetOffset(Vector2 offset)
     {
         Vector2 currentPos = _rt.anchoredPosition;
-        _rt.anchoredPosition = new Vector2(currentPos.x + offset,
-            currentPos.y);
+        _rt.anchoredPosition = new Vector2(currentPos.x + offset.x,
+            currentPos.y + offset.y);
     }
 
-    public float GetWidth()
+    public Vector2 GetDimensions()
     {
-        return _text.preferredWidth;
+        return new Vector2(_text.preferredWidth, _text.preferredHeight);
     }
 }

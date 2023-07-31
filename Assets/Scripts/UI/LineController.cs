@@ -22,10 +22,10 @@ public class LineController : MonoBehaviour
     private const float MaxAngle = Mathf.PI / 3; // 60 deg
 
     /// Left-side divisor, marking where the line should switch directions
-    private const float NegativeWedge = -1f;
+    private const float NegativeWedge = -1.25f;
     
     /// Right-side divisor, marking where the line should switch directions
-    private const float PositiveWedge = 1f;
+    private const float PositiveWedge = 1.25f;
 
     /// Makes using/visualizing numbers in the Editor a little easier
     private const float ParameterScaleFactor = 0.1f;
@@ -88,13 +88,17 @@ public class LineController : MonoBehaviour
         // Align text end position to start
         _speechText.SetPosition(endPosition);
         
-        // // Get full Text object width
-        float textWidth = _speechText.GetWidth();
+        // Get full Text object width
+        Vector2 textDim = _speechText.GetDimensions();
+        float textWidth = textDim.x;
+        float textHeight = textDim.y;
         
         // Create offset of half width
-        float offset = textWidth / 2;
+        // float offset = (textWidth / 2) + SpeechText.XOffset;
+        Vector2 offset = new Vector2((textWidth / 2) + SpeechText.XOffset,
+            SpeechText.YOffset);
         //
-        if (direction.x < 0) offset *= -1;
+        if (direction.x < 0) offset.x *= -1;
         _speechText.SetOffset(offset);
     }
 
