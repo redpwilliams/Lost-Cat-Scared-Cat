@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LineController : MonoBehaviour
@@ -32,6 +30,9 @@ public class LineController : MonoBehaviour
     /// Makes using/visualizing numbers in the Editor a little easier
     private const float ParameterScaleFactor = 0.1f;
 
+    /// Speech text for reference, used to set its position
+    private SpeechText _speechText;
+
     private void OnEnable()
     {
         EventManager.Events.OnPauseKeyDown += SetLine;
@@ -47,6 +48,8 @@ public class LineController : MonoBehaviour
         _lr = GetComponent<LineRenderer>();
         SetWidth(lineWidth * ParameterScaleFactor);
         _player = GameObject.FindWithTag("Player");
+        _speechText = GameObject.FindWithTag("SpeechText")
+            .GetComponent<SpeechText>();
     }
 
     private void Start()
@@ -81,6 +84,18 @@ public class LineController : MonoBehaviour
         // Set the positions of the line renderer
         _lr.SetPosition(0, startPosition);
         _lr.SetPosition(1, endPosition);
+        
+        // Align text end position to start
+        _speechText.SetPosition(endPosition);
+        
+        // // Get full Text object width
+        float textWidth = _speechText.GetWidth();
+        
+        // Create offset of half width
+        float offset = textWidth / 2;
+        //
+        if (direction.x < 0) offset *= -1;
+        _speechText.SetOffset(offset);
     }
 
     private static Vector3 ChooseDirection(float playerXPos)
