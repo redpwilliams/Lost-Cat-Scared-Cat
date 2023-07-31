@@ -54,6 +54,7 @@ public sealed class EventManager : MonoBehaviour
     /// Active/Deactivate Pause Menu
     public event Action<bool> OnPauseKeyDown;
     
+    // ReSharper disable Unity.PerformanceAnalysis
     /// <summary>Fires when a change in Pause status is detected</summary>
     /// <remarks>
     /// If `isPaused` is true, Player just paused the game,
