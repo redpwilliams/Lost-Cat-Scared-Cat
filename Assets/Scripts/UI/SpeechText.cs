@@ -13,6 +13,8 @@ public class SpeechText : MonoBehaviour
 
     private const float SidePadding = 0.1f;
 
+    private Camera _cam;
+
     private void OnEnable()
     {
         EventManager.Events.OnPauseKeyDown += SetText;
@@ -33,6 +35,7 @@ public class SpeechText : MonoBehaviour
     {
         _text = GetComponent<Text>();
         _rt = transform as RectTransform;
+        _cam = Camera.main;
     }
 
     private void Start()
@@ -85,8 +88,13 @@ public class SpeechText : MonoBehaviour
         _rt.GetWorldCorners(corners);
 
         // Get the screen boundaries in world space
-        Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(Vector3.zero);
-        Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0f));
+        Vector3 minScreenBounds = _cam.ScreenToWorldPoint(Vector3.zero);
+        Vector3 maxScreenBounds = _cam.ScreenToWorldPoint(new Vector3(
+            Screen.width,
+            Screen.height,
+            0f));
+        
+        Transform trans = transform;
 
         // Check if the text is off-screen on the right side
         if (corners[2].x > maxScreenBounds.x)
@@ -95,9 +103,9 @@ public class SpeechText : MonoBehaviour
             float distanceOffScreen = corners[2].x - maxScreenBounds.x;
 
             // Nudge the text left by the distance it's off-screen + padding
-            Vector3 newPosition = transform.position;
+            Vector3 newPosition = trans.position;
             newPosition.x -= distanceOffScreen + SidePadding;
-            transform.position = newPosition;
+            trans.position = newPosition;
         }
         // Check if the text is off-screen on the left side
         else if (corners[0].x < minScreenBounds.x)
@@ -106,7 +114,7 @@ public class SpeechText : MonoBehaviour
             float distanceOffScreen = minScreenBounds.x - corners[0].x;
 
             // Nudge the text right by the distance it's off-screen
-            Vector3 newPosition = transform.position;
+            Vector3 newPosition = trans.position;
             newPosition.x += distanceOffScreen + SidePadding;
             transform.position = newPosition;
         }
