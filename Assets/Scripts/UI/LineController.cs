@@ -63,7 +63,6 @@ public sealed class LineController : MonoBehaviour
     private void SetLine(bool isPaused)
     {
         gameObject.SetActive(isPaused);
-        // Debug.Log("Called Line");
 
         // Continue with vector calculations when game is paused
         if (!isPaused) return;

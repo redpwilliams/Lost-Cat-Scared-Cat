@@ -54,7 +54,6 @@ public sealed class SpeechText : MonoBehaviour
     private void SetText(bool isPaused)
     {
         gameObject.SetActive(isPaused);
-        // Debug.Log("Called SetText");
         
         // Continue to set text if game is paused
         if (!isPaused) return;
@@ -146,7 +145,6 @@ public sealed class SpeechText : MonoBehaviour
         FillComplementaryArray();
         
         string nextPhrase = _complement[Random.Range(0, _complement.Length)];
-        Debug.Log(nextPhrase);
         _phraseIndex = Array.IndexOf(_phrases, nextPhrase);
         return nextPhrase;
     }
