@@ -29,30 +29,37 @@ public sealed class EventManager : MonoBehaviour
     /// Fox hits player event
     public event Action OnFoxHitsPlayer;
 
+    /// Player is invincible event
+    public event Action OnPlayerInvincible;
+    
+    /// Player is vulnerable event
+    public event Action OnPlayerVulnerable;
+    
+    /// Active/Deactivate Pause Menu
+    public event Action<bool> OnPauseKeyDown;
+    
+    /// Options screen cat is selected
+    public event Action<uint> OnCatSelect;
+    private uint _currentCatID;
+    
     /// Handles when a Fox collides with the player
     public void FoxHitsPlayer()
     {
         OnFoxHitsPlayer?.Invoke();
     }
 
-    /// Player is invincible event
-    public event Action OnPlayerInvincible;
 
+    /// Handles when the Player turns invincible
     public void PlayerInvincible()
     {
         OnPlayerInvincible?.Invoke();
     }
 
-    /// Player is vulnerable event
-    public event Action OnPlayerVulnerable;
-
+    /// Handles when the player turns vulnerable
     public void PlayerVulnerable()
     {
         OnPlayerVulnerable?.Invoke();
     }
-
-    /// Active/Deactivate Pause Menu
-    public event Action<bool> OnPauseKeyDown;
     
     // ReSharper disable Unity.PerformanceAnalysis
     /// <summary>Fires when a change in Pause status is detected</summary>
@@ -66,12 +73,8 @@ public sealed class EventManager : MonoBehaviour
     {
         OnPauseKeyDown?.Invoke(isPaused);
     }
-
-    /// Options screen cat is selected
-    public event Action<uint> OnCatSelect;
-
-    private uint _currentCatID;
-
+    
+    /// <summary>Handles when a cat is selected in the options menu</summary>
     public void CatSelect(uint index)
     {
         // Ignore if user selects the already active Cat selection
