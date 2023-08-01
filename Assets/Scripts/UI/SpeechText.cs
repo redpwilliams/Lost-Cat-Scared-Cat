@@ -20,11 +20,6 @@ public sealed class SpeechText : MonoBehaviour
 
     private Camera _cam;
 
-    private void OnEnable()
-    {
-        EventManager.Events.OnPauseKeyDown += SetText;
-    }
-    
     private void OnDestroy()
     {
         EventManager.Events.OnPauseKeyDown -= SetText;
@@ -38,6 +33,8 @@ public sealed class SpeechText : MonoBehaviour
 
     private void Awake()
     {
+        EventManager.Events.OnPauseKeyDown += SetText;
+        
         _text = GetComponent<Text>();
         _rt = transform as RectTransform;
         _cam = Camera.main;
@@ -57,6 +54,7 @@ public sealed class SpeechText : MonoBehaviour
     private void SetText(bool isPaused)
     {
         gameObject.SetActive(isPaused);
+        // Debug.Log("Called SetText");
         
         // Continue to set text if game is paused
         if (!isPaused) return;
@@ -146,9 +144,9 @@ public sealed class SpeechText : MonoBehaviour
         if (_phrases.Length == 1) return _phrases[0];
         
         FillComplementaryArray();
-        Debug.Log("Refill");
         
         string nextPhrase = _complement[Random.Range(0, _complement.Length)];
+        Debug.Log(nextPhrase);
         _phraseIndex = Array.IndexOf(_phrases, nextPhrase);
         return nextPhrase;
     }

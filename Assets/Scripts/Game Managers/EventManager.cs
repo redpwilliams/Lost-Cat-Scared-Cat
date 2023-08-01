@@ -37,6 +37,7 @@ public sealed class EventManager : MonoBehaviour
     
     /// Active/Deactivate Pause Menu
     public event Action<bool> OnPauseKeyDown;
+    private bool _isPaused;
     
     /// Options screen cat is selected
     public event Action<uint> OnCatSelect;
@@ -69,9 +70,10 @@ public sealed class EventManager : MonoBehaviour
     /// If  `isPaused` is false, Player just unpaused the game,
     /// and logic of the unpaused state should be run.
     /// </remarks>
-    public void PauseKeyDown(bool isPaused)
+    public void PauseKeyDown()
     {
-        OnPauseKeyDown?.Invoke(isPaused);
+        _isPaused ^= true;
+        OnPauseKeyDown?.Invoke(_isPaused);
     }
     
     /// <summary>Handles when a cat is selected in the options menu</summary>

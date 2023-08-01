@@ -14,9 +14,6 @@ public sealed class UIManager : MonoBehaviour
     [SerializeField] private Text _mileageText;
     private const float StepsMultiplier = 3f;
 
-    /// True if game is paused
-    private bool _isPaused;
-
     /// Heart GameObject
     [SerializeField] private GameObject _heart;
 
@@ -25,16 +22,6 @@ public sealed class UIManager : MonoBehaviour
 
     /// SpriteRenderer of the active/top-most heart
     private SpriteRenderer _sr;
-
-    private void OnEnable()
-    {
-        EventManager.Events.OnPauseKeyDown += HandlePause;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.Events.OnPauseKeyDown -= HandlePause;
-    }
 
     private void Awake()
     {
@@ -56,15 +43,14 @@ public sealed class UIManager : MonoBehaviour
 
     private void Update()
     {
-        _mileage += BackgroundManager.bgm.ScrollVelocity * Time.deltaTime * 
-        StepsMultiplier;
+        _mileage += BackgroundManager.bgm.ScrollVelocity * Time.deltaTime *
+                    StepsMultiplier;
         SetMileageText();
 
         // Handle Pause through Escape
         if (!HasInputPause()) return;
         
-        _isPaused ^= true;
-        EventManager.Events.PauseKeyDown(_isPaused);
+        EventManager.Events.PauseKeyDown();
     }
 
     public void LoseHeart()
@@ -128,8 +114,4 @@ public sealed class UIManager : MonoBehaviour
         return Input.GetKeyDown(KeyCode.Escape);
     }
 
-    private void HandlePause(bool isNowPaused)
-    {
-        _isPaused = isNowPaused;
-    }
 }

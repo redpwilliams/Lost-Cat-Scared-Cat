@@ -33,11 +33,6 @@ public sealed class LineController : MonoBehaviour
     /// Speech text for reference, used to set its position
     private SpeechText _speechText;
 
-    private void OnEnable()
-    {
-        EventManager.Events.OnPauseKeyDown += SetLine;
-    }
-
     private void OnDestroy()
     {
         EventManager.Events.OnPauseKeyDown -= SetLine;
@@ -50,6 +45,8 @@ public sealed class LineController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
         _speechText = GameObject.FindWithTag("SpeechText")
             .GetComponent<SpeechText>();
+        
+        EventManager.Events.OnPauseKeyDown += SetLine;
     }
 
     private void Start()
@@ -66,6 +63,7 @@ public sealed class LineController : MonoBehaviour
     private void SetLine(bool isPaused)
     {
         gameObject.SetActive(isPaused);
+        // Debug.Log("Called Line");
 
         // Continue with vector calculations when game is paused
         if (!isPaused) return;

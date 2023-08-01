@@ -28,7 +28,7 @@ public sealed class ButtonManager : MonoBehaviour
     [UsedImplicitly]
     public void HandleResume()
     {
-        EventManager.Events.PauseKeyDown(false);
+        EventManager.Events.PauseKeyDown();
     }
 
     /// Handles the Pause Menu's Quit button by returning to the title screen
