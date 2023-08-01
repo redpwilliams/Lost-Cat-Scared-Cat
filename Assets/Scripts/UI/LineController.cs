@@ -1,19 +1,19 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class LineController : MonoBehaviour
+public sealed class LineController : MonoBehaviour
 {
     private LineRenderer _lr;
     private GameObject _player;
 
     /// How thin the line should be
-    [SerializeField] private float lineWidth = 0.2f;
+    [SerializeField] private float _lineWidth = 0.2f;
 
     // How long the line is
-    [SerializeField] private float lineLength = 0.3f;
+    [SerializeField] private float _lineLength = 0.3f;
     
     // Gap between Player sprite and speech line start
-    [SerializeField] private float playerLineOffset = 2f;
+    [SerializeField] private float _playerLineOffset = 2f;
 
     /// Minimum angle the line should make with the horizontal
     private const float MinAngle = Mathf.PI / 6; // 30 deg
@@ -46,7 +46,7 @@ public class LineController : MonoBehaviour
     private void Awake()
     {
         _lr = GetComponent<LineRenderer>();
-        SetWidth(lineWidth * ParameterScaleFactor);
+        SetWidth(_lineWidth * ParameterScaleFactor);
         _player = GameObject.FindWithTag("Player");
         _speechText = GameObject.FindWithTag("SpeechText")
             .GetComponent<SpeechText>();
@@ -75,10 +75,10 @@ public class LineController : MonoBehaviour
 
         // Calculate start position with an gap/offset from the player
         Vector3 startPosition = playerPosition + direction *
-            (playerLineOffset * ParameterScaleFactor);
+            (_playerLineOffset * ParameterScaleFactor);
 
         // Calculate the end position based on the line length and player's position
-        Vector3 endPosition = startPosition + direction * (lineLength *
+        Vector3 endPosition = startPosition + direction * (_lineLength *
             ParameterScaleFactor);
 
         // Set the positions of the line renderer
