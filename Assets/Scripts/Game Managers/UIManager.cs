@@ -60,7 +60,7 @@ public sealed class UIManager : MonoBehaviour
         StepsMultiplier;
         SetMileageText();
 
-        // Handle Pause
+        // Handle Pause through Escape
         if (!HasInputPause()) return;
         
         _isPaused ^= true;

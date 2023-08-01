@@ -1,10 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Text))]
 public sealed class SpeechText : MonoBehaviour
 {
     [SerializeField] private string[] _phrases;
+    private string[] _complement;
+    private int _phraseIndex;
+    
     private Text _text;
     private RectTransform _rt;
 
@@ -36,6 +41,12 @@ public sealed class SpeechText : MonoBehaviour
         _text = GetComponent<Text>();
         _rt = transform as RectTransform;
         _cam = Camera.main;
+        _complement = new string[_phrases.Length - 1];
+        // Copy all but last element of phrases array
+        for (int i = 0; i < _complement.Length; i++)
+        {
+            _complement[i] = _phrases[i];
+        }
     }
 
     private void Start()
@@ -51,7 +62,7 @@ public sealed class SpeechText : MonoBehaviour
         if (!isPaused) return;
 
         // Set phrase
-        _text.text = _phrases[Random.Range(0, _phrases.Length)];
+        _text.text = GetNextPhrase();
         
         // Set Text box dimensions to fit phrase
         float textWidth = _text.preferredWidth;
@@ -118,5 +129,27 @@ public sealed class SpeechText : MonoBehaviour
             newPosition.x += distanceOffScreen + SidePadding;
             transform.position = newPosition;
         }
+    }
+
+    private void FillComplementaryArray()
+    {
+        for (int i = 0, j = 0; i < _complement.Length; i++, j++)
+        {
+            if (j == _phraseIndex) j++;
+            _complement[i] = _phrases[j];
+        }
+    }
+
+    private string GetNextPhrase()
+    {
+        // If there is only one phrase, return that phrase
+        if (_phrases.Length == 1) return _phrases[0];
+        
+        FillComplementaryArray();
+        Debug.Log("Refill");
+        
+        string nextPhrase = _complement[Random.Range(0, _complement.Length)];
+        _phraseIndex = Array.IndexOf(_phrases, nextPhrase);
+        return nextPhrase;
     }
 }
