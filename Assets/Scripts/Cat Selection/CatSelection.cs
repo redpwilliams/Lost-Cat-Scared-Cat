@@ -2,14 +2,18 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>Represents an individual Cat on the Cat Select screen</summary>
+/// <remarks>
+/// 
+/// </remarks>
 public class CatSelection : MonoBehaviour, IPointerClickHandler
 {
-    private bool isSelected;
+    private bool _isSelected;
     [field: SerializeField]
     public uint Id { get; private set; }
-    private Animator anim;
-    private SpriteRenderer sr;
-    private Sprite defaultSprite;
+    private Animator _anim;
+    private SpriteRenderer _sr;
+    private Sprite _defaultSprite;
 
     private void OnEnable()
     {
@@ -23,11 +27,11 @@ public class CatSelection : MonoBehaviour, IPointerClickHandler
 
     private void Awake()
     {
-        this.anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
         DisableAnimation();
 
-        this.sr = GetComponent<SpriteRenderer>();
-        this.defaultSprite = this.sr.sprite;
+        _sr = GetComponent<SpriteRenderer>();
+        _defaultSprite = this._sr.sprite;
 
         var preferences = SaveSystem.LoadPreferences();
         if (Id == preferences.CatID) EnableAnimation();
@@ -45,21 +49,22 @@ public class CatSelection : MonoBehaviour, IPointerClickHandler
         
         // Else, stop animation and reset sprite
         DisableAnimation();
-        this.sr.sprite = this.defaultSprite;
+        _sr.sprite = this._defaultSprite;
     }
 
     private void EnableAnimation()
     {
-        this.anim.speed = 1;
+        _anim.speed = 1;
     }
 
     private void DisableAnimation()
     {
-        this.anim.speed = 0;
+        _anim.speed = 0;
     }
 
     [UsedImplicitly]
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         EventManager.Events.CatSelect(Id);
-    }}
+    }
+}
