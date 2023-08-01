@@ -4,7 +4,7 @@ using UnityEngine;
 public class BrownFox : Fox
 {
 
-    [SerializeField] private float jumpForce = 3f;
+    [SerializeField] private float _jumpForce = 3f;
     
     protected override void Update()
     {
@@ -36,7 +36,7 @@ public class BrownFox : Fox
     [UsedImplicitly] protected override void HandleJumpAnimationEvent()
     {
       // Used in White Fox animation event at start of Jump clip
-      rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
+      rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse); 
       IsVisiblyJumping = true;
       HasInputJump = false;
     }

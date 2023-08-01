@@ -1,27 +1,24 @@
-using System;
 using UnityEngine;
 
 public abstract class Fox : Character
 {
   /// Default Fox velocity
-  [SerializeField] private float runSpeed = -3f;
-  protected float RunSpeed => runSpeed;
+  [SerializeField] private float _runSpeed = -3f;
+  protected float RunSpeed => _runSpeed;
 
   /// Fox destruction point
-  private readonly float deadZone = -4.5f;
+  private const float DeadZone = -4.5f;
 
   /// True if the Fox has initiated its `Attack()` method
-  // protected bool hasAttacked = false;
   protected bool HasAttacked { get; set; }
+  
   /// The amount of space between the Fox and Player to initiate Fox attack
-  private readonly float spaceBeforeAttack = 1.5f;
-  // REVIEW - I could change this into an array to accommodate for sitting foxes
-  // Each value in the array would dictate the spacing before each action of a sitting fox
+  /// TODO - Make variable
+  private const float SpaceBeforeAttack = 1.5f;
 
   private void OnValidate()
   {
-    if (this.runSpeed >= 0) return;
-    this.runSpeed = Mathf.Abs(this.runSpeed);
+    _runSpeed = Mathf.Abs(_runSpeed);
   }
 
   protected void Start()
@@ -36,7 +33,7 @@ public abstract class Fox : Character
   protected virtual void Update()
   {
     // Destroy on off-screen
-    if (IsOffscreen(transform.position.x, deadZone)) 
+    if (IsOffscreen(transform.position.x, DeadZone)) 
     {
       Destroy(gameObject);
       return;
@@ -52,7 +49,7 @@ public abstract class Fox : Character
     
     // Distance between Fox and Player's position && isRunning
     float distanceFromPlayer = Mathf.Abs(Player.PlayerXPos - transform.position.x);
-    if (HasAttacked || (!IsInPosition(distanceFromPlayer, this.spaceBeforeAttack)) 
+    if (HasAttacked || (!IsInPosition(distanceFromPlayer, Fox.SpaceBeforeAttack)) 
         ) return;
     
     Attack();

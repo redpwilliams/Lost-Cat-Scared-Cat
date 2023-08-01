@@ -190,7 +190,7 @@ public class Player : Character, IFlashable
     {
         for (int i = 0; i < flashCount; i++)
         {
-            // Make the sprite transparent
+            // Make the sprite red
             _sr.color = flashColor;
             yield return new WaitForSeconds(this.flickDuration);
 
