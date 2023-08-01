@@ -70,10 +70,11 @@ public class Player : Character, IFlashable
 
     protected void Start()
     {
-        // Put Player on specific location on screen
-        Vector3 position = transform.position;
-        Vector3 newPosition = new Vector3(PlayerXPos, position.y, position.z);
-        gameObject.transform.position = newPosition;
+        // Put Player at screen 0
+        Transform trans = transform;
+        Vector3 position = trans.position;
+        Vector3 newPosition = new Vector3(0, position.y, position.z);
+        trans.position = newPosition;
     }
 
     protected void Update()

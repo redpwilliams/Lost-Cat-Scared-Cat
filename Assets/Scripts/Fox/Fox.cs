@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class Fox : Character
 {
   /// Default Fox velocity
-  [SerializeField] private float _runSpeed = -3f;
-  protected float RunSpeed => _runSpeed;
+  [field: SerializeField]
+  protected float RunSpeed { get; set; } = 3f;
 
   /// Fox destruction point
   private const float DeadZone = -4.5f;
@@ -18,7 +18,7 @@ public abstract class Fox : Character
 
   private void OnValidate()
   {
-    _runSpeed = Mathf.Abs(_runSpeed);
+    RunSpeed = Mathf.Abs(RunSpeed);
   }
 
   protected void Start()
