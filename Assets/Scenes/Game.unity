@@ -286,6 +286,30 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: flashCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: flashColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: flashColor.b
+      value: 0.54509807
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: flashColor.g
+      value: 0.54509807
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: flashColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625140, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: flickDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7834204335144625141, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
       propertyPath: m_RootOrder
       value: 8
