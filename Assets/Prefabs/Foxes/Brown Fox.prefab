@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -724694727, guid: 5a62f8542ee93904297b08d394979899, type: 3}
+    - target: {fileID: 5645074907809119954, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119954, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1546251743
+      objectReference: {fileID: 0}
     - target: {fileID: 5645074907809119955, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
       propertyPath: m_Name
       value: Brown Fox
@@ -84,3 +92,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 2.5
+  jumpForce: 3
