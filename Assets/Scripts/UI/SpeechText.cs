@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class SpeechText : MonoBehaviour
+public sealed class SpeechText : MonoBehaviour
 {
-    [SerializeField] private string[] phrases;
+    [SerializeField] private string[] _phrases;
     private Text _text;
     private RectTransform _rt;
 
@@ -27,7 +27,7 @@ public class SpeechText : MonoBehaviour
 
     private void OnValidate()
     {
-        if (phrases.Length > 0) return;
+        if (_phrases.Length > 0) return;
         Debug.LogError("Array `phrases` must at least be of length 1");
     }
 
@@ -51,7 +51,7 @@ public class SpeechText : MonoBehaviour
         if (!isPaused) return;
 
         // Set phrase
-        _text.text = phrases[Random.Range(0, phrases.Length)];
+        _text.text = _phrases[Random.Range(0, _phrases.Length)];
         
         // Set Text box dimensions to fit phrase
         float textWidth = _text.preferredWidth;
