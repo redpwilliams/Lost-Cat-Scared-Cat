@@ -3,44 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Random;
 
-public class FoxSpawner : MonoBehaviour
+public sealed class FoxSpawner : MonoBehaviour
 {
-    private readonly float _startX = 4.5f;
-    private readonly float _startY = -0.875f;
+    private const float StartX = 4.5f;
+    private const float StartY = -0.875f;
     private Transform _trans;
+
+    public const float MinAttackGap = 0.75f;
+    public const float MaxAttackGap = 1.5f;
 
     [SerializeField] private GameObject[] _foxPrefabs;
 
     [SerializeField] private float _skulkSpawnInterval = 5f;
     [SerializeField] private float _foxSpawnInterval = 3f;
 
-    [Header("Debug")] [SerializeField] private bool _shouldSpawn;
+    [SerializeField] private bool _drawGizmos;
+
+    private bool _isGameOver;
+    
+    private void OnDrawGizmos()
+    {
+        if (!_drawGizmos) return;
+        Gizmos.DrawSphere(new Vector3(MinAttackGap, -0.8f, 0f), 0.1f);
+        Gizmos.DrawSphere(new Vector3(MaxAttackGap, -0.8f, 0f), 0.1f);
+    }
 
     private void Start()
     {
-        this._trans = GetComponent<Transform>();
-        this._trans.localPosition = new Vector3(this._startX, this._startY,
-            this._trans.position.z);
+        _trans = GetComponent<Transform>();
+        _trans.localPosition = new Vector3(StartX, StartY,
+            _trans.position.z);
 
         StartCoroutine(SpawnFoxes());
     }
 
     private IEnumerator SpawnFoxes()
     {
-        while (this._shouldSpawn)
+        while (!_isGameOver) // TODO Change when game is over
         {
             // Set interval in between skulk spawns
-            yield return new WaitForSeconds(this._skulkSpawnInterval);
+            yield return new WaitForSeconds(_skulkSpawnInterval);
 
             // Create skulk
-            Skulk skulk = new Skulk(4, this._foxPrefabs);
+            Skulk skulk = new Skulk(4, _foxPrefabs);
             IEnumerable<GameObject> foxes = skulk.GetSkulk();
 
             // Spawn each Fox in the skulk
             foreach (GameObject fox in foxes)
             {
-                Instantiate(fox, this._trans.position, this._trans.rotation);
-                yield return new WaitForSeconds(this._foxSpawnInterval);
+                Instantiate(fox, _trans.position, _trans.rotation);
+                yield return new WaitForSeconds(_foxSpawnInterval);
             }
         }
     }
@@ -49,38 +61,39 @@ public class FoxSpawner : MonoBehaviour
 
 public class Skulk
 {
-    private static readonly int MaxSize = 5;
-    private static readonly int MinSize = 3;
+    private const int MaxSize = 5;
+    private const int MinSize = 3;
 
     private readonly GameObject[] _skulk;
     private readonly GameObject[] _foxPrefabs;
 
-    public Skulk(GameObject[] foxPrefabs) : this((Range(MinSize, MaxSize)),
-        foxPrefabs) {}
+    public Skulk(GameObject[] foxPrefabs) : this(Range(MinSize, MaxSize),
+        foxPrefabs) { }
+
 
     public Skulk(int size, GameObject[] foxPrefabs)
     {
         // Include Fox prefabs
-        this._foxPrefabs = foxPrefabs;
+        _foxPrefabs = foxPrefabs;
 
         // Init skulk array
         _skulk = new GameObject[size];
 
         // Fill in skulk with 
-        for (int i = 0; i < this._skulk.Length; i++)
+        for (int i = 0; i < _skulk.Length; i++)
         {
-            this._skulk[i] = ChooseFox();
+            _skulk[i] = ChooseFox();
         }
     }
 
     public IEnumerable<GameObject> GetSkulk()
     {
-        return this._skulk;
+        return _skulk;
     }
 
   private GameObject ChooseFox()
   {
-      int choice = Range(0, this._foxPrefabs.Length);
-      return this._foxPrefabs[choice];
+      int choice = Range(0, _foxPrefabs.Length);
+      return _foxPrefabs[choice];
   }
 }

@@ -5,9 +5,6 @@ using UnityEngine.U2D.Animation;
 
 public class Player : Character, IFlashable
 {
-    /// Initial starting point of player
-    internal const float PlayerXPos = 0f;
-
     /// Number of lives the Player has
     internal const int NumLives = 9;
 

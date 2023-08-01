@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class Fox : Character
 {
@@ -12,10 +13,6 @@ public abstract class Fox : Character
   /// True if the Fox has initiated its `Attack()` method
   protected bool HasAttacked { get; set; }
   
-  /// The amount of space between the Fox and Player to initiate Fox attack
-  /// TODO - Make variable
-  private const float SpaceBeforeAttack = 1.5f;
-
   private void OnValidate()
   {
     RunSpeed = Mathf.Abs(RunSpeed);
@@ -48,9 +45,10 @@ public abstract class Fox : Character
     HandleMovement();
     
     // Distance between Fox and Player's position && isRunning
-    float distanceFromPlayer = Mathf.Abs(Player.PlayerXPos - transform.position.x);
-    if (HasAttacked || (!IsInPosition(distanceFromPlayer, Fox.SpaceBeforeAttack)) 
-        ) return;
+    float currentPosition = Mathf.Abs(transform.position.x);
+    if (HasAttacked || !IsInPosition(currentPosition,
+          GetRandomAttackGap(FoxSpawner.MinAttackGap, FoxSpawner.MaxAttackGap)))
+      return;
     
     Attack();
   }
@@ -70,6 +68,12 @@ public abstract class Fox : Character
   private static bool IsInPosition(float distance, float spacing)
   {
     return distance < spacing;
+  }
+
+  /// Gets a random attack position within the Min and Max range
+  private static float GetRandomAttackGap(float min, float max)
+  {
+    return Random.Range(min, max);
   }
   
   protected abstract void SetAnimationParams();
