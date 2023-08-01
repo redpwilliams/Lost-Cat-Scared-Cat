@@ -3,9 +3,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>Represents an individual Cat on the Cat Select screen</summary>
-/// <remarks>
-/// 
-/// </remarks>
 public class CatSelection : MonoBehaviour, IPointerClickHandler
 {
     private bool _isSelected;

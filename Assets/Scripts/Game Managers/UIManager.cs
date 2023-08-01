@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Text))]
 public sealed class UIManager : MonoBehaviour
 {
     /// Singleton Instance
@@ -10,14 +11,14 @@ public sealed class UIManager : MonoBehaviour
     private float _mileage;
 
     [Header("Mileage Props")] 
-    [SerializeField] private Text mileageText;
+    [SerializeField] private Text _mileageText;
     private const float StepsMultiplier = 3f;
 
     /// True if game is paused
     private bool _isPaused;
 
     /// Heart GameObject
-    [SerializeField] private GameObject heart;
+    [SerializeField] private GameObject _heart;
 
     private GameObject[] _hearts;
     private int _numHeartsShown;
@@ -61,32 +62,32 @@ public sealed class UIManager : MonoBehaviour
         // Handle Pause
         if (!HasInputPause()) return;
         
-        this._isPaused ^= true;
-        EventManager.Events.PauseKeyDown(this._isPaused);
+        _isPaused ^= true;
+        EventManager.Events.PauseKeyDown(_isPaused);
     }
 
     public void LoseHeart()
     {
-        if (this._numHeartsShown == 0) return;
+        if (_numHeartsShown == 0) return;
 
         // Get current heart game object and destroy
         Heart currentHeart =
-            this._hearts[this._numHeartsShown - 1].GetComponent<Heart>();
+            _hearts[this._numHeartsShown - 1].GetComponent<Heart>();
         currentHeart.Destroy();
 
         // Update list
-        this._numHeartsShown--;
-        this._hearts[this._numHeartsShown] = null;
+        _numHeartsShown--;
+        _hearts[this._numHeartsShown] = null;
 
         // TODO - Handle GameOver
-        if (this._numHeartsShown == 0) Debug.Log("Lost last heart, game over");
+        if (_numHeartsShown == 0) Debug.Log("Lost last heart, game over");
     }
 
     /// Updates the mileage field on the screen
     private void SetMileageText()
     {
         // Update mileage
-        mileageText.text = $"{this._mileage:#} steps";
+        _mileageText.text = $"{_mileage:#} steps";
     }
 
     /// Sets the Mileage text on the screen.
@@ -99,13 +100,13 @@ public sealed class UIManager : MonoBehaviour
     /// Sets the number of hearts based on the Player class
     private void InitHearts(int numHearts)
     {
-        _hearts[0] = this.heart;
-        Vector3 heartPos = this.heart.GetComponent<RectTransform>().position;
+        _hearts[0] = _heart;
+        Vector3 heartPos = _heart.GetComponent<RectTransform>().position;
 
         for (int i = 1; i < numHearts; i++)
         {
             // Create new game object
-            GameObject heartClone = Instantiate(heart, transform);
+            GameObject heartClone = Instantiate(_heart, transform);
             heartClone.name = $"Heart ({i + 1})";
 
             // Set its position
@@ -117,7 +118,7 @@ public sealed class UIManager : MonoBehaviour
             _hearts[i] = heartClone;
         }
 
-        this._numHeartsShown = numHearts;
+        _numHeartsShown = numHearts;
     }
 
     /// Defines what the PauseKey is
