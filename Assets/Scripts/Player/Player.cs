@@ -26,6 +26,7 @@ public class Player : Character, IFlashable
     [Header("Flash Animation Parameters")]
     [SerializeField] private int flashCount = 5;
     [SerializeField] private float flickDuration = 0.1f;
+    [SerializeField] private Color flashColor;
     private bool _isInvincible;
 
     /// "Normal" gravity when not jumping
@@ -190,7 +191,7 @@ public class Player : Character, IFlashable
         for (int i = 0; i < flashCount; i++)
         {
             // Make the sprite transparent
-            _sr.color = new Color(1f, 1f, 1f, 0.5f);
+            _sr.color = flashColor;
             yield return new WaitForSeconds(this.flickDuration);
 
             // Make the sprite opaque
