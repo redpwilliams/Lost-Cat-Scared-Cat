@@ -3,7 +3,7 @@ using UnityEngine;
 public class FoxTrigger : MonoBehaviour
 {
 
-    private bool playerIsInvincible;
+    private bool _playerIsInvincible;
 
     private void OnEnable()
     {
@@ -19,17 +19,17 @@ public class FoxTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (this.playerIsInvincible || !col.CompareTag("Player")) return;
+        if (this._playerIsInvincible || !col.CompareTag("Player")) return;
         EventManager.Events.FoxHitsPlayer();
     }
 
     private void PlayerIsInvincible()
     {
-        this.playerIsInvincible = true;
+        _playerIsInvincible = true;
     }
 
     private void PlayerIsVulnerable()
     {
-        this.playerIsInvincible = false;
+        _playerIsInvincible = false;
     }
 }
