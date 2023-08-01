@@ -62,7 +62,7 @@ public abstract class Character : MonoBehaviour
   /// Sets GameObject's speed as idle aligned with the parallax background
   protected void SetSpeedAsIdle()
   {
-    float idleSpeed = BackgroundManager.bgm.GetScrollVelocity() * 1.1f;
+    float idleSpeed = BackgroundManager.bgm.ScrollVelocity * 1.1f;
 
     Vector3 currentPosition = transform.position;
     this.transform.position = new Vector3(

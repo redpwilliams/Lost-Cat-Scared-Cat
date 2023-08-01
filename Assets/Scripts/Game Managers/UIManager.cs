@@ -56,7 +56,8 @@ public sealed class UIManager : MonoBehaviour
 
     private void Update()
     {
-        _mileage += BackgroundManager.bgm.GetScrollVelocity() * Time.deltaTime * StepsMultiplier;
+        _mileage += BackgroundManager.bgm.ScrollVelocity * Time.deltaTime * 
+        StepsMultiplier;
         SetMileageText();
 
         // Handle Pause

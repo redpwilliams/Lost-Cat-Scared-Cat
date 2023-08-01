@@ -7,7 +7,6 @@ public class Parallax : MonoBehaviour
 
   /// How much parallax to add / Parallax coefficient
   [SerializeField] private float parallaxEffect;
-  [SerializeField] private BackgroundManager bgm;
   [SerializeField] private new Camera camera;
   
   private new Transform transform;
@@ -31,9 +30,9 @@ public class Parallax : MonoBehaviour
 
   private void Start()
   {
-    numBackgrounds = this.bgm.backgroundCount;
+    numBackgrounds = BackgroundManager.BackgroundCount;
     ParallaxBackgroundSpeed =
-      this.bgm.GetScrollVelocity() * this.parallaxEffect;
+      BackgroundManager.bgm.ScrollVelocity * this.parallaxEffect;
   }
 
   private void Update()

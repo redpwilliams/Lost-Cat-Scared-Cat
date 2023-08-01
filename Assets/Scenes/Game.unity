@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cbc8624a2f1a7409d49afd7b0bd6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phrases:
+  _phrases:
   - pls help
   - dont press play
   - get me outta here
@@ -2207,6 +2207,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1134151221}
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
+      propertyPath: _bgSet
+      value: 
+      objectReference: {fileID: 1134151221}
+    - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: shouldMove
       value: 1
       objectReference: {fileID: 0}
@@ -2216,6 +2220,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
       propertyPath: numAdditionalBgs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696287208559053863, guid: 5dbc1936ba2bafd45a65a9c5f6d4936b, type: 3}
+      propertyPath: <ScrollVelocity>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

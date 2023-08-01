@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 public sealed class BackgroundManager : MonoBehaviour
 {
@@ -8,18 +9,17 @@ public sealed class BackgroundManager : MonoBehaviour
   public static BackgroundManager bgm;
   
   // How many extra backgrounds to make
-  public int backgroundCount = 1;
+  public const int BackgroundCount = 1;
 
   [Header("Background Prefab")]
-  [SerializeField] private GameObject bg;
+  [SerializeField] private GameObject _bgSet;
 
   /// SpriteMask component
-  private SpriteMask sm;
+  private SpriteMask _sm;
 
   /// How fast the screen moves
-  [SerializeField] private float scrollVelocity = 1.5f;
-
-  public float GetScrollVelocity() { return scrollVelocity; }
+  [field: SerializeField]
+  public float ScrollVelocity { get; private set; } = 1f;
 
   private void Awake()
   {
@@ -31,14 +31,14 @@ public sealed class BackgroundManager : MonoBehaviour
     }
 
     bgm = this;
-    sm = GetComponent<SpriteMask>();
+    _sm = GetComponent<SpriteMask>();
   }
 
   private void Start()
   {
-    Assert.IsTrue(this.backgroundCount > 0);
-    GameObject[] duplicates = MakeDuplicates(this.backgroundCount);
-    float length = sm.bounds.size.x;
+    Assert.IsTrue(BackgroundCount > 0);
+    GameObject[] duplicates = MakeDuplicates(BackgroundCount);
+    float length = _sm.bounds.size.x;
     PositionBackgrounds(duplicates, length);
   }
 
@@ -48,7 +48,7 @@ public sealed class BackgroundManager : MonoBehaviour
     GameObject[] duplicates = new GameObject[num];
     for (int i = 0; i < num; i++)
     {
-      duplicates[i] = Instantiate(bg);
+      duplicates[i] = Instantiate(_bgSet);
       duplicates[i].name = $"Background Copy ({i + 1})";
     }
 
@@ -60,7 +60,7 @@ public sealed class BackgroundManager : MonoBehaviour
   {
     for (int i = 1; i <= duplicates.Count; i++)
     {
-      Vector3 position = bg.transform.position;
+      Vector3 position = _bgSet.transform.position;
       duplicates[i - 1].transform.position = new Vector3(position.x + (length * i), position.y, position.z);
     }
   }
