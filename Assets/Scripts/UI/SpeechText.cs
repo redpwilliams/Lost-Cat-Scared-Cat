@@ -6,9 +6,23 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Text))]
 public sealed class SpeechText : MonoBehaviour
 {
-    [SerializeField] private string[] _phrases;
+    /// The list of possible phrases the Cat can say
+    private string[] _phrases;
+    
+    /// A mirror of _phrases, minus the current phrase
     private string[] _complement;
+
+    /// A fallback list of phrases if _phrases cannot be found from Resources
+    private readonly string[] _legacy =
+        { "pls help", "dont press play", "get me outta here" };
+    
+    /// The index in the _phrases array of the current phrase
     private int _phraseIndex;
+
+    private struct PhrasesJson
+    {
+        public string[] phrases;
+    }
     
     private Text _text;
     private RectTransform _rt;
@@ -25,12 +39,6 @@ public sealed class SpeechText : MonoBehaviour
         EventManager.Events.OnPauseKeyDown -= SetText;
     }
 
-    private void OnValidate()
-    {
-        if (_phrases.Length > 0) return;
-        Debug.LogError("Array `phrases` must at least be of length 1");
-    }
-
     private void Awake()
     {
         EventManager.Events.OnPauseKeyDown += SetText;
@@ -38,7 +46,16 @@ public sealed class SpeechText : MonoBehaviour
         _text = GetComponent<Text>();
         _rt = transform as RectTransform;
         _cam = Camera.main;
+        
+        // Try to load phrases from Resources
+        string rawText = Resources.Load<TextAsset>("phrases").text;
+        var data = JsonUtility.FromJson<PhrasesJson>(rawText);
+
+        _phrases = data.phrases ?? _legacy;
+        
+        // Set up complement
         _complement = new string[_phrases.Length - 1];
+        
         // Copy all but last element of phrases array
         for (int i = 0; i < _complement.Length; i++)
         {
