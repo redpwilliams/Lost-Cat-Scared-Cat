@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(LineRenderer))]
 public sealed class LineController : MonoBehaviour
@@ -33,11 +34,24 @@ public sealed class LineController : MonoBehaviour
     /// Speech text for reference, used to set its position
     private SpeechText _speechText;
 
+    [SerializeField] private bool _shouldDrawGizmos;
+
+    private void OnDrawGizmos()
+    {
+        if (!_shouldDrawGizmos) return;
+        // Negative line
+        Gizmos.DrawLine(new Vector3(NegativeWedge, -0.875f, 0f),
+            new Vector3(NegativeWedge, 1f, 0f));
+        // Positive line
+        Gizmos.DrawLine(new Vector3(PositiveWedge, -0.875f, 0f),
+            new Vector3(PositiveWedge, 1f, 0f));
+    }
+
     private void OnDestroy()
     {
         EventManager.Events.OnPauseKeyDown -= SetLine;
     }
-
+    
     private void Awake()
     {
         _lr = GetComponent<LineRenderer>();

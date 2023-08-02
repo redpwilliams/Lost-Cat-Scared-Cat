@@ -907,10 +907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cbc8624a2f1a7409d49afd7b0bd6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _phrases:
-  - pls help
-  - dont press play
-  - get me outta here
 --- !u!1 &988944020
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +960,7 @@ MonoBehaviour:
   _lineWidth: 0.15
   _lineLength: 3.5
   _playerLineOffset: 2
+  _shouldDrawGizmos: 0
 --- !u!120 &988944023
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1733,7 +1730,7 @@ MonoBehaviour:
   - {fileID: 6341849905573886277, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
   _skulkSpawnInterval: 2.25
   _foxSpawnInterval: 1
-  _shouldSpawn: 1
+  _drawGizmos: 0
 --- !u!4 &1915981027
 Transform:
   m_ObjectHideFlags: 0
@@ -1953,7 +1950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7544913061381130739, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7544913061381130739, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2110,7 +2107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7544913061381130739, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7544913061381130739, guid: 72e0312e16c4ce649aba543b7bd3d52a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
