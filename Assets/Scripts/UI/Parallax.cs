@@ -32,8 +32,6 @@ public sealed class Parallax : MonoBehaviour
   private void Start()
   {
     _numBackgrounds = BackgroundManager.BackgroundCount;
-    ParallaxBackgroundSpeed =
-      BackgroundManager.bgm.ScrollVelocity * _parallaxEffect;
   }
 
   private void Update()
@@ -41,6 +39,8 @@ public sealed class Parallax : MonoBehaviour
     // Determine new background position based on its parallax value
     Vector3 currentPosition = transform.position;
 
+    ParallaxBackgroundSpeed = BackgroundManager.bgm.ScrollVelocity * _parallaxEffect;
+    
     // Set its new position
     _trans.position =
       new Vector3(currentPosition.x - ParallaxBackgroundSpeed * Time.deltaTime,
