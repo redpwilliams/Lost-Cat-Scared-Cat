@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>Handles necessary button input throughout game</summary>
 /// <remarks>
@@ -11,6 +12,8 @@ using UnityEngine.SceneManagement;
 [UsedImplicitly]
 public sealed class ButtonManager : MonoBehaviour
 {
+    private float _volumeLevel;
+    
     /// Handles the Title Screen's Play button by starting the Game scene
     [UsedImplicitly]
     public void HandlePlay()
@@ -25,6 +28,26 @@ public sealed class ButtonManager : MonoBehaviour
         Application.Quit();
     }
 
+    /// Handles moving the Volume slider
+    [UsedImplicitly]
+    public void HandleVolume(Slider slider)
+    {
+        AudioSource[] sources = FindObjectsOfType<AudioSource>();
+        _volumeLevel = slider.value;
+        foreach (var source in sources)
+        {
+            source.volume = _volumeLevel;
+        }
+    }
+
+    /// Handles Returning from the Options screen
+    [UsedImplicitly]
+    public void HandleReturn()
+    {
+        // Save volume to player prefs
+    }
+
+    /// Handles resuming from the Pause Menu
     [UsedImplicitly]
     public void HandleResume()
     {

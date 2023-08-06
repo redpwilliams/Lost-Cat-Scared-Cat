@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fox
   - SpeechText
+  - Audio
   layers:
   - Default
   - TransparentFX
