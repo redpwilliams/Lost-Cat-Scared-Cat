@@ -50,14 +50,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d1d97a8f39ecb438549b07b63d639a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
-  topSpeed: 5.5
-  acceleration: 4
-  deceleration: 10
-  fallGravityMultiplier: 2.5
-  flashCount: 25
-  flickDuration: 0.1
-  sprites:
+  _jumpForce: 5
+  _topSpeed: 5.5
+  _acceleration: 4
+  _deceleration: 10
+  _fallGravityMultiplier: 2.5
+  _flashCount: 15
+  _flickDuration: 0.2
+  _flashColor: {r: 1, g: 0.54509807, b: 0.54509807, a: 1}
+  _sprites:
   - {fileID: 7108339969198208228, guid: c96c37a10ab4a7e49b82f5b9a9ad0fe6, type: 3}
   - {fileID: 7108339969198208228, guid: 60cb8514587251240a4baaf4875356fb, type: 3}
   - {fileID: 7108339969198208228, guid: 8e046688a98612541a71dd983bae5316, type: 3}
@@ -145,7 +146,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7834204335144625144}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: e0a834c2bb33f704a93927b8a9b6e3c1, type: 2}
+  m_Material: {fileID: 6200000, guid: 52c8982f4ce11f3479785ec28f58b1e6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
