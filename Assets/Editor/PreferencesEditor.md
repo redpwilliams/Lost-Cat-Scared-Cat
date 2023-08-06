@@ -1,6 +1,6 @@
 # Using the Preferences Window
 
-<img src="./PreferencesReference.png" />
+<img src="../Resources/PreferencesReference.png" />
 
 The `Preferences` menu is meant to toggle player preferences in the development environment, instead of through the game.
 
