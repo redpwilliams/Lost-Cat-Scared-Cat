@@ -54,7 +54,7 @@ public sealed class SpeechText : MonoBehaviour
         _phrases = data.phrases ?? _legacy;
         
         // Set up complement
-        _complement = new string[_phrases.Length - 1];
+_complement = new string[_phrases.Length - 1];
         
         // Copy all but last element of phrases array
         for (int i = 0; i < _complement.Length; i++)
