@@ -942,9 +942,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineWidth: 0.15
-  _lineLength: 3.5
+  _minLength: 2.5
+  _maxLength: 4.5
   _playerLineOffset: 2
-  _shouldDrawGizmos: 0
+  _drawWedges: 1
 --- !u!120 &988944023
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1825,7 +1826,7 @@ AudioLowPassFilter:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.054115508
+      value: 0.026830377
       inSlope: 0
       outSlope: 0
       tangentMode: 0

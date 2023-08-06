@@ -10,8 +10,11 @@ public sealed class LineController : MonoBehaviour
     /// How thin the line should be
     [SerializeField] private float _lineWidth = 0.2f;
 
-    // How long the line is
-    [SerializeField] private float _lineLength = 0.3f;
+    // Minimum line length
+    [SerializeField] private float _minLength = 2.5f;
+    
+    // Minimum line length
+    [SerializeField] private float _maxLength = 4.5f;
     
     // Gap between Player sprite and speech line start
     [SerializeField] private float _playerLineOffset = 2f;
@@ -34,11 +37,11 @@ public sealed class LineController : MonoBehaviour
     /// Speech text for reference, used to set its position
     private SpeechText _speechText;
 
-    [SerializeField] private bool _shouldDrawGizmos;
+    [SerializeField] private bool _drawWedges;
 
     private void OnDrawGizmos()
     {
-        if (!_shouldDrawGizmos) return;
+        if (!_drawWedges) return;
         // Negative line
         Gizmos.DrawLine(new Vector3(NegativeWedge, -0.875f, 0f),
             new Vector3(NegativeWedge, 1f, 0f));
@@ -89,7 +92,7 @@ public sealed class LineController : MonoBehaviour
             (_playerLineOffset * ParameterScaleFactor);
 
         // Calculate the end position based on the line length and player's position
-        Vector3 endPosition = startPosition + direction * (_lineLength *
+        Vector3 endPosition = startPosition + direction * (RandomLineLength() *
             ParameterScaleFactor);
 
         // Set the positions of the line renderer
@@ -121,5 +124,10 @@ public sealed class LineController : MonoBehaviour
         float x = Mathf.Cos(theta) * dir;
         float y = Mathf.Sin(theta);
         return new Vector3(x, y, 0);
+    }
+
+    private float RandomLineLength()
+    {
+        return Random.Range(_minLength, _maxLength);
     }
 }
