@@ -40,6 +40,8 @@ Special thanks to
 
 - [SeethingSwarm](https://seethingswarm.itch.io/) for providing the adorable cat and fox assets used in this game. You can find more of their work on [itch.io](https://seethingswarm.itch.io/) and follow them on [Twitter](https://twitter.com/SeethingSwarm).
 - [Eder Muniz (edermunizz)](https://edermunizz.itch.io/) for their beautiful pixel art forest backgrounds. More of their work is found on [itch.io](https://edermunizz.itch.io/) and [Twitter](https://twitter.com/edermunizpixels).
+- [Strikecast Audio](www.strikecastaudio.com/) for the background music provided in game. Their content was available free of the [Unity Asset Store](https://assetstore.unity.com/packages/audio/music/electronic/miru-far-from-home-free-8bit-inspired-music-pack-202961).
+
 
 ## Contact
 
