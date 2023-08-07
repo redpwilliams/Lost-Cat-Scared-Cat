@@ -45,6 +45,9 @@ public sealed class ButtonManager : MonoBehaviour
     public void HandleReturn()
     {
         // Save volume to player prefs
+        var preferences = SaveSystem.LoadPreferences();
+        preferences.Volume = _volumeLevel;
+        SaveSystem.SavePreferences(preferences);
     }
 
     /// Handles resuming from the Pause Menu
