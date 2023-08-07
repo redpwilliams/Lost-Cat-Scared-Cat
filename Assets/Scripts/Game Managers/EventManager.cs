@@ -85,10 +85,14 @@ public sealed class EventManager : MonoBehaviour
     public void CatSelect(uint index)
     {
         // Ignore if user selects the already active Cat selection
-        if (index == this._currentCatID) return;
+        if (index == _currentCatID) return;
         OnCatSelect?.Invoke(index);
-        this._currentCatID = index;
-        SaveSystem.SavePreferences(new Preferences(false, index));
+
+        _currentCatID = index;
+        
+        var preferences = SaveSystem.LoadPreferences();
+        preferences.CatID = index;
+        SaveSystem.SavePreferences(preferences);
     }
 
 }
