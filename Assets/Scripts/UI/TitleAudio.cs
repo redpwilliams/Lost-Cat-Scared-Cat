@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Audio : MonoBehaviour
+public class Title : MonoBehaviour
 {
     private void Awake()
     {
