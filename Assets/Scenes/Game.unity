@@ -1045,6 +1045,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!82 &1119524706 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8828028921889685140, guid: 27176b9b49944ff43b999da008373798, type: 3}
+  m_PrefabInstance: {fileID: 8828028923466807012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1119524708 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8934094080525698083, guid: 27176b9b49944ff43b999da008373798, type: 3}
+  m_PrefabInstance: {fileID: 8828028923466807012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134151221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8186637361178167864, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -2739,6 +2749,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1838752689620782551, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: _mainMusic
+      value: 
+      objectReference: {fileID: 1119524706}
+    - target: {fileID: 1838752689620782551, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: _forestMusic
+      value: 
+      objectReference: {fileID: 1119524708}
     - target: {fileID: 8828028921889685131, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_Name
       value: Audio Source

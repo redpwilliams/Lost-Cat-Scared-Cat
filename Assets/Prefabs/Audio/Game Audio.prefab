@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8934094080525698083}
   - component: {fileID: 8828028921889685142}
   - component: {fileID: 8828028921889685143}
-  - component: {fileID: 7059497314800451231}
+  - component: {fileID: 1838752689620782551}
   m_Layer: 0
   m_Name: Game Audio
   m_TagString: Untagged
@@ -276,7 +276,7 @@ AudioReverbFilter:
   m_LFReference: 250
   m_ReflectionsDelay: 0
   m_ReverbPreset: 16
---- !u!114 &7059497314800451231
+--- !u!114 &1838752689620782551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,6 +285,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8828028921889685131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f33a207575b234ba07344b0ccba9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 24a201aabfb226a4198253da337ccdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _forestMusic: {fileID: 0}
+  _mainMusic: {fileID: 0}
+  _volumeRatio: 1.6666666
