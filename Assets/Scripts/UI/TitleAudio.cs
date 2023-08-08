@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public sealed class TitleAudio : MonoBehaviour
 {
     private void Awake()
