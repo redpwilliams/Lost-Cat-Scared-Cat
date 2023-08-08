@@ -91,5 +91,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9713f4a939c2ae4087f002b63cb43fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 2.5
-  jumpForce: 3
+  <RunSpeed>k__BackingField: 2.5
+  _jumpForce: 3

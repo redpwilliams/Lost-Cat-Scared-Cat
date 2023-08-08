@@ -99,7 +99,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff615abef0e81b448cf4030e2bdbcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 3.5
-  _flashCount: 2
-  _flickDuration: 0.2
-  _flashColor: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0}
+  <RunSpeed>k__BackingField: 2.5
+  _dashForce: 4.5

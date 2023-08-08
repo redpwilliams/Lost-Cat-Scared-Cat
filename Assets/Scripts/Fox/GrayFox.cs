@@ -4,14 +4,17 @@ using UnityEngine;
 public class GrayFox : Fox
 {
     private bool _hasInputDash;
+    private bool _hasFinishedDash;
     private bool _isVisiblyDashing;
+
+    [SerializeField] private float _dashForce = 3f;
 
     protected override void Update()
     {
         base.Update();
 
         // Carry on with normal Run if has started Attack
-        if (this._isVisiblyDashing) return;
+        if (_isVisiblyDashing) return;
 
         // Else, move when idle
         SetSpeedAsIdle();
@@ -19,37 +22,39 @@ public class GrayFox : Fox
 
     protected override void HandleMovement()
     {
-        // Stay crouching if the following is true
-        if (!this._isVisiblyDashing) return;
-
+        // Assume normal run if the following is true
+        if (!_hasFinishedDash) return;
+        
         // Keep velocity
-        this.rb.velocity = new Vector2(-this.RunSpeed, this.rb.velocity.y);
+        rb.velocity = new Vector2(-this.RunSpeed, this.rb.velocity.y);
     }
 
     protected override void Attack()
     {
-        this.HasAttacked = true;
-        this._hasInputDash = true;
+        HasAttacked = true;
+        _hasInputDash = true;
     }
 
     /// Applies the dash force to the RigidBody2D, used as an Animation Event
     [UsedImplicitly]
-    private void HandleDashStartAnimationEvent(float dashForce)
+    private void HandleDashStartAnimationEvent()
     {
-        this._isVisiblyDashing = true;
+        _isVisiblyDashing = true;
 
-        // Used in White Fox animation event at start of Jump clip
-        rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+        // Used in Gray Fox animation event at start of Dash clip
+        rb.AddForce(Vector2.left * _dashForce, ForceMode2D.Impulse);
     }
 
     /// Stops dash animation on call, used as an Animation Event
     [UsedImplicitly]
     private void HandleDashEndAnimationEvent()
     {
-        this._hasInputDash = false;
+        _hasFinishedDash = true;
+        _hasInputDash = false;
+        _isVisiblyDashing = false;
     }
 
-    protected override void HandleJumpAnimationEvent()
+    protected override void HandleJumpAnimationEvent() 
     {
         throw new System.NotImplementedException();
     }

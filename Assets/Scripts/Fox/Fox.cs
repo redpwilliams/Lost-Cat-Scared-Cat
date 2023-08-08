@@ -53,6 +53,7 @@ public abstract class Fox : Character
     Attack();
   }
 
+  /// Handles the normal run movement after the Fox has finished its attack.
   protected abstract void HandleMovement();
   
   /// A Fox's attack sequence
