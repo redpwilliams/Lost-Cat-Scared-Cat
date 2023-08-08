@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Title : MonoBehaviour
+public class TitleAudio : MonoBehaviour
 {
     private void Awake()
     {
