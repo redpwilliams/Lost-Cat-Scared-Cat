@@ -2743,6 +2743,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Source
       objectReference: {fileID: 0}
+    - target: {fileID: 8828028921889685140, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828028921889685140, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2786,6 +2794,26 @@ PrefabInstance:
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828028921889685142, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828028921889685142, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: lowpassLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.020009095
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828028921889685143, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934094080525698083, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934094080525698083, guid: 27176b9b49944ff43b999da008373798, type: 3}
+      propertyPath: BypassEffects
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27176b9b49944ff43b999da008373798, type: 3}
