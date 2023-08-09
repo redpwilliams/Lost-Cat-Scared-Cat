@@ -131,14 +131,14 @@ public class Player : Character, IFlashable
     /// Returns if the space-bar is pressed and the Player is grounded
     protected override bool IsJumping()
     {
-        return (Input.GetKey(KeyCode.Space) ||
-               (IsTouchingScreen() && Input.GetTouch(0) is
-                   { phase: TouchPhase.Stationary })) && IsGrounded;
+        // return (Input.GetKey(KeyCode.Space) ||
+        //        (IsTouchingScreen() && Input.GetTouch(0) is
+        //            { phase: TouchPhase.Stationary })) && IsGrounded;
+        return Input.GetKey(KeyCode.Space) && IsGrounded;
     }
 
     protected override void HandleJumpAnimationEvent()
     {
-        // TODO - Player jump on specific keyframe
         rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
     }
 
@@ -158,8 +158,19 @@ public class Player : Character, IFlashable
     /// Determines the direction of input from the user.
     private static int GetInputDirection()
     {
+        // Keyboard inputs
         if (Input.GetKey(KeyCode.RightArrow)) return 1;
         if (Input.GetKey(KeyCode.LeftArrow)) return -1;
+        
+        // Touch inputs
+        foreach (var touch in Input.touches)
+        {
+            float partition = Screen.width / 2f;
+
+            if (touch.phase != TouchPhase.Stationary) continue;
+            if (touch.position.x >= partition) return 1;
+            if (touch.position.x < partition) return -1;
+        }
         return 0;
     }
 
