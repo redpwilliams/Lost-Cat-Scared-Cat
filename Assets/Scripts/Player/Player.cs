@@ -41,7 +41,7 @@ public class Player : Character, IFlashable
         if (_sprites.Length == 5) return;
         
         Debug.LogWarning("\"Sprites\" array must be of length 5");
-        Array.Resize(ref this._sprites, 5);
+        Array.Resize(ref _sprites, 5);
 
     }
     
@@ -82,7 +82,7 @@ public class Player : Character, IFlashable
         SetFallAnimationParam(IsFalling());
 
         // Return if Player is in any motion
-        if (IsRunning() || !this.IsGrounded || this.rb.velocity.x > 0.1f)
+        if (IsRunning() || !IsGrounded || this.rb.velocity.x > 0.1f)
             return;
 
         SetSpeedAsIdle();
@@ -131,7 +131,7 @@ public class Player : Character, IFlashable
     /// Returns if the space-bar is pressed and the Player is grounded
     protected override bool IsJumping()
     {
-        return (Input.GetKey(KeyCode.Space) && this.IsGrounded);
+        return (Input.GetKey(KeyCode.Space) && IsGrounded);
     }
 
     protected override void HandleJumpAnimationEvent()
@@ -149,7 +149,7 @@ public class Player : Character, IFlashable
     /// Resets the RigidBody2D's gravity scale to its original value
     private void ResetGravity()
     {
-        this.rb.gravityScale = this._legacyGravityScale;
+        rb.gravityScale = this._legacyGravityScale;
     }
 
 
@@ -164,18 +164,18 @@ public class Player : Character, IFlashable
     /// Flips the Player's sprite depending on its direction
     private void HandleFlipSprite()
     {
-        this._sr.flipX = GetInputDirection() switch
+        _sr.flipX = GetInputDirection() switch
         {
             -1 => true,
             1 => false,
-            _ => this._sr.flipX
+            _ => _sr.flipX
         };
     }
 
     private void HandleFoxHitsPlayer()
     {
         // Disregard if Player is already invincible
-        if (this._isInvincible) return;
+        if (_isInvincible) return;
 
         _isInvincible = true;
         EventManager.Events.PlayerInvincible();
@@ -190,15 +190,15 @@ public class Player : Character, IFlashable
         {
             // Make the sprite red
             _sr.color = _flashColor;
-            yield return new WaitForSeconds(this._flickDuration);
+            yield return new WaitForSeconds(_flickDuration);
 
             // Make the sprite opaque
             // ReSharper disable once Unity.InefficientPropertyAccess
             _sr.color = new Color(1f, 1f, 1f, 1f);
-            yield return new WaitForSeconds(this._flickDuration);
+            yield return new WaitForSeconds(_flickDuration);
         }
 
-        this._isInvincible = false;
+        _isInvincible = false;
         EventManager.Events.PlayerVulnerable();
     }
 }
