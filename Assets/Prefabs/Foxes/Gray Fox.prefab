@@ -100,4 +100,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RunSpeed>k__BackingField: 2.5
-  _dashForce: 4.5
+  _dashForce: 4
