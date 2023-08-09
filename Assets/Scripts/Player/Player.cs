@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class Player : Character, IFlashable
+public sealed class Player : Character, IFlashable
 {
     /// Number of lives the Player has
     internal const int NumLives = 9;
@@ -65,7 +65,7 @@ public class Player : Character, IFlashable
         sl.spriteLibraryAsset = _sprites[SaveSystem.LoadPreferences().CatID - 1];
     }
 
-    protected void Start()
+    private void Start()
     {
         // Put Player at screen 0
         Transform trans = transform;
@@ -74,7 +74,7 @@ public class Player : Character, IFlashable
         trans.position = newPosition;
     }
 
-    protected void Update()
+    private void Update()
     {
         // Set animation parameters
         SetRunAnimationParam(IsVisiblyRunning);
@@ -88,7 +88,7 @@ public class Player : Character, IFlashable
         SetSpeedAsIdle();
     }
 
-    protected void FixedUpdate()
+    private void FixedUpdate()
     {
         // Handle Run input
         int playerInputDirection = GetInputDirection();
@@ -101,13 +101,6 @@ public class Player : Character, IFlashable
         // Conditionally Handle Fall
         if (IsFalling()) IncreaseFallGravity();
         else ResetGravity();
-    }
-
-    /// Returns if either the Right Arrow key or Left Arrow key are held
-    protected override bool IsRunning()
-    {
-        return (Input.GetKey(KeyCode.RightArrow) ||
-                Input.GetKey(KeyCode.LeftArrow));
     }
 
     /// Handles the acceleration and sprite direction after
@@ -131,10 +124,19 @@ public class Player : Character, IFlashable
     /// Returns if the space-bar is pressed and the Player is grounded
     protected override bool IsJumping()
     {
-        // return (Input.GetKey(KeyCode.Space) ||
-        //        (IsTouchingScreen() && Input.GetTouch(0) is
-        //            { phase: TouchPhase.Stationary })) && IsGrounded;
-        return Input.GetKey(KeyCode.Space) && IsGrounded;
+        if (!IsGrounded) return false;
+        
+        // Keyboard Input
+        if (Input.GetKey(KeyCode.Space)) return true;
+        
+        // Touch input
+        foreach (var touch in Input.touches)
+        {
+            // Jump if player swipes a finger
+            if (touch.phase == TouchPhase.Moved) return true;
+        }
+        
+        return false;
     }
 
     protected override void HandleJumpAnimationEvent()
@@ -173,13 +175,6 @@ public class Player : Character, IFlashable
         }
         return 0;
     }
-
-    /// Checks if Player is currently touching the screen
-    private static bool IsTouchingScreen()
-    {
-        return Input.touchCount > 0;
-    }
-    
 
     /// Flips the Player's sprite depending on its direction
     private void HandleFlipSprite()
