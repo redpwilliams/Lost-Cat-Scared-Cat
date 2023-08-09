@@ -82,7 +82,7 @@ public class Player : Character, IFlashable
         SetFallAnimationParam(IsFalling());
 
         // Return if Player is in any motion
-        if (IsRunning() || !IsGrounded || this.rb.velocity.x > 0.1f)
+        if (!IsGrounded || rb.velocity.x > 0.1f)
             return;
 
         SetSpeedAsIdle();
@@ -131,7 +131,9 @@ public class Player : Character, IFlashable
     /// Returns if the space-bar is pressed and the Player is grounded
     protected override bool IsJumping()
     {
-        return (Input.GetKey(KeyCode.Space) && IsGrounded);
+        return (Input.GetKey(KeyCode.Space) ||
+               (IsTouchingScreen() && Input.GetTouch(0) is
+                   { phase: TouchPhase.Stationary })) && IsGrounded;
     }
 
     protected override void HandleJumpAnimationEvent()
@@ -149,7 +151,7 @@ public class Player : Character, IFlashable
     /// Resets the RigidBody2D's gravity scale to its original value
     private void ResetGravity()
     {
-        rb.gravityScale = this._legacyGravityScale;
+        rb.gravityScale = _legacyGravityScale;
     }
 
 
@@ -160,6 +162,13 @@ public class Player : Character, IFlashable
         if (Input.GetKey(KeyCode.LeftArrow)) return -1;
         return 0;
     }
+
+    /// Checks if Player is currently touching the screen
+    private static bool IsTouchingScreen()
+    {
+        return Input.touchCount > 0;
+    }
+    
 
     /// Flips the Player's sprite depending on its direction
     private void HandleFlipSprite()
