@@ -15,6 +15,8 @@ public sealed class Player : Character, IFlashable
     [SerializeField] private float _acceleration = 4f;
 
     [SerializeField] private float _deceleration = 10f; // Bigger value = harder stop
+    
+    private readonly float _partition = Screen.width / 2f;
 
     /// How much to change the gravity when Player is falling
     [Range(1, 5)]
@@ -29,7 +31,7 @@ public sealed class Player : Character, IFlashable
     /// "Normal" gravity when not jumping
     private float _legacyGravityScale;
 
-    /// Player's SpriteRenderer component
+    private Rigidbody2D _rb;
     private SpriteRenderer _sr;
 
     /// Cat skins
@@ -58,8 +60,9 @@ public sealed class Player : Character, IFlashable
     protected override void Awake()
     {
         base.Awake();
+        _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
-        _legacyGravityScale = rb.gravityScale;
+        _legacyGravityScale = _rb.gravityScale;
 
         SpriteLibrary sl = GetComponent<SpriteLibrary>();
         sl.spriteLibraryAsset = _sprites[SaveSystem.LoadPreferences().CatID - 1];
@@ -82,7 +85,7 @@ public sealed class Player : Character, IFlashable
         SetFallAnimationParam(IsFalling());
 
         // Return if Player is in any motion
-        if (!IsGrounded || rb.velocity.x > 0.1f)
+        if (!IsGrounded || _rb.velocity.x > 0.1f)
             return;
 
         SetSpeedAsIdle();
@@ -109,13 +112,13 @@ public sealed class Player : Character, IFlashable
     {
         // Force-based movement
         float targetVelocity = inputDirection * _topSpeed;
-        float speedDiff = targetVelocity - rb.velocity.x;
+        float speedDiff = targetVelocity - _rb.velocity.x;
         float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f)
             ? _acceleration
             : _deceleration;
         float movement = Mathf.Abs(speedDiff) * accelerationRate *
                          Mathf.Sign(speedDiff);
-        rb.AddForce(movement * Vector2.right);
+        _rb.AddForce(movement * Vector2.right);
 
         // Switch direction
         HandleFlipSprite();
@@ -130,10 +133,11 @@ public sealed class Player : Character, IFlashable
         if (Input.GetKey(KeyCode.Space)) return true;
         
         // Touch input
-        foreach (var touch in Input.touches)
+        foreach (var touch in Input.touches) if (touch.phase == TouchPhase.Moved)
         {
-            // Jump if player swipes a finger
-            if (touch.phase == TouchPhase.Moved) return true;
+            // Jump if Player swipes up
+            // TODO - Make more responsive using timing, dynamic distance
+            return touch.deltaPosition.y >= 10f; // TODO - Extract to variable
         }
         
         return false;
@@ -141,24 +145,23 @@ public sealed class Player : Character, IFlashable
 
     protected override void HandleJumpAnimationEvent()
     {
-        rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+        _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
     }
 
     /// Strengthens the RigidBody2D fall gravity by a factor of `fallGravityMultiplier`
     private void IncreaseFallGravity()
     {
-        rb.gravityScale = _legacyGravityScale * _fallGravityMultiplier;
+        _rb.gravityScale = _legacyGravityScale * _fallGravityMultiplier;
     }
 
     /// Resets the RigidBody2D's gravity scale to its original value
     private void ResetGravity()
     {
-        rb.gravityScale = _legacyGravityScale;
+        _rb.gravityScale = _legacyGravityScale;
     }
 
-
     /// Determines the direction of input from the user.
-    private static int GetInputDirection()
+    private int GetInputDirection()
     {
         // Keyboard inputs
         if (Input.GetKey(KeyCode.RightArrow)) return 1;
@@ -167,11 +170,8 @@ public sealed class Player : Character, IFlashable
         // Touch inputs
         foreach (var touch in Input.touches)
         {
-            float partition = Screen.width / 2f;
-
             if (touch.phase != TouchPhase.Stationary) continue;
-            if (touch.position.x >= partition) return 1;
-            if (touch.position.x < partition) return -1;
+            return touch.position.x >= _partition ? 1 : -1;
         }
         return 0;
     }
