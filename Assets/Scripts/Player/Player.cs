@@ -170,8 +170,18 @@ public sealed class Player : Character, IFlashable
         // Touch inputs
         foreach (var touch in Input.touches)
         {
-            if (touch.phase != TouchPhase.Stationary) continue;
-            return touch.position.x >= _partition ? 1 : -1;
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                case TouchPhase.Moved:
+                case TouchPhase.Stationary:
+                    return touch.position.x >= _partition ? 1 : -1;
+                case TouchPhase.Ended:
+                case TouchPhase.Canceled:
+                    return 0;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
         return 0;
     }
