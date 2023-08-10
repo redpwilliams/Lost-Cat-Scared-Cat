@@ -50,6 +50,13 @@ public sealed class ButtonManager : MonoBehaviour
         SaveSystem.SavePreferences(preferences);
     }
 
+    /// Handles pausing the game from the UI pause button
+    [UsedImplicitly]
+    public void HandlePause()
+    {
+        EventManager.Events.PauseKeyDown();
+    }
+
     /// Handles resuming from the Pause Menu
     [UsedImplicitly]
     public void HandleResume()
