@@ -13,6 +13,6 @@ public sealed class GameAudio : MonoBehaviour
         float volume = SaveSystem.LoadPreferences().Volume;
 
         _forestMusic.volume = volume;
-        _mainMusic.volume = volume * (1 / _volumeRatio);
+        _mainMusic.volume = volume * (_volumeRatio);
     }
 }
