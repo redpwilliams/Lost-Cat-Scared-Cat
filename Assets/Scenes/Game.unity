@@ -1248,16 +1248,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!82 &1119524706 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8828028921889685140, guid: 27176b9b49944ff43b999da008373798, type: 3}
-  m_PrefabInstance: {fileID: 8828028923466807012}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1119524708 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8934094080525698083, guid: 27176b9b49944ff43b999da008373798, type: 3}
-  m_PrefabInstance: {fileID: 8828028923466807012}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134151221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8186637361178167864, guid: e48ef0fe87fde824a8b87472f0d5691d, type: 3}
@@ -2982,33 +2972,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1838752689620782551, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: _mainMusic
-      value: 
-      objectReference: {fileID: 1119524706}
-    - target: {fileID: 1838752689620782551, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: _forestMusic
-      value: 
-      objectReference: {fileID: 1119524708}
-    - target: {fileID: 1838752689620782551, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: _volumeRatio
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685131, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_Name
       value: Audio Source
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828028921889685140, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: m_Volume
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828028921889685140, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828028921889685140, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_RootOrder
@@ -3016,15 +2982,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.022151846
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5836683
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.024264526
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3053,26 +3019,6 @@ PrefabInstance:
     - target: {fileID: 8828028921889685141, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828028921889685142, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828028921889685142, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: lowpassLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.020009095
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828028921889685143, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934094080525698083, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: m_Volume
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934094080525698083, guid: 27176b9b49944ff43b999da008373798, type: 3}
-      propertyPath: BypassEffects
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27176b9b49944ff43b999da008373798, type: 3}

@@ -74,7 +74,7 @@ public sealed class UIManager : MonoBehaviour
     private void SetMileageText()
     {
         // Update mileage
-        _mileageText.text = $"{_mileage:#} steps";
+        _mileageText.text = $"{Mathf.RoundToInt(_mileage)} steps";
     }
 
     /// Sets the Mileage text on the screen.
