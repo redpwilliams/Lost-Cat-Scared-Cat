@@ -230,7 +230,7 @@ public sealed class Player : Character, IFlashable
     /// to other components to begin processes to run the gameplay
     private IEnumerator WaitForInput()
     {
-        while (GetInputDirection() == 0) yield return null;
+        while (GetInputDirection() == 0 && !IsJumping()) yield return null;
         EventManager.Events.PlayStart();
         _gameHasStarted = true;
     }
