@@ -70,6 +70,7 @@ public abstract class Character : MonoBehaviour
       currentPosition.z);
   }
 
+  /// Attaches to an Animation Event in the Animation tab
   [UsedImplicitly]
   protected abstract void HandleJumpAnimationEvent();
   

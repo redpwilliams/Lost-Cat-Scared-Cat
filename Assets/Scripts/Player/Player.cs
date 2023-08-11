@@ -5,19 +5,12 @@ using UnityEngine.U2D.Animation;
 
 public sealed class Player : Character, IFlashable
 {
-    /// Number of lives the Player has
-    internal const int NumLives = 9;
-
     [Header("Movement Parameters")] 
     [SerializeField] private float _jumpForce;
-
     [SerializeField] private float _topSpeed;
     [SerializeField] private float _acceleration = 4f;
-
     [SerializeField] private float _deceleration = 10f; // Bigger value = harder stop
     
-    private readonly float _partition = Screen.width / 2f;
-
     /// How much to change the gravity when Player is falling
     [Range(1, 5)]
     [SerializeField] private float _fallGravityMultiplier;
@@ -26,10 +19,12 @@ public sealed class Player : Character, IFlashable
     [SerializeField] private int _flashCount = 5;
     [SerializeField] private float _flickDuration = 0.1f;
     [SerializeField] private Color _flashColor;
+    
     private bool _isInvincible;
-
-    /// "Normal" gravity when not jumping
     private float _legacyGravityScale;
+    private bool _gameHasStarted;
+    private readonly float _partition = Screen.width / 2f;
+    internal const int NumLives = 9;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
@@ -37,8 +32,6 @@ public sealed class Player : Character, IFlashable
     /// Cat skins
     [SerializeField] 
     private SpriteLibraryAsset[] _sprites = new SpriteLibraryAsset[5];
-    
-    private bool _gameHasStarted;
 
     private void OnValidate()
     {
@@ -46,7 +39,6 @@ public sealed class Player : Character, IFlashable
         
         Debug.LogWarning("\"Sprites\" array must be of length 5");
         Array.Resize(ref _sprites, 5);
-
     }
     
     private void OnEnable()
@@ -111,60 +103,6 @@ public sealed class Player : Character, IFlashable
         else ResetGravity();
     }
 
-    /// Handles the acceleration and sprite direction after
-    /// the player has input Run
-    private void HandleRunInput(int inputDirection)
-    {
-        // Force-based movement
-        float targetVelocity = inputDirection * _topSpeed;
-        float speedDiff = targetVelocity - _rb.velocity.x;
-        float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f)
-            ? _acceleration
-            : _deceleration;
-        float movement = Mathf.Abs(speedDiff) * accelerationRate *
-                         Mathf.Sign(speedDiff);
-        _rb.AddForce(movement * Vector2.right);
-
-        // Switch direction
-        HandleFlipSprite();
-    }
-
-    /// Returns if the space-bar is pressed and the Player is grounded
-    protected override bool IsJumping()
-    {
-        if (!IsGrounded) return false;
-        
-        // Keyboard Input
-        if (Input.GetKey(KeyCode.Space)) return true;
-        
-        // Touch input
-        foreach (var touch in Input.touches) if (touch.phase == TouchPhase.Moved)
-        {
-            // Jump if Player swipes up
-            // TODO - Make more responsive using timing, dynamic distance
-            return touch.deltaPosition.y <= -10f; // TODO - Extract to variable
-        }
-        
-        return false;
-    }
-
-    protected override void HandleJumpAnimationEvent()
-    {
-        _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-    }
-
-    /// Strengthens the RigidBody2D fall gravity by a factor of `fallGravityMultiplier`
-    private void IncreaseFallGravity()
-    {
-        _rb.gravityScale = _legacyGravityScale * _fallGravityMultiplier;
-    }
-
-    /// Resets the RigidBody2D's gravity scale to its original value
-    private void ResetGravity()
-    {
-        _rb.gravityScale = _legacyGravityScale;
-    }
-
     /// Determines the direction of input from the user.
     private int GetInputDirection()
     {
@@ -191,24 +129,63 @@ public sealed class Player : Character, IFlashable
         return 0;
     }
 
-    private IEnumerator WaitForInput()
+    /// Returns if the space-bar is pressed and the Player is grounded
+    protected override bool IsJumping()
     {
-        while (GetInputDirection() == 0) yield return null;
-        EventManager.Events.PlayStart();
-        _gameHasStarted = true;
-    }
-
-    /// Flips the Player's sprite depending on its direction
-    private void HandleFlipSprite()
-    {
-        _sr.flipX = GetInputDirection() switch
+        if (!IsGrounded) return false;
+        
+        // Keyboard Input
+        if (Input.GetKey(KeyCode.Space)) return true;
+        
+        // Touch input
+        foreach (var touch in Input.touches) if (touch.phase == TouchPhase.Moved)
         {
-            -1 => true,
-            1 => false,
-            _ => _sr.flipX
-        };
+            // Jump if Player swipes up
+            // TODO - Make more responsive using timing, dynamic distance
+            return touch.deltaPosition.y <= -10f; // TODO - Extract to variable
+        }
+        
+        return false;
     }
 
+    /// Handles the acceleration and sprite direction after
+    /// the player has input Run
+    private void HandleRunInput(int inputDirection)
+    {
+        // Force-based movement
+        float targetVelocity = inputDirection * _topSpeed;
+        float speedDiff = targetVelocity - _rb.velocity.x;
+        float accelerationRate = (Mathf.Abs(targetVelocity) > 0.01f)
+            ? _acceleration
+            : _deceleration;
+        float movement = Mathf.Abs(speedDiff) * accelerationRate *
+                         Mathf.Sign(speedDiff);
+        _rb.AddForce(movement * Vector2.right);
+
+        // Switch direction
+        HandleFlipSprite();
+    }
+
+    /// Strengthens the RigidBody2D fall gravity by a factor of `fallGravityMultiplier`
+    private void IncreaseFallGravity()
+    {
+        _rb.gravityScale = _legacyGravityScale * _fallGravityMultiplier;
+    }
+
+    /// Resets the RigidBody2D's gravity scale to its original value
+    private void ResetGravity()
+    {
+        _rb.gravityScale = _legacyGravityScale;
+    }
+
+    /// <inheritdoc cref="Character.HandleJumpAnimationEvent"/>,
+    /// and applies an upward impulse force of magnitude _jumpForce
+    protected override void HandleJumpAnimationEvent()
+    {
+        _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+    }
+
+    /// Triggers when the player collides with a fox
     private void HandleFoxHitsPlayer()
     {
         // Disregard if Player is already invincible
@@ -218,9 +195,8 @@ public sealed class Player : Character, IFlashable
         EventManager.Events.PlayerInvincible();
         UIManager.ui.LoseHeart();
         StartCoroutine(FlashEffect());
-        
     }
-
+    
     public IEnumerator FlashEffect()
     {
         for (int i = 0; i < _flashCount; i++)
@@ -238,4 +214,25 @@ public sealed class Player : Character, IFlashable
         _isInvincible = false;
         EventManager.Events.PlayerVulnerable();
     }
+
+    /// Flips the Player's sprite depending on its direction
+    private void HandleFlipSprite()
+    {
+        _sr.flipX = GetInputDirection() switch
+        {
+            -1 => true,
+            1 => false,
+            _ => _sr.flipX
+        };
+    }
+    
+    /// Waits for the player to input a direction before signaling
+    /// to other components to begin processes to run the gameplay
+    private IEnumerator WaitForInput()
+    {
+        while (GetInputDirection() == 0) yield return null;
+        EventManager.Events.PlayStart();
+        _gameHasStarted = true;
+    }
+
 }
