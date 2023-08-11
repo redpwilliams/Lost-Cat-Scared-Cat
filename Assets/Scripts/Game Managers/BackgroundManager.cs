@@ -19,6 +19,7 @@ public sealed class BackgroundManager : MonoBehaviour
   /// How fast the screen moves
   [field: SerializeField]
   public float ScrollVelocity { get; private set; } = 1f;
+  private float _scrollVelocity;
 
   private void Awake()
   {
@@ -31,6 +32,18 @@ public sealed class BackgroundManager : MonoBehaviour
 
     bgm = this;
     _sm = GetComponent<SpriteMask>();
+    _scrollVelocity = ScrollVelocity;
+    ScrollVelocity = 0;
+  }
+
+  private void OnEnable()
+  {
+    EventManager.Events.OnPlayStart += InitScroll;
+  }
+
+  private void OnDisable()
+  {
+    EventManager.Events.OnPlayStart -= InitScroll;
   }
 
   private void Start()
@@ -62,5 +75,11 @@ public sealed class BackgroundManager : MonoBehaviour
       Vector3 position = _bgSet.transform.position;
       duplicates[i - 1].transform.position = new Vector3(position.x + (length * i), position.y, position.z);
     }
+  }
+
+  /// Enables background scroll by allowing
+  private void InitScroll()
+  {
+    ScrollVelocity = _scrollVelocity;
   }
 }

@@ -234,5 +234,5 @@ public sealed class Player : Character, IFlashable
         EventManager.Events.PlayStart();
         _gameHasStarted = true;
     }
-
+    
 }

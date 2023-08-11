@@ -34,6 +34,7 @@ public sealed class EventManager : MonoBehaviour
 
     /// Game has officially started event
     public event Action OnPlayStart;
+    private bool _gameHasStarted;
 
     /// Fox hits player event
     public event Action OnFoxHitsPlayer;
