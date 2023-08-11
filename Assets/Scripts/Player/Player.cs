@@ -37,6 +37,8 @@ public sealed class Player : Character, IFlashable
     /// Cat skins
     [SerializeField] 
     private SpriteLibraryAsset[] _sprites = new SpriteLibraryAsset[5];
+    
+    private bool _gameHasStarted;
 
     private void OnValidate()
     {
@@ -68,13 +70,15 @@ public sealed class Player : Character, IFlashable
         sl.spriteLibraryAsset = _sprites[SaveSystem.LoadPreferences().CatID - 1];
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         // Put Player at screen 0
         Transform trans = transform;
         Vector3 position = trans.position;
         Vector3 newPosition = new Vector3(0, position.y, position.z);
         trans.position = newPosition;
+
+        yield return StartCoroutine(WaitForInput());
     }
 
     private void Update()
@@ -88,6 +92,7 @@ public sealed class Player : Character, IFlashable
         if (!IsGrounded || _rb.velocity.x > 0.1f)
             return;
 
+        if (!_gameHasStarted) return;
         SetSpeedAsIdle();
     }
 
@@ -184,6 +189,13 @@ public sealed class Player : Character, IFlashable
             }
         }
         return 0;
+    }
+
+    private IEnumerator WaitForInput()
+    {
+        while (GetInputDirection() == 0) yield return null;
+        EventManager.Events.PlayStart();
+        _gameHasStarted = true;
     }
 
     /// Flips the Player's sprite depending on its direction

@@ -32,6 +32,9 @@ public sealed class EventManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    /// Game has officially started event
+    public event Action OnPlayStart;
+
     /// Fox hits player event
     public event Action OnFoxHitsPlayer;
 
@@ -48,6 +51,12 @@ public sealed class EventManager : MonoBehaviour
     /// Options screen cat is selected
     public event Action<uint> OnCatSelect;
     private uint _currentCatID;
+
+    /// Fires when the Player touches the screen and the game/scroll begins
+    public void PlayStart()
+    {
+        OnPlayStart?.Invoke();
+    }
     
     /// Fires when a Fox collides with the player
     public void FoxHitsPlayer()

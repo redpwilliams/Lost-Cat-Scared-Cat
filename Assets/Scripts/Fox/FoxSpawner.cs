@@ -31,15 +31,28 @@ public sealed class FoxSpawner : MonoBehaviour
         Gizmos.DrawSphere(new Vector3(MaxAttackGap, -0.8f, 0f), 0.1f);
     }
 
-    /// <summary>
-    /// Starts the spawning of foxes
-    /// </summary>
-    private void Start()
+    private void OnEnable()
+    {
+        EventManager.Events.OnPlayStart += BeginSpawnFoxes;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Events.OnPlayStart -= BeginSpawnFoxes;
+    }
+
+    private void Awake()
     {
         _trans = GetComponent<Transform>();
         _trans.localPosition = new Vector3(StartX, StartY,
             _trans.position.z);
+    }
 
+    /// <summary>
+    /// Starts the spawning of foxes
+    /// </summary>
+    private void BeginSpawnFoxes()
+    {
         StartCoroutine(SpawnFoxes());
     }
 
