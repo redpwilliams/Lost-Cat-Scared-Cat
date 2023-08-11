@@ -2992,7 +2992,7 @@ PrefabInstance:
       objectReference: {fileID: 1119524708}
     - target: {fileID: 1838752689620782551, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: _volumeRatio
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8828028921889685131, guid: 27176b9b49944ff43b999da008373798, type: 3}
       propertyPath: m_Name
