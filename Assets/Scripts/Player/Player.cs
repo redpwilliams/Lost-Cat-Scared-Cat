@@ -137,7 +137,7 @@ public sealed class Player : Character, IFlashable
         {
             // Jump if Player swipes up
             // TODO - Make more responsive using timing, dynamic distance
-            return touch.deltaPosition.y >= 10f; // TODO - Extract to variable
+            return touch.deltaPosition.y <= -10f; // TODO - Extract to variable
         }
         
         return false;
