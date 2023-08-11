@@ -16,6 +16,7 @@ public sealed class FoxSpawner : MonoBehaviour
 
     [SerializeField] private float _skulkSpawnInterval = 5f;
     [SerializeField] private float _foxSpawnInterval = 3f;
+    [SerializeField] private int _skulkSize = 1;
 
     [SerializeField] private bool _drawGizmos;
 
@@ -45,7 +46,7 @@ public sealed class FoxSpawner : MonoBehaviour
             yield return new WaitForSeconds(_skulkSpawnInterval);
 
             // Create skulk
-            Skulk skulk = new Skulk(4, _foxPrefabs);
+            Skulk skulk = new Skulk(_skulkSize, _foxPrefabs);
             IEnumerable<GameObject> foxes = skulk.GetSkulk();
 
             // Spawn each Fox in the skulk
