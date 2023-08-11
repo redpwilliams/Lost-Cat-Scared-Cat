@@ -10,6 +10,7 @@ public sealed class Player : Character, IFlashable
     [SerializeField] private float _topSpeed;
     [SerializeField] private float _acceleration = 4f;
     [SerializeField] private float _deceleration = 10f; // Bigger value = harder stop
+    [SerializeField] private float _outOfBoundsForce = 20f;
     
     /// How much to change the gravity when Player is falling
     [Range(1, 5)]
@@ -53,12 +54,9 @@ public sealed class Player : Character, IFlashable
 
     private void OnBecameInvisible()
     {
-        //
-        _rb.AddForce(IsGrounded switch
-        {
-            true => new Vector2(5f, 1f) * 3.5f,
-            false => Vector2.right * 17.5f,
-        }, ForceMode2D.Impulse);
+        // Set force direction to inward
+        float direction = -Mathf.Sign(transform.position.x);
+        _rb.AddForce(Vector2.right * _outOfBoundsForce * direction, ForceMode2D.Impulse);
     }
 
     protected override void Awake()
