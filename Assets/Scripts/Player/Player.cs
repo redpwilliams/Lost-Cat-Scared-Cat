@@ -51,6 +51,16 @@ public sealed class Player : Character, IFlashable
         EventManager.Events.OnFoxHitsPlayer -= HandleFoxHitsPlayer;
     }
 
+    private void OnBecameInvisible()
+    {
+        //
+        _rb.AddForce(IsGrounded switch
+        {
+            true => new Vector2(5f, 1f) * 3.5f,
+            false => Vector2.right * 17.5f,
+        }, ForceMode2D.Impulse);
+    }
+
     protected override void Awake()
     {
         base.Awake();
