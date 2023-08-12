@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 
 public sealed class Player : Character, IFlashable
@@ -25,7 +26,7 @@ public sealed class Player : Character, IFlashable
     private float _legacyGravityScale;
     private bool _gameHasStarted;
     private readonly float _partition = Screen.width / 2f;
-    internal const int NumLives = 2;
+    internal const int NumLives = 1;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
@@ -33,6 +34,9 @@ public sealed class Player : Character, IFlashable
     /// Cat skins
     [SerializeField] 
     private SpriteLibraryAsset[] _sprites = new SpriteLibraryAsset[5];
+
+    /// Time to wait before switching to Game Over screen after death
+    [SerializeField] private float _transitionDuration = 2.5f;
 
     private void OnValidate()
     {
@@ -252,7 +256,14 @@ public sealed class Player : Character, IFlashable
     {
         SetDyingAnimationParam(true);
         this.enabled = false;
+        StartCoroutine(ToGameOverScreen());
         // TODO - Add bounce to material so Player bounces off floor when dead
+    }
+
+    private IEnumerator ToGameOverScreen()
+    {
+        yield return new WaitForSeconds(_transitionDuration);
+        SceneManager.LoadScene("Game Over");
     }
     
 }
