@@ -54,6 +54,7 @@ MonoBehaviour:
   _topSpeed: 5.5
   _acceleration: 4
   _deceleration: 10
+  _outOfBoundsForce: 20
   _fallGravityMultiplier: 2.5
   _flashCount: 15
   _flickDuration: 0.2
