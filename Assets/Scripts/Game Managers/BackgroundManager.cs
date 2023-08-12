@@ -39,11 +39,13 @@ public sealed class BackgroundManager : MonoBehaviour
   private void OnEnable()
   {
     EventManager.Events.OnPlayStart += InitScroll;
+    EventManager.Events.OnGameOver += HandleGameOver;
   }
 
   private void OnDisable()
   {
     EventManager.Events.OnPlayStart -= InitScroll;
+    EventManager.Events.OnGameOver -= HandleGameOver;
   }
 
   private void Start()
@@ -81,5 +83,12 @@ public sealed class BackgroundManager : MonoBehaviour
   private void InitScroll()
   {
     ScrollVelocity = _scrollVelocity;
+  }
+
+  /// Stops Background scroll
+  private void HandleGameOver()
+  {
+    // TODO - Lerp over set duration
+    ScrollVelocity = 0f;
   }
 }
