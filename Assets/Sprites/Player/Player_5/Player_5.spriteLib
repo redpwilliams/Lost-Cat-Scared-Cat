@@ -148,4 +148,50 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -882395696, guid: fa87bbf9319932c469da309ca556118e, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
+  - m_Name: Die
+    m_Hash: 20298039
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Player_Die_0
+      m_Hash: -539334305
+      m_Sprite: {fileID: -1684999784, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1684999784, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    - m_Name: Player_Die_1
+      m_Hash: -1461888567
+      m_Sprite: {fileID: -891811132, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -891811132, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    - m_Name: Player_Die_2
+      m_Hash: 835979379
+      m_Sprite: {fileID: 1175677168, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1175677168, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    - m_Name: Player_Die_3
+      m_Hash: 1188247781
+      m_Sprite: {fileID: 1035898328, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1035898328, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    - m_Name: Player_Die_4
+      m_Hash: -659051194
+      m_Sprite: {fileID: -266194591, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -266194591, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    - m_Name: Player_Die_5
+      m_Hash: -1347379760
+      m_Sprite: {fileID: -941008176, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -941008176, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    - m_Name: Player_Die_6
+      m_Hash: 918146154
+      m_Sprite: {fileID: 2084744451, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2084744451, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    - m_Name: Player_Die_7
+      m_Hash: 1103035644
+      m_Sprite: {fileID: 883019739, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 883019739, guid: 0755ceab00ac1e94384950eaffc2e637, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
   m_PrimaryLibraryGUID: c96c37a10ab4a7e49b82f5b9a9ad0fe6
