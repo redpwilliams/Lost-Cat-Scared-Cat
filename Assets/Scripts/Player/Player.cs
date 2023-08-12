@@ -249,6 +249,7 @@ public sealed class Player : Character, IFlashable
     private void HandleGameOver()
     {
         this.enabled = false;
+        // TODO - Add bounce to material so Player bounces off floor when dead
     }
     
 }
