@@ -67,7 +67,9 @@ public sealed class UIManager : MonoBehaviour
         _hearts[_numHeartsShown] = null;
 
         // TODO - Handle GameOver
-        if (_numHeartsShown == 0) Debug.Log("Lost last heart, game over");
+        if (_numHeartsShown != 0) return;
+        Debug.Log("Lost last heart, game over");
+        EventManager.Events.GameOver();
     }
 
     /// Updates the mileage field on the screen

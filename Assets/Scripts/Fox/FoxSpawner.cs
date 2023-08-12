@@ -22,6 +22,7 @@ public sealed class FoxSpawner : MonoBehaviour
 
     [SerializeField] private bool _drawGizmos;
 
+    private IEnumerator _coroutine;
     private bool _isGameOver;
 
     private void OnDrawGizmos()
@@ -34,11 +35,13 @@ public sealed class FoxSpawner : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Events.OnPlayStart += BeginSpawnFoxes;
+        EventManager.Events.OnGameOver += HandleGameOver;
     }
 
     private void OnDisable()
     {
         EventManager.Events.OnPlayStart -= BeginSpawnFoxes;
+        EventManager.Events.OnGameOver -= HandleGameOver;
     }
 
     private void Awake()
@@ -46,6 +49,7 @@ public sealed class FoxSpawner : MonoBehaviour
         _trans = GetComponent<Transform>();
         _trans.localPosition = new Vector3(StartX, StartY,
             _trans.position.z);
+        _coroutine = SpawnFoxes();
     }
 
     /// <summary>
@@ -53,7 +57,7 @@ public sealed class FoxSpawner : MonoBehaviour
     /// </summary>
     private void BeginSpawnFoxes()
     {
-        StartCoroutine(SpawnFoxes());
+        StartCoroutine(_coroutine);
     }
 
     /// <summary>
@@ -77,6 +81,11 @@ public sealed class FoxSpawner : MonoBehaviour
                 yield return new WaitForSeconds(_foxSpawnInterval);
             }
         }
+    }
+
+    private void HandleGameOver()
+    {
+        StopCoroutine(_coroutine);
     }
 }
 

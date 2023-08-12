@@ -25,7 +25,7 @@ public sealed class Player : Character, IFlashable
     private float _legacyGravityScale;
     private bool _gameHasStarted;
     private readonly float _partition = Screen.width / 2f;
-    internal const int NumLives = 9;
+    internal const int NumLives = 1;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
