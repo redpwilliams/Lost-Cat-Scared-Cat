@@ -18,7 +18,7 @@ public sealed class ButtonManager : MonoBehaviour
     [UsedImplicitly]
     public void HandlePlay()
     {
-        SceneManager.LoadScene("Scenes/Game");
+        SceneManager.LoadScene("Scenes/Gameplay");
     }
 
     /// Handles the Title Screen's Quit button by exiting the application
