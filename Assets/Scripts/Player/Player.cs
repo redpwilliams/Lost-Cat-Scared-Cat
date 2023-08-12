@@ -248,6 +248,7 @@ public sealed class Player : Character, IFlashable
     /// Disables script on Game Over
     private void HandleGameOver()
     {
+        SetDyingAnimationParam(true);
         this.enabled = false;
         // TODO - Add bounce to material so Player bounces off floor when dead
     }

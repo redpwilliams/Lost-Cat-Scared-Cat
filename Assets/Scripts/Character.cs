@@ -29,6 +29,7 @@ public abstract class Character : MonoBehaviour
   private static readonly int Falling = Animator.StringToHash("IsFalling");
   private static readonly int Crouching = Animator.StringToHash("IsCrouching");
   private static readonly int Dashing = Animator.StringToHash("IsDashing");
+  private static readonly int Dying = Animator.StringToHash("IsDying");
   
   protected virtual void Awake()
   {
@@ -102,6 +103,12 @@ public abstract class Character : MonoBehaviour
   protected void SetDashingAnimationParam(bool value)
   {
     _anim.SetBool(Dashing, value);
+  }
+  
+  /// Sets the passed `IsDashing` parameter in the Animator tab
+  protected void SetDyingAnimationParam(bool value)
+  {
+    _anim.SetBool(Dying, value);
   }
   
   /// Called when object collides with something
