@@ -25,7 +25,7 @@ public sealed class Player : Character, IFlashable
     private float _legacyGravityScale;
     private bool _gameHasStarted;
     private readonly float _partition = Screen.width / 2f;
-    internal const int NumLives = 1;
+    internal const int NumLives = 2;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
@@ -203,8 +203,10 @@ public sealed class Player : Character, IFlashable
 
         _isInvincible = true;
         EventManager.Events.PlayerInvincible();
-        UIManager.ui.LoseHeart();
-        StartCoroutine(FlashEffect());
+        int numHearts = UIManager.ui.LoseHeart();
+        
+        // Don't flash if is last heart
+        if (numHearts != 0) StartCoroutine(FlashEffect());
     }
     
     public IEnumerator FlashEffect()

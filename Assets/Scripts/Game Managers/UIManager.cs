@@ -53,9 +53,12 @@ public sealed class UIManager : MonoBehaviour
         EventManager.Events.PauseKeyDown();
     }
 
-    public void LoseHeart()
+    /// Subtracts a heart from the UI and returns the number of hearts left
+    /// Reported by the player
+    public int LoseHeart()
     {
-        if (_numHeartsShown == 0) return;
+        // Failsafe, ensures no extra life loss after Player dies
+        if (_numHeartsShown == 0) return 0;
 
         // Get current heart game object and destroy
         Heart currentHeart =
@@ -66,10 +69,11 @@ public sealed class UIManager : MonoBehaviour
         _numHeartsShown--;
         _hearts[_numHeartsShown] = null;
 
-        // TODO - Handle GameOver
-        if (_numHeartsShown != 0) return;
-        Debug.Log("Lost last heart, game over");
+        if (_numHeartsShown != 0) return _numHeartsShown;
+        
+        // Game Over
         EventManager.Events.GameOver();
+        return 0;
     }
 
     /// Updates the mileage field on the screen
