@@ -326,9 +326,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625143, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1276042883, guid: f424e421cad66684aa951105eb912f92, type: 3}
     - target: {fileID: 7834204335144625144, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625145, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625145, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834204335144625145, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52610a405482eb3499b358e0b26ad854, type: 3}
