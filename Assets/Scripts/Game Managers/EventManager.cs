@@ -48,6 +48,9 @@ public sealed class EventManager : MonoBehaviour
     /// Active/Deactivate Pause Menu
     public event Action<bool> OnPauseKeyDown;
     private bool _isPaused;
+
+    /// Fires when the Player loses last heart and game is over
+    public event Action OnGameOver;
     
     /// Options screen cat is selected
     public event Action<uint> OnCatSelect;
@@ -89,6 +92,11 @@ public sealed class EventManager : MonoBehaviour
     {
         _isPaused ^= true;
         OnPauseKeyDown?.Invoke(_isPaused);
+    }
+
+    public void GameOver()
+    {
+        OnGameOver?.Invoke();
     }
     
     /// <summary>Fires when a cat is selected in the options menu</summary>

@@ -59,12 +59,12 @@ public sealed class UIManager : MonoBehaviour
 
         // Get current heart game object and destroy
         Heart currentHeart =
-            _hearts[this._numHeartsShown - 1].GetComponent<Heart>();
+            _hearts[_numHeartsShown - 1].GetComponent<Heart>();
         currentHeart.Destroy();
 
         // Update list
         _numHeartsShown--;
-        _hearts[this._numHeartsShown] = null;
+        _hearts[_numHeartsShown] = null;
 
         // TODO - Handle GameOver
         if (_numHeartsShown == 0) Debug.Log("Lost last heart, game over");

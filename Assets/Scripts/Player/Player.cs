@@ -45,11 +45,13 @@ public sealed class Player : Character, IFlashable
     private void OnEnable()
     {
         EventManager.Events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
+        EventManager.Events.OnGameOver += HandleGameOver;
     }
     
     private void OnDisable()
     {
         EventManager.Events.OnFoxHitsPlayer -= HandleFoxHitsPlayer;
+        EventManager.Events.OnGameOver -= HandleGameOver;
     }
 
     private void OnBecameInvisible()
@@ -241,6 +243,12 @@ public sealed class Player : Character, IFlashable
         while (GetInputDirection() == 0 && !IsJumping()) yield return null;
         EventManager.Events.PlayStart();
         _gameHasStarted = true;
+    }
+
+    /// Disables script on Game Over
+    private void HandleGameOver()
+    {
+        this.enabled = false;
     }
     
 }
