@@ -255,6 +255,12 @@ public sealed class Player : Character, IFlashable
     private void HandleGameOver()
     {
         SetDyingAnimationParam(true);
+        
+        // Set other animations to false to prevent flickering
+        SetRunAnimationParam(false);
+        SetJumpAnimationParam(false);
+        SetFallAnimationParam(false);
+        
         this.enabled = false;
         StartCoroutine(ToGameOverScreen());
         // TODO - Add bounce to material so Player bounces off floor when dead

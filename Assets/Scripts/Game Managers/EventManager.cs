@@ -98,7 +98,6 @@ public sealed class EventManager : MonoBehaviour
     public void GameOver(float score)
     {
         FinalScore = Mathf.RoundToInt(score);
-        Debug.Log(FinalScore);
         OnGameOver?.Invoke();
     }
     
