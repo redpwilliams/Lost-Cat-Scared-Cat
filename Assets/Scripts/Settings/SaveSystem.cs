@@ -25,6 +25,7 @@ public static class SaveSystem
     {
         try
         {
+            // File DNE
             if (!File.Exists(PrefsPath))
             {
                Debug.LogError($"File {PrefsPath} does not exist");
@@ -44,7 +45,7 @@ public static class SaveSystem
             // Problem fetching file
             Console.WriteLine(e);
             Debug.LogError($"{e}\nUsing default Preferences");
-            return new Preferences();
+            return new Preferences(true, 1, 0.25f, 0);
         }
     }
 }

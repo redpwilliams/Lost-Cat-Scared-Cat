@@ -30,6 +30,9 @@ public sealed class EventManager : MonoBehaviour
 
         Events = this;
         DontDestroyOnLoad(gameObject);
+        
+        // Set cat id
+        _currentCatID = SaveSystem.LoadPreferences().CatID;
     }
 
     /// Game has officially started event

@@ -6,9 +6,9 @@ public struct Preferences
     public Preferences(bool isFirstTime, uint catID, float volume, int 
     highScore)
     {
-        if (catID > 5)
+        if (catID is > 5 or < 1)
             throw new ArgumentOutOfRangeException(
-                $"CatID {catID} is out of range of the maximum (5)");
+                $"CatID {catID} is out of range, must be in [1, 5]");
         IsFirstTime = isFirstTime;
         CatID = catID;
         Volume = volume;
