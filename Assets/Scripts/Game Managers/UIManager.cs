@@ -72,7 +72,7 @@ public sealed class UIManager : MonoBehaviour
         if (_numHeartsShown != 0) return _numHeartsShown;
         
         // Game Over
-        EventManager.Events.GameOver();
+        EventManager.Events.GameOver(_mileage);
         return 0;
     }
 

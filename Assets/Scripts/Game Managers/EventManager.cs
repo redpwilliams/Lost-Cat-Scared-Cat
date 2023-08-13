@@ -51,7 +51,8 @@ public sealed class EventManager : MonoBehaviour
 
     /// Fires when the Player loses last heart and game is over
     public event Action OnGameOver;
-    
+    internal int FinalScore { get; private set; }
+
     /// Options screen cat is selected
     public event Action<uint> OnCatSelect;
     private uint _currentCatID;
@@ -94,8 +95,10 @@ public sealed class EventManager : MonoBehaviour
         OnPauseKeyDown?.Invoke(_isPaused);
     }
 
-    public void GameOver()
+    public void GameOver(float score)
     {
+        FinalScore = Mathf.RoundToInt(score);
+        Debug.Log(FinalScore);
         OnGameOver?.Invoke();
     }
     
