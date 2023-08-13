@@ -26,7 +26,7 @@ public sealed class Player : Character, IFlashable
     private bool _gameIsPaused;
     private bool _gameHasStarted;
     private readonly float _partition = Screen.width / 2f;
-    internal const int NumLives = 1;
+    internal const int NumLives = 9;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
@@ -61,7 +61,8 @@ public sealed class Player : Character, IFlashable
     {
         // Set force direction to inward
         float direction = -Mathf.Sign(transform.position.x);
-        _rb.AddForce(Vector2.right * _outOfBoundsForce * direction, ForceMode2D.Impulse);
+        Vector2 force = Vector2.right * _outOfBoundsForce * direction;
+        _rb.AddForce(force, ForceMode2D.Impulse);
     }
 
     protected override void Awake()
