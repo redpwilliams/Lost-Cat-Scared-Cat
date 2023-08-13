@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
@@ -6,22 +8,24 @@ public sealed class UIManager : MonoBehaviour
 {
     /// Singleton Instance
     public static UIManager ui;
-
-    /// Mileage / Number of steps / Distance Player has traveled
-    private float _mileage;
+    
+    /// SpriteRenderer of the active/top-most heart
+    private SpriteRenderer _sr;
 
     [Header("Mileage Props")] 
     [SerializeField] private Text _mileageText;
     private const float StepsMultiplier = 3f;
+    
+    /// Mileage / Number of steps / Distance Player has traveled
+    private float _mileage;
 
     /// Heart GameObject
     [SerializeField] private GameObject _heart;
-
     private GameObject[] _hearts;
     private int _numHeartsShown;
 
-    /// SpriteRenderer of the active/top-most heart
-    private SpriteRenderer _sr;
+    /// Time to wait before switching to Game Over screen after death
+    [SerializeField] private float _transitionHangTime = 2.5f;
 
     private void Awake()
     {
@@ -73,6 +77,7 @@ public sealed class UIManager : MonoBehaviour
         
         // Game Over
         EventManager.Events.GameOver(_mileage);
+        HandleGameOver();
         return 0;
     }
 
@@ -120,4 +125,15 @@ public sealed class UIManager : MonoBehaviour
         return Input.GetKeyDown(KeyCode.Escape);
     }
 
+    private void HandleGameOver()
+    {
+        StartCoroutine(ToGameOverScreen());
+    }
+
+    private IEnumerator ToGameOverScreen()
+    {
+        yield return new WaitForSeconds(_transitionHangTime);
+        SceneManager.LoadScene("Game Over");
+    }
+    
 }
