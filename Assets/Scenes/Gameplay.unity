@@ -273,6 +273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Event Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4932680602214232175, guid: e6785300e0d910d4c9122315748d47f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6785300e0d910d4c9122315748d47f7, type: 3}
 --- !u!1001 &146099054
@@ -1390,6 +1394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mileageText: {fileID: 1465337868}
   _heart: {fileID: 1840491471}
+  _transitionHangTime: 2.5
 --- !u!114 &1276398615
 MonoBehaviour:
   m_ObjectHideFlags: 0
