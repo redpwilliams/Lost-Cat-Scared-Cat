@@ -23,6 +23,7 @@ public sealed class Player : Character, IFlashable
     
     private bool _isInvincible;
     private float _legacyGravityScale;
+    private bool _gameIsPaused;
     private bool _gameHasStarted;
     private readonly float _partition = Screen.width / 2f;
     internal const int NumLives = 1;
@@ -45,12 +46,14 @@ public sealed class Player : Character, IFlashable
     private void OnEnable()
     {
         EventManager.Events.OnFoxHitsPlayer += HandleFoxHitsPlayer;
+        EventManager.Events.OnPauseKeyDown += HandlePause;
         EventManager.Events.OnGameOver += HandleGameOver;
     }
     
     private void OnDisable()
     {
         EventManager.Events.OnFoxHitsPlayer -= HandleFoxHitsPlayer;
+        EventManager.Events.OnPauseKeyDown -= HandlePause;
         EventManager.Events.OnGameOver -= HandleGameOver;
     }
 
@@ -242,11 +245,20 @@ public sealed class Player : Character, IFlashable
     /// to other components to begin processes to run the gameplay
     private IEnumerator WaitForInput()
     {
-        while (GetInputDirection() == 0 && !IsJumping()) yield return null;
+        // if (_gameIsPaused) yield return null;
+        while (_gameIsPaused || (GetInputDirection() == 0 && !IsJumping()))
+            yield return null;
         EventManager.Events.PlayStart();
         _gameHasStarted = true;
     }
 
+    /// Used to prevent the game from starting via player input
+    /// while the game is paused
+    private void HandlePause(bool isPaused)
+    {
+        _gameIsPaused = isPaused;
+    }
+    
     /// Disables script on Game Over
     private void HandleGameOver()
     {
