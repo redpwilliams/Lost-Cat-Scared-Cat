@@ -14,6 +14,7 @@ public sealed class UIManager : MonoBehaviour
 
     [Header("Mileage Props")] 
     [SerializeField] private Text _mileageText;
+    [SerializeField] private Text _highScoreText;
     private const float StepsMultiplier = 3f;
     
     /// Mileage / Number of steps / Distance Player has traveled
@@ -43,6 +44,9 @@ public sealed class UIManager : MonoBehaviour
     {
         InitMileage();
         InitHearts(Player.NumLives);
+
+        int highScore = SaveSystem.LoadPreferences().HighScore;
+        _highScoreText.text = $"Best: {highScore}";
     }
 
     private void Update()
@@ -56,38 +60,7 @@ public sealed class UIManager : MonoBehaviour
         
         EventManager.Events.PauseKeyDown();
     }
-
-    /// Subtracts a heart from the UI and returns the number of hearts left
-    /// Reported by the player
-    public int LoseHeart()
-    {
-        // Failsafe, ensures no extra life loss after Player dies
-        if (_numHeartsShown == 0) return 0;
-
-        // Get current heart game object and destroy
-        Heart currentHeart =
-            _hearts[_numHeartsShown - 1].GetComponent<Heart>();
-        currentHeart.Destroy();
-
-        // Update list
-        _numHeartsShown--;
-        _hearts[_numHeartsShown] = null;
-
-        if (_numHeartsShown != 0) return _numHeartsShown;
-        
-        // Game Over
-        EventManager.Events.GameOver(_mileage);
-        HandleGameOver();
-        return 0;
-    }
-
-    /// Updates the mileage field on the screen
-    private void SetMileageText()
-    {
-        // Update mileage
-        _mileageText.text = $"{Mathf.RoundToInt(_mileage)} steps";
-    }
-
+    
     /// Sets the Mileage text on the screen.
     /// Customizable in GameObject Component
     private void InitMileage()
@@ -117,6 +90,37 @@ public sealed class UIManager : MonoBehaviour
         }
 
         _numHeartsShown = numHearts;
+    }
+
+    /// Updates the mileage field on the screen
+    private void SetMileageText()
+    {
+        // Update mileage
+        _mileageText.text = $"{Mathf.RoundToInt(_mileage)} steps";
+    }
+    
+    /// Subtracts a heart from the UI and returns the number of hearts left
+    /// Reported by the player
+    public int LoseHeart()
+    {
+        // Failsafe, ensures no extra life loss after Player dies
+        if (_numHeartsShown == 0) return 0;
+
+        // Get current heart game object and destroy
+        Heart currentHeart =
+            _hearts[_numHeartsShown - 1].GetComponent<Heart>();
+        currentHeart.Destroy();
+
+        // Update list
+        _numHeartsShown--;
+        _hearts[_numHeartsShown] = null;
+
+        if (_numHeartsShown != 0) return _numHeartsShown;
+        
+        // Game Over
+        EventManager.Events.GameOver(_mileage);
+        HandleGameOver();
+        return 0;
     }
 
     /// Defines what the PauseKey is
