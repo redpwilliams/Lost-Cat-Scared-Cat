@@ -28,7 +28,7 @@ public static class SaveSystem
             if (!File.Exists(PrefsPath))
             {
                Debug.LogError($"File {PrefsPath} does not exist");
-               return new Preferences(true, 1, 0.25f);
+               return new Preferences(true, 1, 0.25f, 0);
             }
 
             BinaryFormatter formatter = new BinaryFormatter();

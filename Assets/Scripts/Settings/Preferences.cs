@@ -3,7 +3,8 @@ using System;
 [Serializable]
 public struct Preferences
 {
-    public Preferences(bool isFirstTime, uint catID, float volume)
+    public Preferences(bool isFirstTime, uint catID, float volume, int 
+    highScore)
     {
         if (catID > 5)
             throw new ArgumentOutOfRangeException(
@@ -11,6 +12,7 @@ public struct Preferences
         IsFirstTime = isFirstTime;
         CatID = catID;
         Volume = volume;
+        HighScore = highScore;
     }
 
     /// Whether the Player is playing the game for the first time
@@ -21,8 +23,12 @@ public struct Preferences
     
     /// Saved volume level
     public float Volume { get; set; }
+    
+    /// Player high score
+    public int HighScore { get; set; }
 
     /// ToString if needed
     public readonly override string ToString() =>
-        $"IsFirstTime: {IsFirstTime}, CatID: {CatID}, Volume: {Volume}";
+        @$"IsFirstTime: {IsFirstTime}, CatID: {CatID}, Volume: {Volume}, High 
+        Score: {HighScore}";
 }

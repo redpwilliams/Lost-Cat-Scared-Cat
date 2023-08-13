@@ -98,6 +98,13 @@ public sealed class EventManager : MonoBehaviour
     public void GameOver(float score)
     {
         FinalScore = Mathf.RoundToInt(score);
+        var prefs = SaveSystem.LoadPreferences();
+        if (prefs.HighScore < FinalScore)
+        {
+            prefs.HighScore = FinalScore;
+            SaveSystem.SavePreferences(prefs);
+        }
+        
         OnGameOver?.Invoke();
     }
     
