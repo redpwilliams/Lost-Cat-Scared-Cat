@@ -47,13 +47,19 @@ public sealed class GameAudio : MonoBehaviour
         // Should be less than the hang time between scenes
         // I don't feel like getting that dynamically
 
-        float originalVolume = _mainMusic.volume;
+        float originalMainVolume = _mainMusic.volume;
+        float originalForestVolume = _forestMusic.volume;
+        
         float elapsedTime = 0f;
         while (elapsedTime < _fadeDuration)
         {
             float t = elapsedTime / _fadeDuration;
-            _mainMusic.volume = Mathf.Lerp(originalVolume, 0, t);
+            
+            _mainMusic.volume = Mathf.Lerp(originalMainVolume, 0, t);
+            _forestMusic.volume = Mathf.Lerp(originalForestVolume, 0, t);
+            
             elapsedTime += Time.deltaTime;
+            
             yield return null;
         }
 
