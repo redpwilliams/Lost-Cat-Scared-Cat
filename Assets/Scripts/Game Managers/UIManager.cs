@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,19 @@ public sealed class UIManager : MonoBehaviour
 
         ui = this;
         _hearts = new GameObject[Player.NumLives];
+    }
+
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        // Pause when loss of focus
+        if (!hasFocus) EventManager.Events.PauseKeyDown();
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        // Specifically for Android, pauses when player presses home
+        if (pauseStatus) EventManager.Events.PauseKeyDown();
     }
 
     private void Start()
