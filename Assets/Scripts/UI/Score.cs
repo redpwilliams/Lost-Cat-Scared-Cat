@@ -9,7 +9,7 @@ public sealed class Score : MonoBehaviour
     private void Start()
     {
         _scoreText = GetComponent<Text>();
-        _scoreText.text = $"Score: {EventManager.Events.FinalScore}";
+        _scoreText.text = $"Score: {EventManager.Events.FinalScore:n0}";
         
         // Handle high score, or in EventManager as an extra param to GameOver
     }

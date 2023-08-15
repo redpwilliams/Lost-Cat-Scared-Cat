@@ -59,7 +59,7 @@ public sealed class UIManager : MonoBehaviour
         InitHearts(Player.NumLives);
 
         int highScore = SaveSystem.LoadPreferences().HighScore;
-        _highScoreText.text = $"Best: {highScore}";
+        _highScoreText.text = $"Best: {highScore:n0}";
     }
 
     private void Update()
@@ -109,7 +109,7 @@ public sealed class UIManager : MonoBehaviour
     private void SetMileageText()
     {
         // Update mileage
-        _mileageText.text = $"{Mathf.RoundToInt(_mileage)} steps";
+        _mileageText.text = $"{Mathf.RoundToInt(_mileage):n0} steps";
     }
     
     /// Subtracts a heart from the UI and returns the number of hearts left
