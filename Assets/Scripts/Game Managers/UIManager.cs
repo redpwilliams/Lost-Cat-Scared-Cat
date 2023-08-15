@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,7 +15,7 @@ public sealed class UIManager : MonoBehaviour
     [Header("Mileage Props")] 
     [SerializeField] private Text _mileageText;
     [SerializeField] private Text _highScoreText;
-    private const float StepsMultiplier = 3f;
+    private const float StepsMultiplier = 5f;
     
     /// Mileage / Number of steps / Distance Player has traveled
     private float _mileage;
