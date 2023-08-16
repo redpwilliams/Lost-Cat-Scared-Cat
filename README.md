@@ -8,6 +8,9 @@ Play as a lost and scared cat stranded in a forest escaping an endless onslaught
 
 ## Screenshots
 
+![Gameplay Screenshot 1](./Assets/Resources/Screenshots/lcsc2.png)
+![Gameplay Screenshot 2](./Assets/Resources/Screenshots/lcsc1.png)
+
 ## Cloning
 
 To manage game assets, this project uses git **Large File Support (lfs)**. To successfully clone, you must install git lfs:
