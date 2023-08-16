@@ -4,7 +4,7 @@ Endless runner game created with Unity. Developed on Unity **2021.3.11f1 Persona
 
 ## Concept
 
-Play as a lost and scared cat stranded in a forest escaping an endless onslaught of foxes that run, jump, and dash toward you. In this infinite side scroller, navigate and evade the foxes that chase you in an effort to escape the forest. Can you outrun them all?
+Play as a lost and scared cat stranded in a forest escaping an endless onslaught of foxes that run, jump, and dash toward you. In this infinite side-scroller, navigate and evade the foxes that chase you in an effort to escape the forest. Can you outrun them all?
 
 ## Screenshots
 
@@ -24,11 +24,20 @@ To manage game assets, this project uses git **Large File Support (lfs)**. To su
 - &#8594; Right Movement: Right arrow
 - &#8593; Jump: Spacebar
 
+### Mobile/Touch
+
+- &#8592; Left Movement: Tap/Hold left half of screen
+- &#8594; Right Movement: Tap/Hold right half of screen
+- &#8593; Jump: Swipe down from anywhere on the screen
+
 ## Game Features
 
-- Repeating and parallaxed backgrounds
-- Fluid rigid body controls
-- Character select and UI
+- Interactive and intuitive UI
+- Saved player preferences (character select and volume control)
+- Repeating, parallaxed backgrounds
+- Fluid controls and physics-based movement
+- Event system & singleton pattern
+- OOP principles like inheritance and encapsulation
 - Internal save system
 
 ## License
