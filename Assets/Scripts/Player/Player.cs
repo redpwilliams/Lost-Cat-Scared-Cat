@@ -23,6 +23,7 @@ public sealed class Player : Character, IFlashable
     
     private bool _isInvincible;
     private float _legacyGravityScale;
+    private int _playerInputDirection;
     private bool _gameIsPaused;
     private bool _gameHasStarted;
     private readonly float _partition = Screen.width / 2f;
@@ -89,6 +90,13 @@ public sealed class Player : Character, IFlashable
 
     private void Update()
     {
+        // Handle Run input
+        _playerInputDirection = GetInputDirection();
+        IsVisiblyRunning = _playerInputDirection != 0;
+        
+        // Handle Jump input
+        IsVisiblyJumping = IsJumping();
+        
         // Set animation parameters
         SetRunAnimationParam(IsVisiblyRunning);
         SetJumpAnimationParam(IsVisiblyJumping);
@@ -104,13 +112,7 @@ public sealed class Player : Character, IFlashable
 
     private void FixedUpdate()
     {
-        // Handle Run input
-        int playerInputDirection = GetInputDirection();
-        IsVisiblyRunning = playerInputDirection != 0;
-        HandleRunInput(playerInputDirection);
-
-        // Handle Jump input
-        IsVisiblyJumping = IsJumping();
+        HandleRunInput(_playerInputDirection);
 
         // Conditionally Handle Fall
         if (IsFalling()) IncreaseFallGravity();
