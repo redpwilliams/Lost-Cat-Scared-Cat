@@ -21,12 +21,13 @@ public sealed class Player : Character, IFlashable
     [SerializeField] private float _flickDuration = 0.1f;
     [SerializeField] private Color _flashColor;
     
-    private bool _isInvincible;
-    private float _legacyGravityScale;
     private int _playerInputDirection;
+    private float _legacyGravityScale;
+    private bool _isInvincible;
     private bool _gameIsPaused;
     private bool _gameHasStarted;
-    private readonly float _partition = Screen.width / 2f;
+    private static readonly float JumpTrailDisplacement = 20f;
+    private static readonly float Partition = Screen.width / 2f;
     internal const int NumLives = 9;
 
     private Rigidbody2D _rb;
@@ -134,7 +135,7 @@ public sealed class Player : Character, IFlashable
                 case TouchPhase.Began:
                 case TouchPhase.Moved:
                 case TouchPhase.Stationary:
-                    return touch.position.x >= _partition ? 1 : -1;
+                    return touch.position.x >= Partition ? 1 : -1;
                 case TouchPhase.Ended:
                 case TouchPhase.Canceled:
                     return 0;
@@ -158,7 +159,7 @@ public sealed class Player : Character, IFlashable
         {
             // Jump if Player swipes up
             // TODO - Make more responsive using timing, dynamic distance
-            return touch.deltaPosition.y <= -10f; // TODO - Extract to variable
+            return touch.deltaPosition.y <= - JumpTrailDisplacement;
         }
         
         return false;
