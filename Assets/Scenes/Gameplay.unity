@@ -696,9 +696,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Double tap anywhere
+  m_Text: 'Swipe down from
 
-    to jump'
+    anywhere to jump'
 --- !u!222 &225477626
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2293,8 +2293,9 @@ MonoBehaviour:
   - {fileID: 5645074907809119955, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
   - {fileID: 479420765497891542, guid: 0caf869fcf821c543ba01261bdbd795a, type: 3}
   - {fileID: 6341849905573886277, guid: 5186991dbe2cd6346a475821c3e1a788, type: 3}
-  _skulkSpawnInterval: 3
   _foxSpawnInterval: 1
+  _skulkSpawnInterval: 3
+  _tutorialSkulkSpawnInterval: 5
   _skulkSize: 3
   _drawGizmos: 0
 --- !u!4 &1915981027
