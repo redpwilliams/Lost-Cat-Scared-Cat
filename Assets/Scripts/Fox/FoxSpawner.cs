@@ -100,31 +100,30 @@ public sealed class FoxSpawner : MonoBehaviour
         
         // Red Fox Skulk
         Array.Fill(tempFoxes, _foxPrefabs[0]);
-        EventManager.Events.NewTutorialSkulk();
         yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
         
         // Brown Fox Skulk
         Array.Fill(tempFoxes, _foxPrefabs[1]);
-        EventManager.Events.NewTutorialSkulk();
         yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
         
         // Gray Fox Skulk
         Array.Fill(tempFoxes, _foxPrefabs[2]);
-        EventManager.Events.NewTutorialSkulk();
         yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
 
-        EventManager.Events.EndTutorialSkulks();
+        EventManager.Events.CompleteTutorialSkulks();
         StartCoroutine(SpawnFoxesMain());
     }
 
     private IEnumerator InstantiateTutorialSkulk(Skulk skulk)
     {
+        EventManager.Events.TutorialSkulkAction(true);
         for (int i = 0; i < skulk.Size; i++)
         {
             Instantiate(skulk[i], _trans.position, _trans.rotation);
             yield return new WaitForSeconds(_foxSpawnInterval);
         }
 
+        EventManager.Events.TutorialSkulkAction(false);
         yield return new WaitForSeconds(_tutorialSkulkSpawnInterval);
     }
 

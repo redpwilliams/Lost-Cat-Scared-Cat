@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Text))]
 public sealed class TutorialInstruction : MonoBehaviour
 {
     private void OnEnable()

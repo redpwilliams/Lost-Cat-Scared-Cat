@@ -39,11 +39,11 @@ public sealed class EventManager : MonoBehaviour
     public event Action OnPlayStart;
     private bool _gameHasStarted;
 
-    /// When a new tutorial skulk starts
-    public event Action OnNewTutorialSkulk;
+    /// When a tutorial skulk starts/finishes
+    public event Action<bool> OnTutorialSkulkAction;
 
     /// When all tutorial skulks are finished
-    public event Action OnEndTutorialSkulks;
+    public event Action OnCompleteTutorialSkulks;
 
     /// Fox hits player event
     public event Action OnFoxHitsPlayer;
@@ -73,15 +73,15 @@ public sealed class EventManager : MonoBehaviour
     }
 
     /// Fires when a tutorial Skulk starts
-    public void NewTutorialSkulk()
+    public void TutorialSkulkAction(bool startedSpawn)
     {
-        OnNewTutorialSkulk?.Invoke();
+        OnTutorialSkulkAction?.Invoke(startedSpawn);
     }
-
+    
     /// Fires when the tutorial section is completed
-    public void EndTutorialSkulks()
+    public void CompleteTutorialSkulks()
     {
-        OnEndTutorialSkulks?.Invoke();
+        OnCompleteTutorialSkulks?.Invoke();
     }
     
     /// Fires when a Fox collides with the player
