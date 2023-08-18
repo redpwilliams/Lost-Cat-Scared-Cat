@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
 public sealed class TutorialInstruction : MonoBehaviour
 {
     private void OnEnable()
@@ -17,12 +15,23 @@ public sealed class TutorialInstruction : MonoBehaviour
         }
         
         EventManager.Events.OnPlayStart += DestroyOnPlay;
-        prefs.IsFirstTime = false;
-        SaveSystem.SavePreferences(prefs);
     }
 
     private void OnDisable()
     {
+        /*
+         * This is where I decide the player
+         * shouldn't see the tutorial text again.
+         * If they decide to quit the game before the other
+         * tutorial text occurs, then that's on them
+         *
+         * This way, too, TutorialDescription is not
+         * also setting IsFirstTime.
+         */
+        var prefs = SaveSystem.LoadPreferences();
+        prefs.IsFirstTime = false;
+        SaveSystem.SavePreferences(prefs);
+        
         EventManager.Events.OnPlayStart -= DestroyOnPlay;
     }
 

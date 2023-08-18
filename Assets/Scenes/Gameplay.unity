@@ -2421,6 +2421,7 @@ GameObject:
   - component: {fileID: 1925153689}
   - component: {fileID: 1925153688}
   - component: {fileID: 1925153687}
+  - component: {fileID: 1925153690}
   m_Layer: 5
   m_Name: Tutorial Descriptions
   m_TagString: Untagged
@@ -2511,6 +2512,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1925153690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925153685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd9851f2c089b746ba5799f4ef45aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2078395038
 PrefabInstance:
   m_ObjectHideFlags: 0
