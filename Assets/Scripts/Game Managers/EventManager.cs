@@ -39,6 +39,12 @@ public sealed class EventManager : MonoBehaviour
     public event Action OnPlayStart;
     private bool _gameHasStarted;
 
+    /// When a new tutorial skulk starts
+    public event Action OnNewTutorialSkulk;
+
+    /// When all tutorial skulks are finished
+    public event Action OnEndTutorialSkulks;
+
     /// Fox hits player event
     public event Action OnFoxHitsPlayer;
 
@@ -65,6 +71,18 @@ public sealed class EventManager : MonoBehaviour
     {
         OnPlayStart?.Invoke();
     }
+
+    /// Fires when a tutorial Skulk starts
+    public void NewTutorialSkulk()
+    {
+        OnNewTutorialSkulk?.Invoke();
+    }
+
+    /// Fires when the tutorial section is completed
+    public void EndTutorialSkulks()
+    {
+        OnEndTutorialSkulks?.Invoke();
+    }
     
     /// Fires when a Fox collides with the player
     public void FoxHitsPlayer()
@@ -76,7 +94,7 @@ public sealed class EventManager : MonoBehaviour
     public void PlayerInvincible()
     {
         OnPlayerInvincible?.Invoke();
-        // TODO: Make single event, should not be a need for two
+        // REVIEW: Make single event, should not be a need for two
     }
 
     /// Fires when the player turns vulnerable

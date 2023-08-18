@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static UnityEngine.Random;
@@ -7,22 +8,24 @@ using static UnityEngine.Random;
 /// </summary>
 public sealed class FoxSpawner : MonoBehaviour
 {
+    private Transform _trans;
     private const float StartX = 4.5f;
     private const float StartY = -0.875f;
-    private Transform _trans;
-
     public const float MinAttackGap = 0.75f;
     public const float MaxAttackGap = 1.5f;
 
     [SerializeField] private GameObject[] _foxPrefabs;
 
-    [SerializeField] private float _skulkSpawnInterval = 5f;
     [SerializeField] private float _foxSpawnInterval = 3f;
+    [SerializeField] private float _skulkSpawnInterval = 5f;
+    [SerializeField] private float _tutorialSkulkSpawnInterval = 5f;
     [SerializeField] private int _skulkSize = 1;
-
     [SerializeField] private bool _drawGizmos;
 
-    private IEnumerator _coroutine;
+    private IEnumerator _spawnMain;
+    private IEnumerator _spawnTutorial;
+
+    private bool _isFirstTime;
     private bool _isGameOver;
 
     private void OnDrawGizmos()
@@ -47,9 +50,12 @@ public sealed class FoxSpawner : MonoBehaviour
     private void Awake()
     {
         _trans = GetComponent<Transform>();
-        _trans.localPosition = new Vector3(StartX, StartY,
-            _trans.position.z);
-        _coroutine = SpawnFoxes();
+        _trans.localPosition = new Vector3(StartX, StartY, _trans.position.z);
+        
+        _spawnMain = SpawnFoxesMain();
+        _spawnTutorial = SpawnFoxesTutorial();
+
+        _isFirstTime = SaveSystem.LoadPreferences().IsFirstTime;
     }
 
     /// <summary>
@@ -57,14 +63,15 @@ public sealed class FoxSpawner : MonoBehaviour
     /// </summary>
     private void BeginSpawnFoxes()
     {
-        StartCoroutine(_coroutine);
+        // TODO: Handle tutorial spawning vs normal spawning
+        StartCoroutine(_isFirstTime ? _spawnTutorial : _spawnMain);
     }
 
     /// <summary>
     /// Spawns foxes at specific intervals using skulks
     /// </summary>
     /// <returns>An enumerator for controlling the spawning loop</returns>
-    private IEnumerator SpawnFoxes()
+    private IEnumerator SpawnFoxesMain()
     {
         while (!_isGameOver) // TODO Change when game is over
         {
@@ -83,9 +90,47 @@ public sealed class FoxSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns specific foxes for a tutorial section
+    /// </summary>
+    /// <returns>An enumerator for controlling the spawning loop</returns>
+    private IEnumerator SpawnFoxesTutorial()
+    {
+        GameObject[] tempFoxes = new GameObject[2];
+        
+        // Red Fox Skulk
+        Array.Fill(tempFoxes, _foxPrefabs[0]);
+        EventManager.Events.NewTutorialSkulk();
+        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
+        
+        // Brown Fox Skulk
+        Array.Fill(tempFoxes, _foxPrefabs[1]);
+        EventManager.Events.NewTutorialSkulk();
+        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
+        
+        // Gray Fox Skulk
+        Array.Fill(tempFoxes, _foxPrefabs[2]);
+        EventManager.Events.NewTutorialSkulk();
+        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
+
+        EventManager.Events.EndTutorialSkulks();
+        StartCoroutine(SpawnFoxesMain());
+    }
+
+    private IEnumerator InstantiateTutorialSkulk(Skulk skulk)
+    {
+        for (int i = 0; i < skulk.Size; i++)
+        {
+            Instantiate(skulk[i], _trans.position, _trans.rotation);
+            yield return new WaitForSeconds(_foxSpawnInterval);
+        }
+
+        yield return new WaitForSeconds(_tutorialSkulkSpawnInterval);
+    }
+
     private void HandleGameOver()
     {
-        StopCoroutine(_coroutine);
+        StopCoroutine(_spawnMain);
     }
 }
 
