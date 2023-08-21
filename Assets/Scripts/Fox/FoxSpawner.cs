@@ -96,19 +96,20 @@ public sealed class FoxSpawner : MonoBehaviour
     /// <returns>An enumerator for controlling the spawning loop</returns>
     private IEnumerator SpawnFoxesTutorial()
     {
-        GameObject[] tempFoxes = new GameObject[2];
+        int tutorialSkulkSize = 2;
+        GameObject[] tempFoxes = new GameObject[tutorialSkulkSize];
         
         // Red Fox Skulk
         Array.Fill(tempFoxes, _foxPrefabs[0]);
-        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
+        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes.Length, tempFoxes));
         
         // Brown Fox Skulk
         Array.Fill(tempFoxes, _foxPrefabs[1]);
-        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
+        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes.Length, tempFoxes));
         
         // Gray Fox Skulk
         Array.Fill(tempFoxes, _foxPrefabs[2]);
-        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes));
+        yield return InstantiateTutorialSkulk(new Skulk(tempFoxes.Length, tempFoxes));
 
         EventManager.Events.CompleteTutorialSkulks();
         StartCoroutine(SpawnFoxesMain());
