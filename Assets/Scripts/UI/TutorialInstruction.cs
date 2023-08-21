@@ -20,7 +20,7 @@ public sealed class TutorialInstruction : MonoBehaviour
     private void OnDisable()
     {
         /*
-         * This is where I decide the player
+         * REVIEW: This is where I decide the player
          * shouldn't see the tutorial text again.
          * If they decide to quit the game before the other
          * tutorial text occurs, then that's on them

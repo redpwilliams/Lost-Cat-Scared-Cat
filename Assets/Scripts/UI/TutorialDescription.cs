@@ -15,19 +15,13 @@ public sealed class TutorialDescription : MonoBehaviour
     
     private void OnEnable()
     {
-
         _text = GetComponent<Text>();
-        
-        EventManager.Events.OnTutorialSkulkAction += HandleSkulkUpdate;
-        EventManager.Events.OnCompleteTutorialSkulks += DestroyOnFinish;
-
-        this.enabled = false;
+        _text.text = _tutorialTexts[_textId];
+        _textId++;
     }
 
     private void OnDisable()
     {
-        EventManager.Events.OnTutorialSkulkAction -= HandleSkulkUpdate;
-        EventManager.Events.OnCompleteTutorialSkulks -= DestroyOnFinish;
     }
 
     private void HandleSkulkUpdate(bool startedSpawn)
@@ -35,8 +29,6 @@ public sealed class TutorialDescription : MonoBehaviour
         if (startedSpawn)
         {
             this.enabled = true;
-            _text.text = _tutorialTexts[_textId];
-            _textId++;
             return;
         } 
         

@@ -26,7 +26,7 @@ public sealed class UIManager : MonoBehaviour
     private SpriteRenderer _sr;
 
     /// Tutorial Description object
-    [SerializeField] private GameObject _tutorialDescription;
+    [SerializeField] private TutorialDescription _tutorialDescription;
 
     /// Time to wait before switching to Game Over screen after death
     [SerializeField] private float _transitionHangTime = 2.5f;
@@ -41,6 +41,23 @@ public sealed class UIManager : MonoBehaviour
 
         ui = this;
         _hearts = new GameObject[Player.NumLives];
+    }
+
+    private void OnEnable()
+    {
+        // Render first runtime instruction if it is the first time playing
+        var prefs = SaveSystem.LoadPreferences();
+        if (!prefs.IsFirstTime) return;
+
+        EventManager.Events.OnPlayStart += RenderTutorialDescription;
+        EventManager.Events.OnTutorialSkulkAction += HandleSkulkUpdate;
+        // EventManager.Events.OnCompleteTutorialSkulks += DestroyOnFinish;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Events.OnPlayStart -= RenderTutorialDescription;
+        EventManager.Events.OnTutorialSkulkAction -= HandleSkulkUpdate;
     }
 
 
@@ -67,8 +84,6 @@ public sealed class UIManager : MonoBehaviour
         int highScore = prefs.HighScore;
         _highScoreText.text = $"Best: {highScore:n0}";
         
-        // Render first runtime instruction if it is the first time playing
-        if (prefs.IsFirstTime) _tutorialDescription.SetActive(true);
     }
 
     private void Update()
@@ -119,6 +134,16 @@ public sealed class UIManager : MonoBehaviour
     {
         // Update mileage
         _mileageText.text = $"{Mathf.RoundToInt(_mileage):n0} steps";
+    }
+
+    private void HandleSkulkUpdate(bool newSpawn)
+    {
+        _tutorialDescription.enabled = newSpawn;
+    }
+
+    private void RenderTutorialDescription()
+    {
+        _tutorialDescription.gameObject.SetActive(true);
     }
     
     /// Subtracts a heart from the UI and returns the number of hearts left
