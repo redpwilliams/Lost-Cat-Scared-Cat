@@ -8,11 +8,8 @@ public sealed class UIManager : MonoBehaviour
 {
     /// Singleton Instance
     public static UIManager ui;
-    
-    /// SpriteRenderer of the active/top-most heart
-    private SpriteRenderer _sr;
 
-    [Header("Mileage Props")] 
+    [Header("Mileage and High Score")] 
     [SerializeField] private Text _mileageText;
     [SerializeField] private Text _highScoreText;
     private const float StepsMultiplier = 5f;
@@ -24,6 +21,12 @@ public sealed class UIManager : MonoBehaviour
     [SerializeField] private GameObject _heart;
     private GameObject[] _hearts;
     private int _numHeartsShown;
+    
+    /// SpriteRenderer of the active/top-most heart
+    private SpriteRenderer _sr;
+
+    /// Tutorial Description object
+    [SerializeField] private GameObject _tutorialDescription;
 
     /// Time to wait before switching to Game Over screen after death
     [SerializeField] private float _transitionHangTime = 2.5f;
@@ -58,8 +61,14 @@ public sealed class UIManager : MonoBehaviour
         InitMileage();
         InitHearts(Player.NumLives);
 
-        int highScore = SaveSystem.LoadPreferences().HighScore;
+        var prefs = SaveSystem.LoadPreferences();
+        
+        // Render high score
+        int highScore = prefs.HighScore;
         _highScoreText.text = $"Best: {highScore:n0}";
+        
+        // Render first runtime instruction if it is the first time playing
+        if (prefs.IsFirstTime) _tutorialDescription.SetActive(true);
     }
 
     private void Update()

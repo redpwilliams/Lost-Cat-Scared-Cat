@@ -15,15 +15,6 @@ public sealed class TutorialDescription : MonoBehaviour
     
     private void OnEnable()
     {
-        // Check if is first time playing
-        var prefs = SaveSystem.LoadPreferences();
-        bool isFirstTime = prefs.IsFirstTime;
-
-        if (!isFirstTime)
-        {
-            Destroy(gameObject);
-            return;
-        }
 
         _text = GetComponent<Text>();
         
