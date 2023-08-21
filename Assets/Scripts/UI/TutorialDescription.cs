@@ -29,8 +29,8 @@ public sealed class TutorialDescription : MonoBehaviour
         
         EventManager.Events.OnTutorialSkulkAction += HandleSkulkUpdate;
         EventManager.Events.OnCompleteTutorialSkulks += DestroyOnFinish;
-        
-        gameObject.SetActive(false);
+
+        this.enabled = false;
     }
 
     private void OnDisable()
@@ -43,13 +43,13 @@ public sealed class TutorialDescription : MonoBehaviour
     {
         if (startedSpawn)
         {
+            this.enabled = true;
             _text.text = _tutorialTexts[_textId];
-            gameObject.SetActive(true);
             _textId++;
             return;
         } 
         
-        gameObject.SetActive(false);
+        this.enabled = false;
         
     }
 
