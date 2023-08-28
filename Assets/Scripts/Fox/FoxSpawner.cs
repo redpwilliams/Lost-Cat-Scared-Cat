@@ -117,7 +117,9 @@ public sealed class FoxSpawner : MonoBehaviour
 
     private IEnumerator InstantiateTutorialSkulk(Skulk skulk)
     {
+        yield return new WaitForSeconds(_tutorialSkulkSpawnInterval);
         EventManager.Events.TutorialSkulkAction(true);
+        
         for (int i = 0; i < skulk.Size; i++)
         {
             Instantiate(skulk[i], _trans.position, _trans.rotation);
@@ -125,7 +127,6 @@ public sealed class FoxSpawner : MonoBehaviour
         }
 
         EventManager.Events.TutorialSkulkAction(false);
-        yield return new WaitForSeconds(_tutorialSkulkSpawnInterval);
     }
 
     private void HandleGameOver()
