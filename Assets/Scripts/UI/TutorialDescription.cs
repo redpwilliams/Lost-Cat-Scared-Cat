@@ -24,17 +24,6 @@ public sealed class TutorialDescription : MonoBehaviour
     {
     }
 
-    private void HandleSkulkUpdate(bool startedSpawn)
-    {
-        if (startedSpawn)
-        {
-            this.enabled = true;
-            return;
-        } 
-        
-        this.enabled = false;
-        
-    }
 
     private void DestroyOnFinish()
     {

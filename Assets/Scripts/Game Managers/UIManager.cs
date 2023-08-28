@@ -51,13 +51,14 @@ public sealed class UIManager : MonoBehaviour
 
         EventManager.Events.OnPlayStart += RenderTutorialDescription;
         EventManager.Events.OnTutorialSkulkAction += HandleSkulkUpdate;
-        // EventManager.Events.OnCompleteTutorialSkulks += DestroyOnFinish;
+        EventManager.Events.OnCompleteTutorialSkulks += DestroyTutorialDescription;
     }
 
     private void OnDisable()
     {
         EventManager.Events.OnPlayStart -= RenderTutorialDescription;
         EventManager.Events.OnTutorialSkulkAction -= HandleSkulkUpdate;
+        EventManager.Events.OnCompleteTutorialSkulks -= DestroyTutorialDescription;
     }
 
 
@@ -144,6 +145,11 @@ public sealed class UIManager : MonoBehaviour
     private void RenderTutorialDescription()
     {
         _tutorialDescription.gameObject.SetActive(true);
+    }
+
+    private void DestroyTutorialDescription()
+    {
+        Destroy(_tutorialDescription.gameObject);
     }
     
     /// Subtracts a heart from the UI and returns the number of hearts left
