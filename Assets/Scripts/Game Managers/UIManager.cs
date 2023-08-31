@@ -26,7 +26,7 @@ public sealed class UIManager : MonoBehaviour
     private SpriteRenderer _sr;
 
     /// Tutorial Description object
-    [SerializeField] private TutorialDescription _tutorialDescription;
+    [SerializeField] private GameObject _tutorialDescription;
 
     /// Time to wait before switching to Game Over screen after death
     [SerializeField] private float _transitionHangTime = 2.5f;
@@ -50,14 +50,12 @@ public sealed class UIManager : MonoBehaviour
         if (!prefs.IsFirstTime) return;
 
         EventManager.Events.OnPlayStart += RenderTutorialDescription;
-        EventManager.Events.OnTutorialSkulkAction += HandleSkulkUpdate;
         EventManager.Events.OnCompleteTutorialSkulks += DestroyTutorialDescription;
     }
 
     private void OnDisable()
     {
         EventManager.Events.OnPlayStart -= RenderTutorialDescription;
-        EventManager.Events.OnTutorialSkulkAction -= HandleSkulkUpdate;
         EventManager.Events.OnCompleteTutorialSkulks -= DestroyTutorialDescription;
     }
 
@@ -137,14 +135,14 @@ public sealed class UIManager : MonoBehaviour
         _mileageText.text = $"{Mathf.RoundToInt(_mileage):n0} steps";
     }
 
-    private void HandleSkulkUpdate(bool newSpawn)
-    {
-        _tutorialDescription.enabled = newSpawn;
-    }
-
+    // private void HandleSkulkUpdate(bool newSpawn)
+    // {
+    //     _tutorialDescription.enabled = newSpawn;
+    // }
+    //
     private void RenderTutorialDescription()
     {
-        _tutorialDescription.gameObject.SetActive(true);
+        _tutorialDescription.SetActive(true);
     }
 
     private void DestroyTutorialDescription()

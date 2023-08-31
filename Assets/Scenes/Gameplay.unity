@@ -1857,7 +1857,7 @@ MonoBehaviour:
   _mileageText: {fileID: 1465337868}
   _highScoreText: {fileID: 202060373}
   _heart: {fileID: 1840491471}
-  _tutorialDescription: {fileID: 1925153690}
+  _tutorialDescription: {fileID: 1925153685}
   _transitionHangTime: 2.5
 --- !u!114 &1276398615
 MonoBehaviour:
@@ -2457,7 +2457,6 @@ GameObject:
   - component: {fileID: 1925153689}
   - component: {fileID: 1925153688}
   - component: {fileID: 1925153687}
-  - component: {fileID: 1925153690}
   m_Layer: 5
   m_Name: Tutorial Descriptions
   m_TagString: Untagged
@@ -2482,8 +2481,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 100}
+  m_AnchoredPosition: {x: 0, y: 117}
+  m_SizeDelta: {x: 1360, y: 279.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925153687
 MonoBehaviour:
@@ -2518,7 +2517,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fox tutorial text
+  m_Text: "Red foxes <color=#b75800>run</color>\tBrown foxes <color=#877965>jump</color>\tGray
+    foxes <color=#7a7a7a>dash</color>\n\nGood luck!"
 --- !u!222 &1925153688
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2548,18 +2548,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1925153690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925153685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bd9851f2c089b746ba5799f4ef45aef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2078395038
 PrefabInstance:
   m_ObjectHideFlags: 0

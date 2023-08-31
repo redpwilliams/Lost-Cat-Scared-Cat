@@ -18,7 +18,7 @@ public sealed class FoxSpawner : MonoBehaviour
 
     [SerializeField] private float _foxSpawnInterval = 3f;
     [SerializeField] private float _skulkSpawnInterval = 5f;
-    [SerializeField] private float _tutorialSkulkSpawnInterval = 5f;
+    [SerializeField] private float _tutorialSkulkSpawnInterval = 2f;
     [SerializeField] private int _skulkSize = 1;
     [SerializeField] private bool _drawGizmos;
 
@@ -26,6 +26,7 @@ public sealed class FoxSpawner : MonoBehaviour
     private IEnumerator _spawnTutorial;
 
     private bool _isFirstTime;
+    private bool _isFinishedSpawning;
     private bool _isGameOver;
 
     private void OnDrawGizmos()
@@ -73,7 +74,8 @@ public sealed class FoxSpawner : MonoBehaviour
     /// <returns>An enumerator for controlling the spawning loop</returns>
     private IEnumerator SpawnFoxesMain()
     {
-        while (!_isGameOver) // TODO Change when game is over
+        // Start main spawn loop
+        while (!_isGameOver) 
         {
             // Set interval in between skulk spawns
             yield return new WaitForSeconds(_skulkSpawnInterval);
@@ -96,7 +98,7 @@ public sealed class FoxSpawner : MonoBehaviour
     /// <returns>An enumerator for controlling the spawning loop</returns>
     private IEnumerator SpawnFoxesTutorial()
     {
-        int tutorialSkulkSize = 2;
+        int tutorialSkulkSize = 1;
         GameObject[] tempFoxes = new GameObject[tutorialSkulkSize];
         
         // Red Fox Skulk
@@ -111,6 +113,9 @@ public sealed class FoxSpawner : MonoBehaviour
         Array.Fill(tempFoxes, _foxPrefabs[2]);
         yield return InstantiateTutorialSkulk(new Skulk(tempFoxes.Length, tempFoxes));
 
+        // Additional hang time to keep tutorial text on screen
+        yield return new WaitForSeconds(_tutorialSkulkSpawnInterval);
+        
         EventManager.Events.CompleteTutorialSkulks();
         StartCoroutine(SpawnFoxesMain());
     }
@@ -118,15 +123,12 @@ public sealed class FoxSpawner : MonoBehaviour
     private IEnumerator InstantiateTutorialSkulk(Skulk skulk)
     {
         yield return new WaitForSeconds(_tutorialSkulkSpawnInterval);
-        EventManager.Events.TutorialSkulkAction(true);
         
         for (int i = 0; i < skulk.Size; i++)
         {
             Instantiate(skulk[i], _trans.position, _trans.rotation);
             yield return new WaitForSeconds(_foxSpawnInterval);
         }
-
-        EventManager.Events.TutorialSkulkAction(false);
     }
 
     private void HandleGameOver()

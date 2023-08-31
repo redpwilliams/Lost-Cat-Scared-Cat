@@ -8,9 +8,9 @@ public sealed class TutorialDescription : MonoBehaviour
     private int _textId;
     private readonly string[] _tutorialTexts = 
     {
-        "Red foxes run straight through . . .",
-        "Brown foxes jump when they are ready . . .",
-        "And, Gray foxes sprint once they are prepared."
+        "Red foxes run straight through",
+        "Brown foxes jump when they are ready",
+        "Lastly, Gray foxes sprint when the time is right"
     };
     
     private void OnEnable()
@@ -18,15 +18,5 @@ public sealed class TutorialDescription : MonoBehaviour
         _text = GetComponent<Text>();
         _text.text = _tutorialTexts[_textId];
         _textId++;
-    }
-
-    private void OnDisable()
-    {
-    }
-
-
-    private void DestroyOnFinish()
-    {
-        Destroy(gameObject);
     }
 }
