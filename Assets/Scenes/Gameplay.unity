@@ -432,8 +432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -560, y: 0}
-  m_SizeDelta: {x: 409.9, y: 139.8}
+  m_AnchoredPosition: {x: -560, y: -150}
+  m_SizeDelta: {x: 450, y: 139.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &145333023
 MonoBehaviour:
@@ -468,7 +468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tap this side to move left
+  m_Text: Tap the bottom left to move left
 --- !u!222 &145333024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -695,8 +695,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 139.8}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 835, y: 139.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225477625
 MonoBehaviour:
@@ -731,9 +731,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Swipe down from
-
-    anywhere to jump'
+  m_Text: "Tap the upper-half of the screen\n to jump"
 --- !u!222 &225477626
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1165,8 +1163,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 560, y: 0}
-  m_SizeDelta: {x: 409.9, y: 139.8}
+  m_AnchoredPosition: {x: 560, y: -150}
+  m_SizeDelta: {x: 450, y: 139.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695148336
 MonoBehaviour:
@@ -1201,7 +1199,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tap this side to move right
+  m_Text: Tap the bottom right to move right
 --- !u!222 &695148337
 CanvasRenderer:
   m_ObjectHideFlags: 0
