@@ -26,8 +26,8 @@ public sealed class Player : Character, IFlashable
     private bool _isInvincible;
     private bool _gameIsPaused;
     private bool _gameHasStarted;
-    private static readonly float JumpTrailDisplacement = 20f;
-    private static readonly float Partition = Screen.width / 2f;
+    private static readonly float HorizontalBounds = Screen.width / 2f;
+    private static readonly float VerticalBounds = Screen.height / 2f;
     internal const int NumLives = 9;
 
     private Rigidbody2D _rb;
@@ -121,7 +121,7 @@ public sealed class Player : Character, IFlashable
     }
 
     /// Determines the direction of input from the user.
-    private int GetInputDirection()
+    private static int GetInputDirection()
     {
         // Keyboard inputs
         if (Input.GetKey(KeyCode.RightArrow)) return 1;
@@ -135,7 +135,8 @@ public sealed class Player : Character, IFlashable
                 case TouchPhase.Began:
                 case TouchPhase.Moved:
                 case TouchPhase.Stationary:
-                    return touch.position.x >= Partition ? 1 : -1;
+                    if (touch.position.y >= VerticalBounds) return 0;
+                    return touch.position.x >= HorizontalBounds ? 1 : -1;
                 case TouchPhase.Ended:
                 case TouchPhase.Canceled:
                     return 0;
@@ -155,11 +156,20 @@ public sealed class Player : Character, IFlashable
         if (Input.GetKey(KeyCode.Space)) return true;
         
         // Touch input
-        foreach (var touch in Input.touches) if (touch.phase == TouchPhase.Moved)
+        foreach (var touch in Input.touches)
         {
-            // Jump if Player swipes up
-            // TODO - Make more responsive using timing, dynamic distance
-            return touch.deltaPosition.y <= - JumpTrailDisplacement;
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                case TouchPhase.Moved:
+                case TouchPhase.Stationary:
+                    return touch.position.y >= VerticalBounds;
+                case TouchPhase.Ended:
+                case TouchPhase.Canceled:
+                    return false;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
         
         return false;
