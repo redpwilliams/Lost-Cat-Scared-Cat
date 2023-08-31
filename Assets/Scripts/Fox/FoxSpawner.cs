@@ -19,7 +19,6 @@ public sealed class FoxSpawner : MonoBehaviour
     [SerializeField] private float _foxSpawnInterval = 3f;
     [SerializeField] private float _skulkSpawnInterval = 5f;
     [SerializeField] private float _tutorialSkulkSpawnInterval = 2f;
-    [SerializeField] private int _skulkSize = 1;
     [SerializeField] private bool _drawGizmos;
 
     private IEnumerator _spawnMain;
@@ -64,7 +63,6 @@ public sealed class FoxSpawner : MonoBehaviour
     /// </summary>
     private void BeginSpawnFoxes()
     {
-        // TODO: Handle tutorial spawning vs normal spawning
         StartCoroutine(_isFirstTime ? _spawnTutorial : _spawnMain);
     }
 
@@ -81,7 +79,7 @@ public sealed class FoxSpawner : MonoBehaviour
             yield return new WaitForSeconds(_skulkSpawnInterval);
 
             // Create skulk
-            Skulk skulk = new Skulk(_skulkSize, _foxPrefabs);
+            Skulk skulk = new Skulk(_foxPrefabs);
 
             // Spawn each Fox in the skulk
             for (int i = 0; i < skulk.Size; i++)
