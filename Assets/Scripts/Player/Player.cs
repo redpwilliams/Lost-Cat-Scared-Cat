@@ -124,8 +124,8 @@ public sealed class Player : Character, IFlashable
     private static int GetInputDirection()
     {
         // Keyboard inputs
-        if (Input.GetKey(KeyCode.RightArrow)) return 1;
-        if (Input.GetKey(KeyCode.LeftArrow)) return -1;
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) return 1;
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) return -1;
         
         // Touch inputs
         foreach (var touch in Input.touches)
@@ -153,7 +153,7 @@ public sealed class Player : Character, IFlashable
         if (!IsGrounded) return false;
         
         // Keyboard Input
-        if (Input.GetKey(KeyCode.Space)) return true;
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) return true;
         
         // Touch input
         foreach (var touch in Input.touches)
