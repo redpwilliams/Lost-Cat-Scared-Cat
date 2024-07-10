@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1609354461895821206
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -958464662266602813, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_SpriteLibraryAsset
+      value: 
+      objectReference: {fileID: 7108339969198208228, guid: d7df33c45c25adf4cba1f7da715b2c9c, type: 3}
+    - target: {fileID: 5645074907809119954, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1625254497, guid: a4ef180b2df474342a071164eaf18772, type: 3}
+    - target: {fileID: 5645074907809119954, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_SortingLayer
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119954, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -879851091
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119955, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_Name
+      value: Gray Fox
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119957, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645074907809119960, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643924557101006439, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+      propertyPath: m_SpriteKey
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 167012563764768350, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+--- !u!1 &6341849905573886277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5645074907809119955, guid: 8fac454a5e84bc147b16aa50bdd65646, type: 3}
+  m_PrefabInstance: {fileID: 1609354461895821206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1484785471014987351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341849905573886277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff615abef0e81b448cf4030e2bdbcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <RunSpeed>k__BackingField: 2.5
+  _dashForce: 4
