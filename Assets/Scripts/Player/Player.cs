@@ -153,7 +153,8 @@ public sealed class Player : Character, IFlashable
         if (!IsGrounded) return false;
         
         // Keyboard Input
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) return true;
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || 
+        Input.GetKey(KeyCode.W)) return true;
         
         // Touch input
         foreach (var touch in Input.touches)
