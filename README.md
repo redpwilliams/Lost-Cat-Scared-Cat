@@ -21,17 +21,9 @@ To manage game assets, this project uses git **Large File Support (lfs)**. To su
 
 ## Controls
 
-### Computer/Keyboard
-
-- &#8592; Left Movement: Left arrow
-- &#8594; Right Movement: Right arrow
-- &#8593; Jump: Spacebar
-
-### Mobile/Touch
-
-- &#8592; Left Movement: Tap/Hold left half of screen
-- &#8594; Right Movement: Tap/Hold right half of screen
-- &#8593; Jump: Swipe down from anywhere on the screen
+- &#8592; Left Movement: Left arrow, A
+- &#8594; Right Movement: Right arrow, D
+- &#8593; Jump: Up arrow, Spacebar, W
 
 ## Game Features
 
@@ -40,7 +32,7 @@ To manage game assets, this project uses git **Large File Support (lfs)**. To su
 - Repeating, parallaxed backgrounds
 - Fluid controls and physics-based movement
 - Event system & singleton pattern
-- OOP principles like inheritance and encapsulation
+- OOP principles including inheritance and encapsulation
 - Internal save system
 
 ## License
@@ -53,8 +45,8 @@ Special thanks to
 
 - [SeethingSwarm](https://seethingswarm.itch.io/) for providing the adorable cat and fox assets used in this game. You can find more of their work on [itch.io](https://seethingswarm.itch.io/) and follow them on [Twitter](https://twitter.com/SeethingSwarm).
 - [Eder Muniz (edermunizz)](https://edermunizz.itch.io/) for their beautiful pixel art forest backgrounds. More of their work is found on [itch.io](https://edermunizz.itch.io/) and [Twitter](https://twitter.com/edermunizpixels).
-- [Strikecast Audio](www.strikecastaudio.com/) for the background music provided in game. Their content was available free of the [Unity Asset Store](https://assetstore.unity.com/packages/audio/music/electronic/miru-far-from-home-free-8bit-inspired-music-pack-202961).
+- [Strikecast Audio](www.strikecastaudio.com/) for the background music provided in game. Their content was available free off the [Unity Asset Store](https://assetstore.unity.com/packages/audio/music/electronic/miru-far-from-home-free-8bit-inspired-music-pack-202961).
 
 ## Contact
 
-You can contact me through [email](mailto:redpwilliams@gmail.com), or [create an issue](https://github.com/Red-CS/Lost-Cat-Scared-Cat/issues) for any problems.
+You can contact me through [email](mailto:redpwilliams@gmail.com), or [create an issue](https://github.com/redpwilliams/Lost-Cat-Scared-Cat/issues) for any problems.
